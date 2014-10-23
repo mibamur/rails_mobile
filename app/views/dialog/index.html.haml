@@ -25,6 +25,11 @@
       = f.text_field :cash, :placeholder => "Сумма"
     .ui-field-contain
       = f.text_field :comment, :placeholder => "Заметка"
+    %div{ :class=>"todate"}
+      .field
+        = f.label t(:todate)
+        = f.date_select :todate
+
     .ui-field-contain
       = f.submit t('.save', :default => t("helpers.links.save")), :class => "btn btn-primary"
       %a.ui-btn.ui-shadow.ui-corner-all.ui-btn-a{"data-rel" => "back", :href => "/fin/"} Отмена
@@ -47,6 +52,11 @@
       = f.text_field :cash, :placeholder => "Сумма"
     .ui-field-contain
       = f.text_field :comment, :placeholder => "Заметка"
+    %div{ :class=>"todate"}
+      .field
+        = f.label t(:todate)
+        = f.date_select :todate
+
     .ui-field-contain
       = f.submit t('.save', :default => t("helpers.links.save")), :class => "btn btn-primary"
       %a.ui-btn.ui-shadow.ui-corner-all.ui-btn-a{"data-rel" => "back", :href => "/fin/"} Отмена
@@ -66,6 +76,11 @@
       / %label{:for => "commentp"} Заметка:
       = f.text_field :comment, :placeholder => "Заметка"
       / %textarea#commentp{:cols => "20", :name => "commentp", :rows => "4"}
+    %div{ :class=>"todate"}
+      .field
+        = f.label t(:todate)
+        = f.date_select :todate
+
     .ui-field-contain
       = f.submit t('.save', :default => t("helpers.links.save")), :class => "btn btn-primary"
       %a.ui-btn.ui-shadow.ui-corner-all.ui-btn-a{"data-rel" => "back", :href => "/fin/"} Отмена

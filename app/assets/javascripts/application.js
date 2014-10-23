@@ -25,6 +25,7 @@ ready = function() {
 
   $('form').attr("data-ajax", "false");
   $('.date').attr("style", "display:none;");
+  $('.todate').attr("style", "display:none;");
 
 
     $('#radio-choice-h-2a').click(function(){

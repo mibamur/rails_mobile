@@ -8,17 +8,17 @@
   %div{ :class=>"schet_from"}
     .field
       = f.label t(:schet_from)
-      = f.number_field :schet_from
+      = collection_select(:perevod, :schet_from, Schet.where(panel: true).all, :id, :name, prompt: true)
 
   %div{ :class=>"schet_to"}
     .field
       = f.label t(:schet_to)
-      = f.number_field :schet_to
+      = collection_select(:perevod, :schet_to, Schet.where(panel: true).all, :id, :name, prompt: true)
 
-  %div{ :class=>"rab"}
-    .field
-      = f.label t(:rab)
-      = collection_select(:perevod, :rab_id, Rab.all, :id, :name, prompt: true)
+  -#%div{ :class=>"rab"}
+    -#.field
+      -#= f.label t(:rab)
+      -#= collection_select(:perevod, :rab_id, Rab.all, :id, :name, prompt: true)
 
   %div{ :class=>"todate"}
     .field
