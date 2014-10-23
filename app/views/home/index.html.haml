@@ -1,2 +1,13 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+%ul{"data-role" => "listview"}
+  - @schets.each do |s|
+    - if current_login.id==s.login_id
+      %li
+        = s.name
+        %span.ui-li-count
+          = s.cash
+    - if current_login.email=~/bira/ or current_login.email=~/andr/ or current_login.email=~/admin/
+      %li
+        = s.name
+        %span.ui-li-count
+          = s.cash
+

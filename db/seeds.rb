@@ -34,10 +34,10 @@ Rab.create!([
 ])
 
 Schet.create!([
-  {name: "Пионерская", login_id: 5, panel: true, balance: nil, cash: "-111111.0"},
-  {name: "Безымянка", login_id: 4, panel: true, balance: nil, cash: "277667.0"},
-  {name: "Теплая", login_id: 6, panel: true, balance: nil, cash: "111.0"},
-  {name: "Администратор", login_id: nil, panel: true, balance: nil, cash: "-166667.0"},
-  {name: "ИзьятиеС", login_id: nil, panel: false, balance: nil, cash: "100.0"},
-  {name: "ИзьятиеМ", login_id: nil, panel: false, balance: nil, cash: "4500.0"}
+  {name: "Пионерская", login_id: nil, panel: true, balance: nil, cash: "0"},
+  {name: "Безымянка", login_id: nil, panel: true, balance: nil, cash: "0"},
+  {name: "Теплая", login_id: nil, panel: true, balance: nil, cash: "0"},
+  {name: "Администратор", login_id: nil, panel: true, balance: nil, cash: "0"},
+  {name: "ИзьятиеС", login_id: nil, panel: false, balance: nil, cash: "0"},
+  {name: "ИзьятиеМ", login_id: nil, panel: false, balance: nil, cash: "0"}
 ])

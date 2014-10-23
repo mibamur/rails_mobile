@@ -20,7 +20,7 @@
         %a.ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-plus.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", :href => "/dialog/index", "data-ajax"=>"false"} Добавить
       .ui-content.jqm-content{"role"=>"main", :class=>"ui-content"}
         = yield
-  
+
 
       - if current_login.has_role? :admin or current_login.has_role? :root
         .jqm-navmenu-panel{"data-display" => "overlay", "data-position" => "left", "data-role" => "panel", "data-theme" => "a"}
