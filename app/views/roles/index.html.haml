@@ -16,7 +16,6 @@
             = link_to role_path(role) do 
               = role.name
           %td
-            = link_to 'Edit', edit_role_path(role), :class => "ui-btn ui-btn-icon-left ui-icon-edit"
-            = link_to 'Destroy', role, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "ui-btn ui-btn-icon-left ui-icon-delete"
-          
+            = link_to 'Изменить', edit_role_path(role), :class => "ui-btn ui-btn-icon-left ui-icon-edit"
+            = link_to 'Удалить', role, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "ui-btn ui-btn-icon-left ui-icon-delete"
 
