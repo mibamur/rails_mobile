@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Schet:
+  = @dohod.schet
+%p
+  %b Cat dohod:
+  = @dohod.cat_dohod
+%p
+  %b Comment:
+  = @dohod.comment
+%p
+  %b Rab:
+  = @dohod.rab
+%p
+  %b Todate:
+  = @dohod.todate
+%p
+  %b Cash:
+  = @dohod.cash
+
+= link_to 'Edit', edit_dohod_path(@dohod)
+\|
+= link_to 'Back', dohods_path

@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b First name:
+  = @rab.first_name
+%p
+  %b Last name:
+  = @rab.last_name
+%p
+  %b Tel:
+  = @rab.tel
+%p
+  %b Login:
+  = @rab.login
+
+= link_to 'Edit', edit_rab_path(@rab)
+\|
+= link_to 'Back', rabs_path

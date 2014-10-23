@@ -1,0 +1,29 @@
+%h1 Listing perevods
+
+%table
+  %tr
+    %th Schet from
+    %th Schet to
+    %th Rab
+    %th Todate
+    %th Cash
+    %th Comment
+    %th
+    %th
+    %th
+
+  - @perevods.each do |perevod|
+    %tr
+      %td= perevod.schet_from
+      %td= perevod.schet_to
+      %td= perevod.rab
+      %td= perevod.todate
+      %td= perevod.cash
+      %td= perevod.comment
+      %td= link_to 'Show', perevod
+      %td= link_to 'Edit', edit_perevod_path(perevod)
+      %td= link_to 'Destroy', perevod, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Perevod', new_perevod_path

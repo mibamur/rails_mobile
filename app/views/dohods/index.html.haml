@@ -1,0 +1,29 @@
+%h1 Listing dohods
+
+%table
+  %tr
+    %th Schet
+    %th Cat dohod
+    %th Comment
+    %th Rab
+    %th Todate
+    %th Cash
+    %th
+    %th
+    %th
+
+  - @dohods.each do |dohod|
+    %tr
+      %td= dohod.schet
+      %td= dohod.cat_dohod
+      %td= dohod.comment
+      %td= dohod.rab
+      %td= dohod.todate
+      %td= dohod.cash
+      %td= link_to 'Show', dohod
+      %td= link_to 'Edit', edit_dohod_path(dohod)
+      %td= link_to 'Destroy', dohod, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Dohod', new_dohod_path

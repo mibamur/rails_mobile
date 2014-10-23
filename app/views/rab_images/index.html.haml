@@ -1,0 +1,21 @@
+%h1 Listing rab_images
+
+%table
+  %tr
+    %th Image
+    %th Rab
+    %th
+    %th
+    %th
+
+  - @rab_images.each do |rab_image|
+    %tr
+      %td= rab_image.image
+      %td= rab_image.rab
+      %td= link_to 'Show', rab_image
+      %td= link_to 'Edit', edit_rab_image_path(rab_image)
+      %td= link_to 'Destroy', rab_image, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Rab image', new_rab_image_path

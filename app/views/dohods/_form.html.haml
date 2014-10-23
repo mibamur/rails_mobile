@@ -1,0 +1,28 @@
+= form_for @dohod do |f|
+  - if @dohod.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@dohod.errors.count, "error")} prohibited this dohod from being saved:"
+      %ul
+        - @dohod.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :schet
+    = f.text_field :schet
+  .field
+    = f.label :cat_dohod
+    = f.text_field :cat_dohod
+  .field
+    = f.label :comment
+    = f.text_area :comment
+  .field
+    = f.label :rab
+    = f.text_field :rab
+  .field
+    = f.label :todate
+    = f.date_select :todate
+  .field
+    = f.label :cash
+    = f.text_field :cash
+  .actions
+    = f.submit 'Save'

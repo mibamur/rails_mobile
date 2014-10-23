@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Image:
+  = @rab_image.image
+%p
+  %b Rab:
+  = @rab_image.rab
+
+= link_to 'Edit', edit_rab_image_path(@rab_image)
+\|
+= link_to 'Back', rab_images_path

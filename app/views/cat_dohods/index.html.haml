@@ -1,0 +1,19 @@
+%h1 Listing cat_dohods
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @cat_dohods.each do |cat_dohod|
+    %tr
+      %td= cat_dohod.name
+      %td= link_to 'Show', cat_dohod
+      %td= link_to 'Edit', edit_cat_dohod_path(cat_dohod)
+      %td= link_to 'Destroy', cat_dohod, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Cat dohod', new_cat_dohod_path

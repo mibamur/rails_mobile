@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Schet:
+  = @rashod.schet
+%p
+  %b Cat rashod:
+  = @rashod.cat_rashod
+%p
+  %b Comment:
+  = @rashod.comment
+%p
+  %b Rab:
+  = @rashod.rab
+%p
+  %b Todate:
+  = @rashod.todate
+%p
+  %b Cash:
+  = @rashod.cash
+
+= link_to 'Edit', edit_rashod_path(@rashod)
+\|
+= link_to 'Back', rashods_path

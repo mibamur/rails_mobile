@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+  resources :perevods
+
+  resources :dohods
+
+  resources :rashods
+
+  resources :rab_images
+
+  resources :rabs
+
+  resources :schets
+
+  resources :cat_dohods
+
+  resources :cat_rashods
+
   devise_for :logins
   resources :logins
   resources :roles

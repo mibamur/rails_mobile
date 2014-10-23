@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Schet from:
+  = @perevod.schet_from
+%p
+  %b Schet to:
+  = @perevod.schet_to
+%p
+  %b Rab:
+  = @perevod.rab
+%p
+  %b Todate:
+  = @perevod.todate
+%p
+  %b Cash:
+  = @perevod.cash
+%p
+  %b Comment:
+  = @perevod.comment
+
+= link_to 'Edit', edit_perevod_path(@perevod)
+\|
+= link_to 'Back', perevods_path

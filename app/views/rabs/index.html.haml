@@ -1,0 +1,25 @@
+%h1 Listing rabs
+
+%table
+  %tr
+    %th First name
+    %th Last name
+    %th Tel
+    %th Login
+    %th
+    %th
+    %th
+
+  - @rabs.each do |rab|
+    %tr
+      %td= rab.first_name
+      %td= rab.last_name
+      %td= rab.tel
+      %td= rab.login
+      %td= link_to 'Show', rab
+      %td= link_to 'Edit', edit_rab_path(rab)
+      %td= link_to 'Destroy', rab, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Rab', new_rab_path

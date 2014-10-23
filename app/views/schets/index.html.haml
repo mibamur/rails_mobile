@@ -1,0 +1,27 @@
+%h1 Listing schets
+
+%table
+  %tr
+    %th Name
+    %th Login
+    %th Panel
+    %th Balance
+    %th Cash
+    %th
+    %th
+    %th
+
+  - @schets.each do |schet|
+    %tr
+      %td= schet.name
+      %td= schet.login
+      %td= schet.panel
+      %td= schet.balance
+      %td= schet.cash
+      %td= link_to 'Show', schet
+      %td= link_to 'Edit', edit_schet_path(schet)
+      %td= link_to 'Destroy', schet, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Schet', new_schet_path

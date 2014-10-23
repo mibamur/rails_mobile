@@ -1,0 +1,25 @@
+= form_for @schet do |f|
+  - if @schet.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@schet.errors.count, "error")} prohibited this schet from being saved:"
+      %ul
+        - @schet.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :login
+    = f.text_field :login
+  .field
+    = f.label :panel
+    = f.check_box :panel
+  .field
+    = f.label :balance
+    = f.check_box :balance
+  .field
+    = f.label :cash
+    = f.text_field :cash
+  .actions
+    = f.submit 'Save'
