@@ -19,14 +19,5 @@
 //= require jqm-demos
 //= require dialog.build
 //= require tablesaw
-$(document).bind("mobileinit", function () {
-    $.mobile.ajaxEnabled = false;
- $.mobile.ajaxLinksEnabled = false;
- $.mobile.ajaxFormsEnabled = false;
-});
-})
-/*$(document).live("mobileinit", function(){*/
-//});
 
-//$(document).live("mobileinit", function(){
-/*});*/
+
