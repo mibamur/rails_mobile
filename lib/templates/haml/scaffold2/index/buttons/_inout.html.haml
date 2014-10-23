@@ -1,0 +1,18 @@
+.btn-group
+  %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+    Excel
+    %span.caret
+  %ul.dropdown-menu{:role => "menu"}
+    %li{ :role => "presentation", :class => "dropdown-header" }
+      %span.glyphicon.glyphicon-cloud-download
+        = t(:export)
+    %li
+      = link_to "CSV", <%= plural_table_name %>_path(format: "csv")
+    %li
+      = link_to "XLS", <%= plural_table_name %>_path(format: "xls")
+    %li{ :role => "presentation", :class => "dropdown-header" }
+      %span.glyphicon.glyphicon-cloud-upload
+        = t(:import)
+    %li
+      = form_tag import_<%= plural_table_name %>_path, multipart: true do
+        = file_field_tag :file, :onchange => "this.form.submit();"

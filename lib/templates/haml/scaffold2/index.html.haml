@@ -1,0 +1,24 @@
+.row
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading
+        = render partial: "<%= plural_table_name %>/index/buttons/buttom", locals: {<%= plural_table_name %>: @<%= plural_table_name %>}
+      .panel-body
+        = render partial: "<%= plural_table_name %>/dataTable/index", locals: {<%= plural_table_name %>: @<%= plural_table_name %>}
+        = render partial: "<%= plural_table_name %>/index/buttons/buttom", locals: {<%= plural_table_name %>: @<%= plural_table_name %>}
+        = render partial: "<%= plural_table_name %>/index/buttons/inout", locals: {<%= plural_table_name %>: @<%= plural_table_name %>}
+
+= render partial: "<%= plural_table_name %>/index/modals/new_modal"
+= render partial: "<%= plural_table_name %>/dataTable/index_js"
+
+:javascript
+  var <%= singular_table_name %>_tooltip = function() {
+    $(".<%= singular_table_name %>_tooltip").tooltip();
+  };
+
+  $(document).ready(<%= singular_table_name %>_tooltip);
+  $(document).on('page:load', <%= singular_table_name %>_tooltip);  
+
+
+
+

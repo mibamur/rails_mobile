@@ -1,0 +1,26 @@
+:javascript
+  var dataTable_for_<%= singular_table_name %> = function() {
+
+    var collect_sum = function(){
+      var totals=[0,0,0,0,0,0,0,0,0,0,0];
+      var $dataRows=$("#dataTable_for_<%= singular_table_name %> tr:not('.sum')");
+      $dataRows.each(function() {
+          $(this).find('input').each(function(i){
+              totals[i]+=parseFloat( $(this).val() ) || 0;
+          });
+      });
+      $("#dataTable_for_<%= singular_table_name %> tfoot tr.sum th").each(function(i){  
+          if (i==0) { $(this).text("Итого:"); }
+          if (isNaN(totals[i+1]) || totals[i+1]==0 ) {}
+          else { $(this).text(totals[i+1]); }
+      });
+    };
+
+    setInterval(function(){
+        collect_sum();
+    },1000);
+
+  };
+
+  $(document).ready(dataTable_for_<%= singular_table_name %>);
+  $(document).on('page:load', dataTable_for_<%= singular_table_name %>);

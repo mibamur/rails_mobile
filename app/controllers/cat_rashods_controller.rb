@@ -1,5 +1,6 @@
 class CatRashodsController < ApplicationController
   before_action :set_cat_rashod, only: [:show, :edit, :update, :destroy]
+  ##before_action :redirect_tor
 
   def index
     @cat_rashods = CatRashod.all
@@ -42,4 +43,13 @@ class CatRashodsController < ApplicationController
     def cat_rashod_params
       params.require(:cat_rashod).permit(:name)
     end
+
+    def redirect_tor
+      respond_to do |format|
+        format.html {redirect_to root_path}
+        #format.js {render :js => "window.location.href='"+root_path+"'"} if params[:q].present?
+      end
+    end
+
+
 end

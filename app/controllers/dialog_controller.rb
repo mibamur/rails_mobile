@@ -3,10 +3,10 @@ class DialogController < ApplicationController
   before_action :set_rashod, only: [:show, :edit, :update, :destroy]
   before_action :set_dohod, only: [:show, :edit, :update, :destroy]
   before_action :set_perevod, only: [:show, :edit, :update, :destroy]
-
+#  ##before_action :redirect_tor
 
   def index
-    
+
     @schets = Schet.where(panel: true).all
     @dohod = Dohod.new
     @rashod = Rashod.new

@@ -1,0 +1,6 @@
+- if @<%= singular_table_name %>.errors.any?
+  #error_explanation
+    %h2= "#{pluralize(@<%= singular_table_name %>.errors.count, "error")} prohibited this rab from being saved:"
+    %ul
+      - @<%= singular_table_name %>.errors.full_messages.each do |msg|
+        %li= msg

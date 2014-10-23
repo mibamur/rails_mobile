@@ -1,0 +1,13 @@
+// для Модала при создании
+
+// Уведомление 
+var rab_#{@rab_id}_show = function(){ new PNotify({ title: "Запись #{@rab.name} создана.", type: 'success', icon: false, hide: true, delay: 1500, buttons: { sticker: false } })};
+rab_#{@rab_id}_show();
+
+// Добавление в dataTables
+// $('#dataTables_rab').append("#{j render partial: 'rabs/dataTable/index_td', locals: {rab: @rab }}");
+
+
+
+// Вызов функции Модала
+$('#new_rab_modal').modal_success();

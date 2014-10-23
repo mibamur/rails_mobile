@@ -1,0 +1,80 @@
+:javascript
+
+  var after_cocoon_ins_fn_<%= singular_table_name %> = function() {
+
+    // Кнопка смены и поля времени
+    $('#tab_<%= singular_table_name %> .boolean').on('switchChange.bootstrapSwitch', function(event, state) {
+        $(this).parent().parent().parent().next().children().prop('disabled', state).val("").parent().next().children().prop('disabled', state).val("");
+    });
+    $('#tab_<%= singular_table_name %> .boolean').each(function() {
+        if ($(this).attr('checked')=='checked')
+        {
+            $(this).parent().parent().parent().next().children().prop('disabled', true).parent().next().children().prop('disabled', true);
+        }
+    });
+
+    // datepicker для всех .input-group.date
+    $('.date').datepicker({
+        format: "dd.mm.yyyy",
+        todayBtn: true,
+        language: "ru",
+        autoclose: true,
+        todayHighlight: true
+    });
+
+    // clockpicker для всех .input-group.time
+    $('.time').clockpicker({
+        autoclose: true,
+        'default': 'now'
+    });
+
+
+    // добавляем пустое значения для имеющихся select
+    // select = slect2
+    $('select').select2({
+        allowClear: true,
+        placeholder: "Сделайте выбор",
+        dropdownAutoWidth: true,
+        width: "100%"
+    });
+
+    // Chebox
+    $(".boolean").bootstrapSwitch({
+        offColor: 'danger',
+        onColor: 'success',
+        size: 'small',
+        onText: 'Да',
+        offText: 'Нет'
+    });
+
+  };
+
+  var tab_table_js_after_cocoon_ins_<%= singular_table_name %> = function() {
+
+    // добавляем пустое значения для имеющихся select
+    $('.tab_<%= singular_table_name %>_select select').prepend($('<option></option>'));
+    
+    // Кнопка смены и поля времени
+    $('#tab_<%= singular_table_name %> .boolean').on('switchChange.bootstrapSwitch', function(event, state) {
+        $(this).parent().parent().parent().next().children().prop('disabled', state).val("").parent().next().children().prop('disabled', state).val("");
+    });
+    $('#tab_<%= singular_table_name %> .boolean').each(function() {
+        if ($(this).attr('checked')=='checked')
+        {
+            $(this).parent().parent().parent().next().children().prop('disabled', true).parent().next().children().prop('disabled', true);
+        }
+    });
+
+    $("#tab_<%= singular_table_name %> a.add_fields").
+        data("association-insertion-method", 'after').
+        data("association-insertion-node", '#<%= singular_table_name %>_link_to_add_association');
+
+    $('#tab_<%= singular_table_name %>').on('cocoon:after-insert', function(e, insertedItem) {
+      after_cocoon_ins_fn_<%= singular_table_name %>();      
+    });
+
+
+  };
+
+  $(document).ready(tab_table_js_after_cocoon_ins_<%= singular_table_name %>);
+  $(document).on('page:load', tab_table_js_after_cocoon_ins_<%= singular_table_name %>);

@@ -9,4 +9,8 @@ class Login < ActiveRecord::Base
   def assign_default_role
     add_role :reg if self.roles.blank?
   end
+  def name
+    self.email
+  end
+
 end

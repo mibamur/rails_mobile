@@ -1,1 +1,2 @@
-json.extract! @schet, :id, :name, :login_id, :panel, :balance, :cash, :created_at, :updated_at
+json.extract! @schet, :name, :id, :name, :login_id, :panel, :balance, :cash, :created_at, :updated_at
+

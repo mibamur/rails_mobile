@@ -1,28 +1,42 @@
-= form_for @perevod do |f|
+= form_for @perevod, "data-ajax" => false do |f|
   - if @perevod.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@perevod.errors.count, "error")} prohibited this perevod from being saved:"
+      %h2= "#{pluralize(@perevod.errors.count, "error")} prohibited this rab from being saved:"
       %ul
         - @perevod.errors.full_messages.each do |msg|
           %li= msg
+  %div{ :class=>"schet_from"}
+    .field
+      = f.label t(:schet_from)
+      = f.number_field :schet_from
 
-  .field
-    = f.label :schet_from
-    = f.number_field :schet_from
-  .field
-    = f.label :schet_to
-    = f.number_field :schet_to
-  .field
-    = f.label :rab
-    = f.text_field :rab
-  .field
-    = f.label :todate
-    = f.date_select :todate
-  .field
-    = f.label :cash
-    = f.text_field :cash
-  .field
-    = f.label :comment
-    = f.text_area :comment
-  .actions
-    = f.submit 'Save'
+  %div{ :class=>"schet_to"}
+    .field
+      = f.label t(:schet_to)
+      = f.number_field :schet_to
+
+  %div{ :class=>"rab"}
+    .field
+      = f.label t(:rab)
+      = collection_select(:perevod, :rab_id, Rab.all, :id, :name, prompt: true)
+
+  %div{ :class=>"todate"}
+    .field
+      = f.label t(:todate)
+      = f.date_select :todate
+
+  %div{ :class=>"cash"}
+    .field
+      = f.label t(:cash)
+      = f.text_field :cash
+
+  %div{ :class=>"comment"}
+    .field
+      = f.label t(:comment)
+      = f.text_area :comment
+
+      - 'TABB'
+  %div
+    .field
+      = f.submit t('.save', :default => t("helpers.links.save")), :class => "btn btn-primary", "data-ajax" => false
+

@@ -1,0 +1,15 @@
+.row
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading
+        = link_to <%= index_helper %>_path, :class => 'btn btn-default' do
+          %span.glyphicon.glyphicon-list-alt
+            = t('.back', :default => t("helpers.links.back"))
+        = link_to edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), :class => 'btn btn-danger' do
+          %span.glyphicon.glyphicon-list-alt
+            = t('.edit', :default => t("helpers.links.edit"))
+      .panel-body
+        .row
+          = render '<%= plural_table_name %>/forms/form', show: true
+          -# , :readonly => true, :disabled => true
+

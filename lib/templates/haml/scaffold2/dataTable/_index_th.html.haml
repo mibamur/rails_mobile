@@ -1,0 +1,7 @@
+<%- for attribute in attributes -%>
+<%- if attribute.name =~ /babki|money|sum|deng|price/ -%>
+%th.sum= t(:<%= attribute.name %>)
+<%- else -%>
+%th= t(:<%= attribute.name %>)
+<%- end -%>
+<% end -%>

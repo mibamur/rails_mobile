@@ -1,5 +1,6 @@
 class RabsController < ApplicationController
   before_action :set_rab, only: [:show, :edit, :update, :destroy]
+  ##before_action :redirect_tor
 
   def index
     @rabs = Rab.all
@@ -42,4 +43,12 @@ class RabsController < ApplicationController
     def rab_params
       params.require(:rab).permit(:first_name, :last_name, :tel, :login_id)
     end
+
+    def redirect_tor
+      respond_to do |format|
+        format.html {redirect_to root_path}
+        #format.js {render :js => "window.location.href='"+root_path+"'"} if params[:q].present?
+      end
+    end
+
 end

@@ -1,0 +1,72 @@
+:javascript
+  var dataTables_<%= singular_table_name %> = function() {
+
+
+      $.fn.dataTable.Api.register( 'column().data().sum()', function () {
+          return this.reduce( function (a, b) {
+              var x = parseFloat( a ) || 0;
+              var y = parseFloat( b ) || 0;
+              return x + y;
+          } );
+      } );
+
+
+      // dataTable - add input to tfoot
+      $('#dataTables_<%= singular_table_name %> tfoot th').each( function () {
+          var title = $('#dataTables_<%= singular_table_name %> tfoot th').eq( $(this).index() ).text();
+          $(this).html( '<input style="width: 99%;" type="text" placeholder="'+title+'" />' );
+      });
+
+
+      $('tfoot tr.tr-sum th').each( function () {
+          var colplace = $('tfoot tr.tr-sum th').eq( $(this).index() ).index();
+          $(this).html( '<input data-colplace="'+colplace+'" class="trsum" disabled style="width: 99%;" type="text" value="" />' );
+      });
+
+      var collect_sum = function(){
+            $("tr.tr-sum th.sum input.trsum").each(function(){
+                var col_number = $(this).data("colplace"); // find col number
+                var cur_sum = table_dataTables_<%= singular_table_name %>.column( col_number, {page:'current'} ).data().sum();
+                $(this).val(cur_sum);
+            });
+      };
+
+
+      // dataTable - init
+      var table_dataTables_<%= singular_table_name %> = $('#dataTables_<%= singular_table_name %>').DataTable({
+          "bDestroy": true,
+          "bPaginate": true,
+          "bLengthChange": true,
+          "bFilter": true,
+          "bSort": true,
+          "bInfo": false,
+          dom: 'C<"clear">lfrtip',
+          colVis: { "buttonText": "Колонки" },
+          "scrollX": true,
+          "bAutoWidth": false,
+          "oLanguage": {
+              "sUrl": "/dataTables.russia.txt"
+          },
+          stateSave: true,
+          stateDuration: 0,
+          drawCallback: function () { collect_sum(); }
+      });
+
+
+
+      // dataTable - on change
+      $("#dataTables_<%= singular_table_name %> tfoot input").on( 'keyup change', function () {
+          table_dataTables_<%= singular_table_name %>
+              .column( $(this).parent().index()+':visible' )
+              .search( this.value )
+              .draw();
+      });
+
+  };
+
+  $(document).ready(dataTables_<%= singular_table_name %>);
+  $(document).on('page:load', dataTables_<%= singular_table_name %>);
+
+
+
+

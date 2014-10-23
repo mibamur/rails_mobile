@@ -1,0 +1,80 @@
+- modal ||= false
+- remote = modal ? true : false
+= render partial: "<%= plural_table_name %>/forms/tab_ul"
+= form_for @<%= singular_table_name %>, remote: remote, :html => { role: :form, 'data-model' => '<%= singular_table_name %>', :class => "form-horizontal" } do |f|
+  = render partial: "<%= plural_table_name %>/forms/error", locals: {<%= singular_table_name %>: @<%= singular_table_name %>}
+
+  .panel-body
+    .tab-content
+      #tab_<%= singular_table_name %>.active.tab-pane.active.fade.in
+        .row
+          .col-lg-6
+  <%- for attribute in attributes -%>
+            .form-group
+              = f.label t(:<%= attribute.name %>), :class => "col-sm-4 control-label"
+              .col-sm-6
+                .input-group
+                  %span.input-group-addon
+      <%- if attribute.password_digest? -%>
+                    %i.fa.fa-lock
+                  = f.password_field :password, :class => "form-control"
+      <%- else -%>
+      <%- if attribute.name =~ /image/ -%>
+                    %i.fa.fa-camera
+                  - if @<%= singular_table_name %>.image_url
+                    = image_tag @<%= singular_table_name %>.image_url(:big_thumb).to_s, :class => "thumbnail img-responsive"
+                  = f.file_field :<%= attribute.name %>, title: "Выбрать"
+      <%- else -%>
+      <%- if attribute.reference? -%>
+                    %i.fa.fa-group
+                  - if @<%= singular_table_name %>.<%= attribute.column_name %>
+                    = f.text_field :<%= attribute.column_name %>, :class => "form-control <%= singular_table_name %>_<%= attribute.column_name[0..-4] %>_select2_class", :data_init_text => @<%= singular_table_name %>.<%= attribute.column_name[0..-4] %>.name
+                  - else
+                    = f.text_field :<%= attribute.column_name %>, :class => "form-control <%= singular_table_name %>_<%= attribute.column_name[0..-4] %>_select2_class"
+      <%- else -%>
+      <%- if attribute.name =~ /date/ -%>
+                    %i.fa.fa-calendar
+                  = f.<%= attribute.field_type %> :<%= attribute.name %>, :class => "form-control date"
+      <%- else -%>
+      <%- if attribute.name =~ /time/ -%>
+                    %i.fa.fa-clock-o
+                  = f.<%= attribute.field_type %> :<%= attribute.name %>, :class => "form-control time"
+      <%- else -%>
+      <%- if attribute.field_type =~ /check/ -%>
+                    %i.fa.fa-tags
+                  = f.<%= attribute.field_type %> :<%= attribute.name %>, :class => "form-control check"
+      <%- else -%>
+      <%- if attribute.name =~ /phone/ -%>
+                    %i.fa.fa-phone
+                  = f.<%= attribute.field_type %> :<%= attribute.name %>, :class => "form-control"
+      <%- else -%>
+      <%- if attribute.name =~ /name/ -%>
+                    %i.fa.fa-briefcase
+                  = f.<%= attribute.field_type %> :<%= attribute.name %>, :class => "form-control"
+      <%- else -%>
+      <%- if attribute.name =~ /mail/ -%>
+                    %i.fa.fa-envelope
+                  = f.<%= attribute.field_type %> :<%= attribute.name %>, :class => "form-control"
+      <%- else -%>
+                    %i.fa.fa-pencil
+                  = f.<%= attribute.field_type %> :<%= attribute.name %>, :class => "form-control"
+      <%- end -%>
+      <%- end -%>
+      <%- end -%>
+      <%- end -%>
+      <%- end -%>
+      <%- end -%>
+      <%- end -%>
+      <%- end -%>
+      <%- end -%>
+
+      <%- end -%>
+      - 'TABB'
+
+    .row.panel-body
+      .col-lg-6
+        .form-group
+          .col-sm-4
+            = f.submit t('.save', :default => t("helpers.links.save")), :class => "btn btn-primary"
+
+= render partial: "<%= plural_table_name %>/el/reference_select2_ajax_js", locals: {<%= singular_table_name %>s: @<%= singular_table_name %>s}

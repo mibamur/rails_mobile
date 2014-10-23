@@ -1,0 +1,64 @@
+= form_for @<%= singular_table_name %>, "data-ajax" => false do |f|
+  - if @<%= singular_table_name %>.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@<%= singular_table_name %>.errors.count, "error")} prohibited this rab from being saved:"
+      %ul
+        - @<%= singular_table_name %>.errors.full_messages.each do |msg|
+          %li= msg
+  <%- for attribute in attributes -%>
+  <%- if attribute.name =~ /parent_id|lft|rgt|depth/ -%>
+  <%- else -%>
+  %div{ :class=>"<%= attribute.name %>"}
+    .field
+      = f.label t(:<%= attribute.name %>)
+      <%- if attribute.field_type =~ /check/ -%>
+    = f.<%= attribute.field_type %> :<%= attribute.name %>
+      <%- else -%>
+    <%- if attribute.password_digest? -%>
+    = f.password_field :password
+    <%- else -%>
+    <%- if attribute.name =~ /image/ -%>
+      - if @<%= singular_table_name %>.image_url
+        = image_tag @<%= singular_table_name %>.image_url(:big_thumb).to_s, :class => "thumbnail img-responsive"
+      = f.file_field :<%= attribute.name %>, title: "Выбрать"
+    <%- else -%>
+    <%- if attribute.reference? -%>
+      = collection_select(:<%= singular_table_name %>, :<%= attribute.column_name %>, <%= attribute.column_name.gsub('_id','').titleize.to_s.gsub(' ','') %>.all, :id, :name, prompt: true)
+    <%- else -%>
+    <%- if attribute.name =~ /date/ -%>
+      = f.<%= attribute.field_type %> :<%= attribute.name %>
+      <%- else -%>
+      <%- if attribute.name =~ /time/ -%>
+      = f.<%= attribute.field_type %> :<%= attribute.name %>
+      <%- else -%>
+      <%- if attribute.name =~ /phone/ -%>
+      = f.<%= attribute.field_type %> :<%= attribute.name %>
+      <%- else -%>
+      <%- if attribute.name =~ /name/ -%>
+      = f.<%= attribute.field_type %> :<%= attribute.name %>
+      <%- else -%>
+      <%- if attribute.name =~ /mail/ -%>
+      = f.<%= attribute.field_type %> :<%= attribute.name %>
+      <%- else -%>
+      <%- if attribute.name =~ /slug/ -%>
+      = f.text_field :<%= attribute.name %>, :readonly=>"true"
+      <%- else -%>
+      = f.<%= attribute.field_type %> :<%= attribute.name %>
+      <%- end -%>
+      <%- end -%>
+      <%- end -%>
+      <%- end -%>
+      <%- end -%>
+      <%- end -%>
+      <%- end -%>
+      <%- end -%>
+      <%- end -%>
+      <%- end -%>
+      <%- end -%>
+
+      <%- end -%>
+      - 'TABB'
+  %div
+    .field
+      = f.submit t('.save', :default => t("helpers.links.save")), :class => "btn btn-primary", "data-ajax" => false
+

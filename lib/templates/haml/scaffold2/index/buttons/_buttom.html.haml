@@ -1,0 +1,4 @@
+= link_to new_<%= singular_table_name %>_path, class: "btn btn-primary" do
+  %i.fa.fa-plus{ title: t(:new) }
+= link_to "#new_<%= singular_table_name %>_modal", "data-toggle" => "modal", class: "btn btn-default" do
+  %i.<%= singular_table_name %>_tooltip.fa.fa-plus{ data: { toggle: "tooltip", placement: "bottom", title: t(:new_quick) }}

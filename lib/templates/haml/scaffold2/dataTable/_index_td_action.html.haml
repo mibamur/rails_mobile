@@ -1,0 +1,6 @@
+= link_to <%= singular_table_name %>, class: 'btn btn-primary' do
+  %i.fa.fa-eye
+= link_to edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: 'btn btn-info' do
+  %i.fa.fa-edit
+= link_to <%= singular_table_name %>, method: :delete, data: { confirm: t(:delete_confirm_text, model: t(:<%= singular_table_name %>), name: "#{<%= singular_table_name %>.name}" ) }, remote: true, class: 'btn btn-mini btn-danger' do
+  %i.fa.fa-times

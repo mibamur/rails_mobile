@@ -1,0 +1,13 @@
+// для Модала при создании
+
+// Уведомление 
+var schet_#{@schet_id}_show = function(){ new PNotify({ title: "Запись #{@schet.name} создана.", type: 'success', icon: false, hide: true, delay: 1500, buttons: { sticker: false } })};
+schet_#{@schet_id}_show();
+
+// Добавление в dataTables
+// $('#dataTables_schet').append("#{j render partial: 'schets/dataTable/index_td', locals: {schet: @schet }}");
+
+
+
+// Вызов функции Модала
+$('#new_schet_modal').modal_success();

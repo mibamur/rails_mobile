@@ -1,0 +1,58 @@
+%h1
+  = t(:<%= plural_table_name %>)
+  = link_to new_<%= singular_table_name %>_path, "data-ajax" => "false" do
+    .ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-plus.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", "data-ajax"=>"false", :style=>"float:right;"}
+      = t(:new)
+
+.docs-main
+  %table#tabl_<%= singular_table_name %>.tablesaw{"data-minimap" => "", "data-mode" => "swipe", "data-mode-switch" => "", "data-sortable" => "", "data-sortable-switch" => ""}
+    %thead
+      %tr
+        <%- ndx=0 %>
+        <%- for attribute in attributes -%>
+        <%- ndx=ndx+1 %>
+        <%- if attribute.name =~ /babki|money|sum|deng|price/ -%>
+        %th.sum= t(:<%= attribute.name %>)
+        <%- else -%>
+        %th{"data-priority" => "<%= ndx -%>", "data-sortable-col" => ""}= t(:<%= attribute.name %>)
+        <%- end -%>
+        <%- end -%>
+        %th{"data-priority" => "", "data-sortable-col" => ""}
+    %tbody
+      - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
+        %tr
+          <%- for attribute in attributes %>
+          <%- if attribute.name =~ /name/ %>
+          %td
+            = link_to <%= singular_table_name %> do
+              = <%= singular_table_name %>.<%= attribute.name -%>
+          <%- else -%>
+          <%- if attribute.reference? %>
+          %td
+            - if <%= singular_table_name %>.<%= attribute.name %>_id
+              = <%= singular_table_name %>.<%= attribute.name %>.name
+          <% else -%>
+          <%- if attribute.type == :boolean %>
+          %td
+            = <%= singular_table_name %>.<%= attribute.name %> ? "Да" : "Нет"
+          <% else -%>
+          <%- if attribute.name =~ /image/ %>
+          %td
+            - if <%= singular_table_name %>.image_url
+              = image_tag <%= singular_table_name %>.image_url(:thumb).to_s, :class => "thumbnail img-responsive"
+          <% else -%>
+          %td
+            = <%= singular_table_name %>.<%= attribute.name %>
+          <%- end -%>
+          <%- end -%>
+          <%- end -%>
+          <%- end -%>
+          <%- end -%>
+
+          %td
+            = link_to 'Изменить', edit_<%= singular_table_name %>_path(<%= singular_table_name %>), :class => "ui-btn ui-btn-icon-left ui-icon-edit", "data-ajax" => false
+            = link_to 'Удалить', <%= singular_table_name %>, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "ui-btn ui-btn-icon-left ui-icon-delete", "data-ajax" => false
+
+
+
+

@@ -1,0 +1,13 @@
+// для Модала при создании
+
+// Уведомление 
+var cat_rashod_#{@cat_rashod_id}_show = function(){ new PNotify({ title: "Запись #{@cat_rashod.name} создана.", type: 'success', icon: false, hide: true, delay: 1500, buttons: { sticker: false } })};
+cat_rashod_#{@cat_rashod_id}_show();
+
+// Добавление в dataTables
+// $('#dataTables_cat_rashod').append("#{j render partial: 'cat_rashods/dataTable/index_td', locals: {cat_rashod: @cat_rashod }}");
+
+
+
+// Вызов функции Модала
+$('#new_cat_rashod_modal').modal_success();

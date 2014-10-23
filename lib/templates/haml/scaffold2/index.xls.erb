@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="<%= singular_table_name %>s">
+    <Table>
+
+      <%% @<%= singular_table_name%>s.each do |row| %>
+          <Row>
+            <%% row.attributes.each do |k,v| %>
+              <Cell><Data ss:Type="String"><%%= k %></Data></Cell>
+            <%% end %>
+          </Row>
+        <%% break %>
+      <%% end %>
+
+
+      <%% @<%= singular_table_name%>s.each do |row| %>
+          <Row>
+            <%% row.attributes.each do |k,v| %>
+              <Cell><Data ss:Type="String"><%%= v %></Data></Cell>
+            <%% end %>
+          </Row>
+      <%% end %>
+
+    </Table>
+  </Worksheet>
+
+</Workbook>

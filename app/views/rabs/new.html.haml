@@ -1,5 +1,6 @@
-%h1 New rab
-
+%h1
+  = t('.new', :default => t("helpers.links.new"))
+  = link_to rabs_path, "data-icon" => "back" do
+    .ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-back.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", "data-ajax"=>"false", :style=>"float:right;"}
+      = t('.back', :default => t("helpers.links.back"))
 = render 'form'
-
-= link_to 'Back', rabs_path

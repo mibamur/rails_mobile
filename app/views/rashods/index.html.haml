@@ -1,29 +1,59 @@
-%h1 Listing rashods
+%h1
+  = t(:rashods)
+  = link_to new_rashod_path, "data-ajax" => "false" do
+    .ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-plus.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", "data-ajax"=>"false", :style=>"float:right;"}
+      = t(:new)
 
-%table
-  %tr
-    %th Schet
-    %th Cat rashod
-    %th Comment
-    %th Rab
-    %th Todate
-    %th Cash
-    %th
-    %th
-    %th
+.docs-main
+  %table#tabl_rashod.tablesaw{"data-minimap" => "", "data-mode" => "swipe", "data-mode-switch" => "", "data-sortable" => "", "data-sortable-switch" => ""}
+    %thead
+      %tr
 
-  - @rashods.each do |rashod|
-    %tr
-      %td= rashod.schet
-      %td= rashod.cat_rashod
-      %td= rashod.comment
-      %td= rashod.rab
-      %td= rashod.todate
-      %td= rashod.cash
-      %td= link_to 'Show', rashod
-      %td= link_to 'Edit', edit_rashod_path(rashod)
-      %td= link_to 'Destroy', rashod, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
+        %th{"data-priority" => "1", "data-sortable-col" => ""}= t(:schet)
 
-= link_to 'New Rashod', new_rashod_path
+        %th{"data-priority" => "2", "data-sortable-col" => ""}= t(:cat_rashod)
+
+        %th{"data-priority" => "3", "data-sortable-col" => ""}= t(:comment)
+
+        %th{"data-priority" => "4", "data-sortable-col" => ""}= t(:rab)
+
+        %th{"data-priority" => "5", "data-sortable-col" => ""}= t(:todate)
+
+        %th{"data-priority" => "6", "data-sortable-col" => ""}= t(:cash)
+        %th{"data-priority" => "", "data-sortable-col" => ""}
+    %tbody
+      - @rashods.each do |rashod|
+        %tr
+
+
+          %td
+            - if rashod.schet_id
+              = rashod.schet.name
+          
+
+          %td
+            - if rashod.cat_rashod_id
+              = rashod.cat_rashod.name
+          
+          %td
+            = rashod.comment
+
+
+          %td
+            - if rashod.rab_id
+              = rashod.rab.name
+          
+          %td
+            = rashod.todate
+
+          %td
+            = rashod.cash
+
+          %td
+            = link_to 'Изменить', edit_rashod_path(rashod), :class => "ui-btn ui-btn-icon-left ui-icon-edit", "data-ajax" => false
+            = link_to 'Удалить', rashod, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "ui-btn ui-btn-icon-left ui-icon-delete", "data-ajax" => false
+
+
+
+

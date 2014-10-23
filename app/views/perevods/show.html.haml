@@ -1,24 +1,7 @@
-%p#notice= notice
+%h1
+  = t('.show', :default => t("helpers.links.show"))
+  = link_to perevods_path, "data-icon" => "back" do
+    .ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-back.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", "data-ajax"=>"false", :style=>"float:right;"}
+    = t('.back', :default => t("helpers.links.back"))
+= render 'form'
 
-%p
-  %b Schet from:
-  = @perevod.schet_from
-%p
-  %b Schet to:
-  = @perevod.schet_to
-%p
-  %b Rab:
-  = @perevod.rab
-%p
-  %b Todate:
-  = @perevod.todate
-%p
-  %b Cash:
-  = @perevod.cash
-%p
-  %b Comment:
-  = @perevod.comment
-
-= link_to 'Edit', edit_perevod_path(@perevod)
-\|
-= link_to 'Back', perevods_path

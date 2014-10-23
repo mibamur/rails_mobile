@@ -1,5 +1,6 @@
 class SchetsController < ApplicationController
   before_action :set_schet, only: [:show, :edit, :update, :destroy]
+  ##before_action :redirect_tor
 
   def index
     @schets = Schet.all
@@ -42,4 +43,12 @@ class SchetsController < ApplicationController
     def schet_params
       params.require(:schet).permit(:name, :login_id, :panel, :balance, :cash)
     end
+
+    def redirect_tor
+      respond_to do |format|
+        format.html {redirect_to root_path}
+        #format.js {render :js => "window.location.href='"+root_path+"'"} if params[:q].present?
+      end
+    end
+
 end

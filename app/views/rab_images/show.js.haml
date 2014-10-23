@@ -1,0 +1,13 @@
+// для Модала при создании
+
+// Уведомление 
+var rab_image_#{@rab_image_id}_show = function(){ new PNotify({ title: "Запись #{@rab_image.name} создана.", type: 'success', icon: false, hide: true, delay: 1500, buttons: { sticker: false } })};
+rab_image_#{@rab_image_id}_show();
+
+// Добавление в dataTables
+// $('#dataTables_rab_image').append("#{j render partial: 'rab_images/dataTable/index_td', locals: {rab_image: @rab_image }}");
+
+
+
+// Вызов функции Модала
+$('#new_rab_image_modal').modal_success();

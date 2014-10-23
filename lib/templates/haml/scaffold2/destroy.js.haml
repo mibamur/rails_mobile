@@ -1,0 +1,9 @@
+// Удаление
+
+// Уведомление 
+var <%= singular_table_name %>_#{@<%= singular_table_name %>_id} = function(){ new PNotify({ title: "Запись #{@<%= singular_table_name %>.name} удалена.", type: 'error', icon: false, hide: true, delay: 1500, buttons: { sticker: false } })};
+<%= singular_table_name %>_#{@<%= singular_table_name %>_id}();
+
+// Удаление из dataTables
+$("#<%= singular_table_name %>_#{@<%= singular_table_name %>_id}").remove();
+

@@ -1,29 +1,59 @@
-%h1 Listing dohods
+%h1
+  = t(:dohods)
+  = link_to new_dohod_path, "data-ajax" => "false" do
+    .ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-plus.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", "data-ajax"=>"false", :style=>"float:right;"}
+      = t(:new)
 
-%table
-  %tr
-    %th Schet
-    %th Cat dohod
-    %th Comment
-    %th Rab
-    %th Todate
-    %th Cash
-    %th
-    %th
-    %th
+.docs-main
+  %table#tabl_dohod.tablesaw{"data-minimap" => "", "data-mode" => "swipe", "data-mode-switch" => "", "data-sortable" => "", "data-sortable-switch" => ""}
+    %thead
+      %tr
 
-  - @dohods.each do |dohod|
-    %tr
-      %td= dohod.schet
-      %td= dohod.cat_dohod
-      %td= dohod.comment
-      %td= dohod.rab
-      %td= dohod.todate
-      %td= dohod.cash
-      %td= link_to 'Show', dohod
-      %td= link_to 'Edit', edit_dohod_path(dohod)
-      %td= link_to 'Destroy', dohod, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
+        %th{"data-priority" => "1", "data-sortable-col" => ""}= t(:schet)
 
-= link_to 'New Dohod', new_dohod_path
+        %th{"data-priority" => "2", "data-sortable-col" => ""}= t(:cat_dohod)
+
+        %th{"data-priority" => "3", "data-sortable-col" => ""}= t(:comment)
+
+        %th{"data-priority" => "4", "data-sortable-col" => ""}= t(:rab)
+
+        %th{"data-priority" => "5", "data-sortable-col" => ""}= t(:todate)
+
+        %th{"data-priority" => "6", "data-sortable-col" => ""}= t(:cash)
+        %th{"data-priority" => "", "data-sortable-col" => ""}
+    %tbody
+      - @dohods.each do |dohod|
+        %tr
+
+
+          %td
+            - if dohod.schet_id
+              = dohod.schet.name
+          
+
+          %td
+            - if dohod.cat_dohod_id
+              = dohod.cat_dohod.name
+          
+          %td
+            = dohod.comment
+
+
+          %td
+            - if dohod.rab_id
+              = dohod.rab.name
+          
+          %td
+            = dohod.todate
+
+          %td
+            = dohod.cash
+
+          %td
+            = link_to 'Изменить', edit_dohod_path(dohod), :class => "ui-btn ui-btn-icon-left ui-icon-edit", "data-ajax" => false
+            = link_to 'Удалить', dohod, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "ui-btn ui-btn-icon-left ui-icon-delete", "data-ajax" => false
+
+
+
+

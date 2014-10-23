@@ -1,0 +1,16 @@
+.table-responsive.panel-body
+  %table#dataTable_for_<%= singular_table_name %>.table.table-condensed.table-striped.table-bordered.row-border.cell-border.hover.order-column.stripe.display{:cellspacing => "0", :width => "100%"}
+    %thead
+      %tr
+        = render partial: "<%= plural_table_name %>/cocoon/tab_table_th"
+        %th.col-sm-1
+    -# %tfoot
+      %tr.sum
+        = render partial: "<%= plural_table_name %>/cocoon/tab_table_th"
+        %th.col-sm-1
+    %tbody#<%= singular_table_name %>_link_to_add_association
+      = f.fields_for :<%= plural_table_name %> do |w|
+        = render partial: "<%= plural_table_name %>/cocoon/<%= singular_table_name %>_fields", f: w, locals: { f: w }
+  = link_to_add_association t(:add), f, :<%= plural_table_name %>, partial: "<%= plural_table_name %>/cocoon/<%= singular_table_name %>_fields", class: "btn btn-info link_to_add_association", style: "margin-left: 1em;"
+%br
+

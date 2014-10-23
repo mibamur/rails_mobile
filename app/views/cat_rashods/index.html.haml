@@ -1,19 +1,29 @@
-%h1 Listing cat_rashods
+%h1
+  = t(:cat_rashods)
+  = link_to new_cat_rashod_path, "data-ajax" => "false" do
+    .ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-plus.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", "data-ajax"=>"false", :style=>"float:right;"}
+      = t(:new)
 
-%table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
+.docs-main
+  %table#tabl_cat_rashod.tablesaw{"data-minimap" => "", "data-mode" => "swipe", "data-mode-switch" => "", "data-sortable" => "", "data-sortable-switch" => ""}
+    %thead
+      %tr
 
-  - @cat_rashods.each do |cat_rashod|
-    %tr
-      %td= cat_rashod.name
-      %td= link_to 'Show', cat_rashod
-      %td= link_to 'Edit', edit_cat_rashod_path(cat_rashod)
-      %td= link_to 'Destroy', cat_rashod, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
+        %th{"data-priority" => "1", "data-sortable-col" => ""}= t(:name)
+        %th{"data-priority" => "", "data-sortable-col" => ""}
+    %tbody
+      - @cat_rashods.each do |cat_rashod|
+        %tr
 
-= link_to 'New Cat rashod', new_cat_rashod_path
+
+          %td
+            = link_to cat_rashod do
+              = cat_rashod.name
+          %td
+            = link_to 'Изменить', edit_cat_rashod_path(cat_rashod), :class => "ui-btn ui-btn-icon-left ui-icon-edit", "data-ajax" => false
+            = link_to 'Удалить', cat_rashod, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "ui-btn ui-btn-icon-left ui-icon-delete", "data-ajax" => false
+
+
+
+

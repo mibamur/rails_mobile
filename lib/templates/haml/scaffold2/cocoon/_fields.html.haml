@@ -1,0 +1,31 @@
+%tr.nested-fields
+<%- for attribute in attributes -%>
+<%- if attribute.reference? -%>
+<%- if singular_table_name.match(/[a-z]*/)[0] == "#{attribute.column_name[0..-4]}" -%>
+<%- else -%>
+  %td
+    = f.collection_select :<%= attribute.column_name %>, <%= attribute.column_name[0..-4].titleize.sub(' ','') %>.all, :id, :name, class: "tab_<%= singular_table_name %>_select", style: "width: 100%;", prompt: "Выбор..."
+<%- end -%>
+<%- else -%>
+<%- if attribute.name =~ /date/ -%>
+  %td
+    = f.<%= attribute.field_type %> :<%= attribute.name %>, :class => "date", style: "width: 100%;"
+<%- else -%>
+<%- if attribute.name =~ /time/ -%>
+  %td
+    = f.<%= attribute.field_type %> :<%= attribute.name %>, :class => "time", style: "width: 100%;"
+<%- else -%>
+<%- if attribute.field_type =~ /check/ -%>
+  %td
+    = f.<%= attribute.field_type %> :<%= attribute.name %>, :class => "boolean", style: "width: 100%;"
+<%- else -%>
+  %td
+    = f.<%= attribute.field_type %> :<%= attribute.name %>, style: "width: 100%;"
+<%- end -%>
+<%- end -%>
+<%- end -%>
+<%- end -%>
+<%- end -%>
+  %td
+    = link_to_remove_association f, class: "btn btn-danger btn-mini" do
+      %i.fa.fa-times

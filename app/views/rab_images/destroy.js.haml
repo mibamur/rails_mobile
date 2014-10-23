@@ -1,0 +1,9 @@
+// Удаление
+
+// Уведомление 
+var rab_image_#{@rab_image_id} = function(){ new PNotify({ title: "Запись #{@rab_image.name} удалена.", type: 'error', icon: false, hide: true, delay: 1500, buttons: { sticker: false } })};
+rab_image_#{@rab_image_id}();
+
+// Удаление из dataTables
+$("#rab_image_#{@rab_image_id}").remove();
+

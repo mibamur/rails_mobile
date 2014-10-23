@@ -8,7 +8,7 @@
     %label{:for => "radio-choice-h-2c"} Перевод
 = form_for @dohod do |f|
   #div-dohod
-    - if current_login.email=~/andr/
+    - if current_login.has_role? :admin or current_login.has_role? :root
       .ui-field-contain
         %label{:for => "select-native-1"} Счет:
         = collection_select(:dohod, :schet_id, Schet.where(panel: true).all, :id, :name, prompt: true)
@@ -23,23 +23,19 @@
       = collection_select(:dohod, :rab_id, Rab.all, :id, :name, prompt: true)
     .ui-field-contain
       = f.text_field :cash, :placeholder => "Сумма"
-      / %label{:for => "cash"} Сумма:
-      / %input#cash{:name => "cash", :placeholder => "", :type => "text", :value => ""}/
     .ui-field-contain
       = f.text_field :comment, :placeholder => "Заметка"
-      / %label{:for => "commentd"} Заметка:
-      / %textarea#commentd{:cols => "20", :name => "commentd", :rows => "4"}
     .ui-field-contain
       = f.submit t('.save', :default => t("helpers.links.save")), :class => "btn btn-primary"
       %a.ui-btn.ui-shadow.ui-corner-all.ui-btn-a{"data-rel" => "back", :href => "/fin/"} Отмена
 
 = form_for @rashod do |f|
   #div-rashod{:style => "display:none;"}
-    - if current_login.email=~/andr/
+    - if current_login.has_role? :admin or current_login.has_role? :root
       .ui-field-contain
         %label{:for => "select-native-1"} Счет:
         = collection_select(:rashod, :schet_id, Schet.where(panel: true).all, :id, :name, prompt: true)
-        -#= collection_select(:dohod, :schet_id, Schet.all, :id, :name, prompt: true)
+        -# collection_select(:dohod, :schet_id, Schet.all, :id, :name, prompt: true)
     - else
       .ui-field-contain{:style => "display:none;"}
         = f.text_field :schet_id, :value => Schet.where(login_id: current_login.id).last.id
@@ -49,12 +45,8 @@
       = collection_select(:rashod, :cat_rashod_id, CatRashod.all, :id, :name, prompt: true)
     .ui-field-contain
       = f.text_field :cash, :placeholder => "Сумма"
-      / %label{:for => "cash"} Сумма:
-      / %input#cash{:name => "cash", :placeholder => "", :type => "text", :value => ""}/
     .ui-field-contain
       = f.text_field :comment, :placeholder => "Заметка"
-      / %label{:for => "commentr"} Заметка:
-      / %textarea#commentr{:cols => "20", :name => "commentr", :rows => "4"}
     .ui-field-contain
       = f.submit t('.save', :default => t("helpers.links.save")), :class => "btn btn-primary"
       %a.ui-btn.ui-shadow.ui-corner-all.ui-btn-a{"data-rel" => "back", :href => "/fin/"} Отмена

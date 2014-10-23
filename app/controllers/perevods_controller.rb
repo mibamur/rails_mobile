@@ -1,5 +1,6 @@
 class PerevodsController < ApplicationController
   before_action :set_perevod, only: [:show, :edit, :update, :destroy]
+  ##before_action :redirect_tor
 
   def index
     @perevods = Perevod.all
@@ -21,7 +22,10 @@ class PerevodsController < ApplicationController
   def create
     @perevod = Perevod.new(perevod_params)
     @perevod.save
-    respond_with(@perevod)
+    respond_with @perevod do |format|
+      format.html { redirect_to root_path }
+    end
+
   end
 
   def update
@@ -42,4 +46,13 @@ class PerevodsController < ApplicationController
     def perevod_params
       params.require(:perevod).permit(:schet_from, :schet_to, :rab_id, :todate, :cash, :comment)
     end
+
+    def redirect_tor
+      respond_to do |format|
+        format.html {redirect_to root_path}
+        #format.js {render :js => "window.location.href='"+root_path+"'"} if params[:q].present?
+      end
+    end
+
+
 end

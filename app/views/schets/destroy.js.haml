@@ -1,0 +1,9 @@
+// Удаление
+
+// Уведомление 
+var schet_#{@schet_id} = function(){ new PNotify({ title: "Запись #{@schet.name} удалена.", type: 'error', icon: false, hide: true, delay: 1500, buttons: { sticker: false } })};
+schet_#{@schet_id}();
+
+// Удаление из dataTables
+$("#schet_#{@schet_id}").remove();
+

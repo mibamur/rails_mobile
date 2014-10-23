@@ -70,10 +70,12 @@ class Rashod < ActiveRecord::Base
   end
 
   def tocalc
+    if self.schet_id
     calc1=Schet.find(self.schet_id)
     calc1.cash=calc1.cash.to_f-self.cash.to_f
     calc1.save
     # self.schet.cash=self.schet.cash.to_f-self.cash.to_f
+    end
   end
 
   def tominus

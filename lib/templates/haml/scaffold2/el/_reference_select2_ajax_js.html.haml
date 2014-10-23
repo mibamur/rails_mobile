@@ -1,0 +1,40 @@
+:javascript
+
+<%- for attribute in attributes -%>
+<%- if attribute.reference? -%>
+
+  var <%= singular_table_name %>_<%= attribute.column_name[0..-4] %>_select2_class = function(){
+
+      $('.<%= singular_table_name %>_<%= attribute.column_name[0..-4] %>_select2_class').prepend($('<option></option>'));
+      $('.<%= singular_table_name %>_<%= attribute.column_name[0..-4] %>_select2_class').select2({
+          allowClear: true,
+          placeholder: "Сделайте выбор",
+          dropdownAutoWidth: false,
+          width: "220",
+          ajax: {
+              url: "/<%= attribute.column_name[0..-4] %>s.json",
+              dataType: 'json',
+              data: function (term, page) { return { name: term }; },
+              results: function (data, page) { return { results: data }; }
+          },
+          formatResult: function (data) { return data.name; },
+          formatSelection: function (data) { return data.name; },
+          initSelection : function (element, callback) {
+              var elementText = $(element).attr('data_init_text');
+              var id = $(element).val();
+              //console.log(id);
+              if (id!=="") {
+                  $.ajax("/<%= attribute.column_name[0..-4] %>s/"+id+".json").done( function(data) { callback(data); });
+              }else
+              {
+                $remote.select2('data', null)
+              }
+          }
+      });
+  };
+
+  $(document).ready(<%= singular_table_name %>_<%= attribute.column_name[0..-4] %>_select2_class);
+  $(document).on('page:load', <%= singular_table_name %>_<%= attribute.column_name[0..-4] %>_select2_class);
+
+<%- end -%>
+<%- end -%>

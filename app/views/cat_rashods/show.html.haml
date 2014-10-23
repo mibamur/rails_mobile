@@ -1,9 +1,7 @@
-%p#notice= notice
+%h1
+  = t('.show', :default => t("helpers.links.show"))
+  = link_to cat_rashods_path, "data-icon" => "back" do
+    .ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-back.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", "data-ajax"=>"false", :style=>"float:right;"}
+    = t('.back', :default => t("helpers.links.back"))
+= render 'form'
 
-%p
-  %b Name:
-  = @cat_rashod.name
-
-= link_to 'Edit', edit_cat_rashod_path(@cat_rashod)
-\|
-= link_to 'Back', cat_rashods_path

@@ -1,0 +1,29 @@
+#new_<%= singular_table_name %>_modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "<%= singular_table_name %>_ModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{ style: "width: 80%;" }
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
+        %h4#<%= singular_table_name %>_ModalLabel.modal-title
+          = t(:<%= singular_table_name %>) + " - " + t(:new_quick)
+      .modal-body
+        = render '<%= plural_table_name %>/forms/form', modal: true
+
+
+:javascript
+
+  var new_<%= singular_table_name %> = function() {
+
+      // Modal - check ajaxError bind
+      $(document).bind('ajaxError', 'form#new_<%= singular_table_name %>', function(event, jqxhr, settings, exception){
+        // note: jqxhr.responseJSON undefined, parsing responseText instead
+        $(event.data).render_form_errors( $.parseJSON(jqxhr.responseText) );
+      });
+  };
+
+  $(document).ready(new_<%= singular_table_name %>);
+  $(document).on('page:load', new_<%= singular_table_name %>);
+  
+
+
+
+

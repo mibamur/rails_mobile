@@ -1,27 +1,53 @@
-%h1 Listing schets
+%h1
+  = t(:schets)
+  = link_to new_schet_path, "data-ajax" => "false" do
+    .ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-plus.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", "data-ajax"=>"false", :style=>"float:right;"}
+      = t(:new)
 
-%table
-  %tr
-    %th Name
-    %th Login
-    %th Panel
-    %th Balance
-    %th Cash
-    %th
-    %th
-    %th
+.docs-main
+  %table#tabl_schet.tablesaw{"data-minimap" => "", "data-mode" => "swipe", "data-mode-switch" => "", "data-sortable" => "", "data-sortable-switch" => ""}
+    %thead
+      %tr
 
-  - @schets.each do |schet|
-    %tr
-      %td= schet.name
-      %td= schet.login
-      %td= schet.panel
-      %td= schet.balance
-      %td= schet.cash
-      %td= link_to 'Show', schet
-      %td= link_to 'Edit', edit_schet_path(schet)
-      %td= link_to 'Destroy', schet, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
+        %th{"data-priority" => "1", "data-sortable-col" => ""}= t(:name)
 
-= link_to 'New Schet', new_schet_path
+        %th{"data-priority" => "2", "data-sortable-col" => ""}= t(:login)
+
+        %th{"data-priority" => "3", "data-sortable-col" => ""}= t(:panel)
+
+        %th{"data-priority" => "4", "data-sortable-col" => ""}= t(:balance)
+
+        %th{"data-priority" => "5", "data-sortable-col" => ""}= t(:cash)
+        %th{"data-priority" => "", "data-sortable-col" => ""}
+    %tbody
+      - @schets.each do |schet|
+        %tr
+
+
+          %td
+            = link_to schet do
+              = schet.name
+
+          %td
+            - if schet.login_id
+              = schet.login.name
+          
+
+          %td
+            = schet.panel ? "Да" : "Нет"
+          
+
+          %td
+            = schet.balance ? "Да" : "Нет"
+          
+          %td
+            = schet.cash
+
+          %td
+            = link_to 'Изменить', edit_schet_path(schet), :class => "ui-btn ui-btn-icon-left ui-icon-edit", "data-ajax" => false
+            = link_to 'Удалить', schet, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "ui-btn ui-btn-icon-left ui-icon-delete", "data-ajax" => false
+
+
+
+

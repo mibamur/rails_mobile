@@ -1,28 +1,42 @@
-= form_for @dohod do |f|
+= form_for @dohod, "data-ajax" => false do |f|
   - if @dohod.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@dohod.errors.count, "error")} prohibited this dohod from being saved:"
+      %h2= "#{pluralize(@dohod.errors.count, "error")} prohibited this rab from being saved:"
       %ul
         - @dohod.errors.full_messages.each do |msg|
           %li= msg
+  %div{ :class=>"schet"}
+    .field
+      = f.label t(:schet)
+      = collection_select(:dohod, :schet_id, Schet.all, :id, :name, prompt: true)
 
-  .field
-    = f.label :schet
-    = f.text_field :schet
-  .field
-    = f.label :cat_dohod
-    = f.text_field :cat_dohod
-  .field
-    = f.label :comment
-    = f.text_area :comment
-  .field
-    = f.label :rab
-    = f.text_field :rab
-  .field
-    = f.label :todate
-    = f.date_select :todate
-  .field
-    = f.label :cash
-    = f.text_field :cash
-  .actions
-    = f.submit 'Save'
+  %div{ :class=>"cat_dohod"}
+    .field
+      = f.label t(:cat_dohod)
+      = collection_select(:dohod, :cat_dohod_id, CatDohod.all, :id, :name, prompt: true)
+
+  %div{ :class=>"comment"}
+    .field
+      = f.label t(:comment)
+      = f.text_area :comment
+
+  %div{ :class=>"rab"}
+    .field
+      = f.label t(:rab)
+      = collection_select(:dohod, :rab_id, Rab.all, :id, :name, prompt: true)
+
+  %div{ :class=>"todate"}
+    .field
+      = f.label t(:todate)
+      = f.date_select :todate
+
+  %div{ :class=>"cash"}
+    .field
+      = f.label t(:cash)
+      = f.text_field :cash
+
+      - 'TABB'
+  %div
+    .field
+      = f.submit t('.save', :default => t("helpers.links.save")), :class => "btn btn-primary", "data-ajax" => false
+

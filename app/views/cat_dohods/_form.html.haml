@@ -1,13 +1,17 @@
-= form_for @cat_dohod do |f|
+= form_for @cat_dohod, "data-ajax" => false do |f|
   - if @cat_dohod.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@cat_dohod.errors.count, "error")} prohibited this cat_dohod from being saved:"
+      %h2= "#{pluralize(@cat_dohod.errors.count, "error")} prohibited this rab from being saved:"
       %ul
         - @cat_dohod.errors.full_messages.each do |msg|
           %li= msg
+  %div{ :class=>"name"}
+    .field
+      = f.label t(:name)
+      = f.text_field :name
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .actions
-    = f.submit 'Save'
+      - 'TABB'
+  %div
+    .field
+      = f.submit t('.save', :default => t("helpers.links.save")), :class => "btn btn-primary", "data-ajax" => false
+

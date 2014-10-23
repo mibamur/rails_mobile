@@ -1,22 +1,32 @@
-= form_for @rab do |f|
+= form_for @rab, "data-ajax" => false do |f|
   - if @rab.errors.any?
     #error_explanation
       %h2= "#{pluralize(@rab.errors.count, "error")} prohibited this rab from being saved:"
       %ul
         - @rab.errors.full_messages.each do |msg|
           %li= msg
+  %div{ :class=>"first_name"}
+    .field
+      = f.label t(:first_name)
+      = f.text_field :first_name
 
-  .field
-    = f.label :first_name
-    = f.text_field :first_name
-  .field
-    = f.label :last_name
-    = f.text_field :last_name
-  .field
-    = f.label :tel
-    = f.text_field :tel
-  .field
-    = f.label :login
-    = f.text_field :login
-  .actions
-    = f.submit 'Save'
+  %div{ :class=>"last_name"}
+    .field
+      = f.label t(:last_name)
+      = f.text_field :last_name
+
+  %div{ :class=>"tel"}
+    .field
+      = f.label t(:tel)
+      = f.text_field :tel
+
+  %div{ :class=>"login"}
+    .field
+      = f.label t(:login)
+      = collection_select(:rab, :login_id, Login.all, :id, :name, prompt: true)
+
+      - 'TABB'
+  %div
+    .field
+      = f.submit t('.save', :default => t("helpers.links.save")), :class => "btn btn-primary", "data-ajax" => false
+

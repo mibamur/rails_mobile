@@ -1,4 +1,44 @@
 Rails.application.routes.draw do
+  resources :perevods do
+  # CSV,XLS special for import action
+    collection { post :import }
+  end
+
+  resources :dohods do
+  # CSV,XLS special for import action
+    collection { post :import }
+  end
+
+  resources :rashods do
+  # CSV,XLS special for import action
+    collection { post :import }
+  end
+
+  resources :rab_images do
+  # CSV,XLS special for import action
+    collection { post :import }
+  end
+
+  resources :rabs do
+  # CSV,XLS special for import action
+    collection { post :import }
+  end
+
+  resources :schets do
+  # CSV,XLS special for import action
+    collection { post :import }
+  end
+
+  resources :cat_dohods do
+  # CSV,XLS special for import action
+    collection { post :import }
+  end
+
+  resources :cat_rashods do
+  # CSV,XLS special for import action
+    collection { post :import }
+  end
+
   get 'dialog/index'
 
   resources :perevods

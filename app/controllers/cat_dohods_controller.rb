@@ -1,5 +1,7 @@
 class CatDohodsController < ApplicationController
   before_action :set_cat_dohod, only: [:show, :edit, :update, :destroy]
+  ##before_action :redirect_tor
+
 
   def index
     @cat_dohods = CatDohod.all
@@ -42,4 +44,13 @@ class CatDohodsController < ApplicationController
     def cat_dohod_params
       params.require(:cat_dohod).permit(:name)
     end
+
+    def redirect_tor
+      respond_to do |format|
+        format.html {redirect_to root_path}
+        #format.js {render :js => "window.location.href='"+root_path+"'"} if params[:q].present?
+      end
+    end
+
+
 end

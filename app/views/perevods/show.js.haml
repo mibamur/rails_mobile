@@ -1,0 +1,13 @@
+// для Модала при создании
+
+// Уведомление 
+var perevod_#{@perevod_id}_show = function(){ new PNotify({ title: "Запись #{@perevod.name} создана.", type: 'success', icon: false, hide: true, delay: 1500, buttons: { sticker: false } })};
+perevod_#{@perevod_id}_show();
+
+// Добавление в dataTables
+// $('#dataTables_perevod').append("#{j render partial: 'perevods/dataTable/index_td', locals: {perevod: @perevod }}");
+
+
+
+// Вызов функции Модала
+$('#new_perevod_modal').modal_success();

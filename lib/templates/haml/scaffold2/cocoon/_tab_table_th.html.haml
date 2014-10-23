@@ -1,0 +1,14 @@
+<%- for attribute in attributes -%>
+  <%- if attribute.name =~ /babki|money|sum|deng|price/ -%>
+%th.sum= t(:<%= attribute.name %>)
+  <%- else -%>
+    <%- if attribute.reference? -%>
+<%- if singular_table_name.match(/[a-z]*/)[0] == "#{attribute.column_name[0..-4]}" -%>
+<%- else -%>
+%th= t(:<%= attribute.name %>)
+<%- end -%>
+    <%- else -%>
+%th= t(:<%= attribute.name %>)
+    <%- end -%>
+  <%- end -%>
+<%- end -%>

@@ -1,21 +1,7 @@
-%p#notice= notice
+%h1
+  = t('.show', :default => t("helpers.links.show"))
+  = link_to schets_path, "data-icon" => "back" do
+    .ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-back.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", "data-ajax"=>"false", :style=>"float:right;"}
+    = t('.back', :default => t("helpers.links.back"))
+= render 'form'
 
-%p
-  %b Name:
-  = @schet.name
-%p
-  %b Login:
-  = @schet.login
-%p
-  %b Panel:
-  = @schet.panel
-%p
-  %b Balance:
-  = @schet.balance
-%p
-  %b Cash:
-  = @schet.cash
-
-= link_to 'Edit', edit_schet_path(@schet)
-\|
-= link_to 'Back', schets_path

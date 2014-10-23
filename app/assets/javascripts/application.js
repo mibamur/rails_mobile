@@ -20,4 +20,33 @@
 //= require dialog.build
 //= require tablesaw
 
+var ready;
+ready = function() {
+
+  $('form').attr("data-ajax", "false");
+  $('.date').attr("style", "display:none;");
+
+
+    $('#radio-choice-h-2a').click(function(){
+        $('#div-rashod').hide();
+        $('#div-perevod').hide();
+        $('#div-dohod').show();
+    });
+
+    $('#radio-choice-h-2b').click(function(){
+        $('#div-perevod').hide();
+        $('#div-dohod').hide();
+        $('#div-rashod').show();
+    });
+
+    $('#radio-choice-h-2c').click(function(){
+        $('#div-rashod').hide();
+        $('#div-dohod').hide();
+        $('#div-perevod').show();
+    });
+
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
 

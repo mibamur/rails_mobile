@@ -1,0 +1,9 @@
+// Удаление
+
+// Уведомление 
+var rashod_#{@rashod_id} = function(){ new PNotify({ title: "Запись #{@rashod.name} удалена.", type: 'error', icon: false, hide: true, delay: 1500, buttons: { sticker: false } })};
+rashod_#{@rashod_id}();
+
+// Удаление из dataTables
+$("#rashod_#{@rashod_id}").remove();
+

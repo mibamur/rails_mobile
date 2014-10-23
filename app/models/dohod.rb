@@ -28,6 +28,7 @@ class Dohod < ActiveRecord::Base
   belongs_to :cat_dohod
   belongs_to :rab
 
+  #before_filter :require_login
   # define_attribute_methods :cash
 
   # def cash

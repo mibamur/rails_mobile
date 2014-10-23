@@ -1,0 +1,21 @@
+<% for attribute in attributes -%>
+<% if attribute.reference? -%>
+%td
+  - if <%= singular_table_name %>.<%= attribute.name %>_id
+    = <%= singular_table_name %>.<%= attribute.name %>.name 
+<% else -%>
+<% if attribute.type == :boolean -%>
+%td
+  = <%= singular_table_name %>.<%= attribute.name %> ? "Да" : "Нет"
+<% else -%>
+<% if attribute.name =~ /image/ -%>
+%td
+  - if <%= singular_table_name %>.image_url
+    = image_tag <%= singular_table_name %>.image_url(:thumb).to_s, :class => "thumbnail img-responsive"
+<% else -%>
+%td
+  = <%= singular_table_name %>.<%= attribute.name %>
+<% end -%>
+<% end -%>
+<% end -%>
+<% end -%>

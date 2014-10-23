@@ -1,0 +1,7 @@
+#tab_<%= singular_table_name %>.tab-pane.fade.in
+  = render partial: "<%= plural_table_name %>/cocoon/tab_table", f: f, locals: { f: f }
+  = render partial: "<%= plural_table_name %>/cocoon/tab_other"
+
+= render partial: "<%= plural_table_name %>/cocoon/tab_table_js"
+= render partial: "<%= plural_table_name %>/cocoon/tab_table_js_after_cocoon_ins"
+= render partial: "<%= plural_table_name %>/cocoon/tab_other_js"

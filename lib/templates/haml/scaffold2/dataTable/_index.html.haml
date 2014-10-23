@@ -1,0 +1,22 @@
+.table-responsive
+  %table#dataTables_<%= singular_table_name %>.table.table-condensed.table-striped.table-bordered.row-border.cell-border.hover.order-column.stripe.display{:cellspacing => "0", :width => "100%"}
+    %thead
+      %tr
+        = render partial: "<%= plural_table_name %>/dataTable/index_th", locals: {<%= plural_table_name %>: @<%= plural_table_name %>}
+        %th.col-sm-2
+    %tfoot
+      %tr
+        = render partial: "<%= plural_table_name %>/dataTable/index_th", locals: {<%= plural_table_name %>: @<%= plural_table_name %>}
+        %th.col-sm-2
+      %tr.tr-sum
+        = render partial: "<%= plural_table_name %>/dataTable/index_th", locals: {<%= plural_table_name %>: @<%= plural_table_name %>}
+        %th.col-sm-2
+
+        
+    %tbody
+      - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
+        %tr{ :id => "<%= singular_table_name %>_#{<%= singular_table_name %>.id}", :class => cycle('even', 'odd') }
+          = render partial: "<%= plural_table_name %>/dataTable/index_td", locals: {<%= singular_table_name %>: <%= singular_table_name %>}
+          %td
+            = render partial: "<%= plural_table_name %>/dataTable/index_td_action", locals: {<%= singular_table_name %>: <%= singular_table_name %>}
+

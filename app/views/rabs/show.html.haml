@@ -1,18 +1,7 @@
-%p#notice= notice
+%h1
+  = t('.show', :default => t("helpers.links.show"))
+  = link_to rabs_path, "data-icon" => "back" do
+    .ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-back.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", "data-ajax"=>"false", :style=>"float:right;"}
+    = t('.back', :default => t("helpers.links.back"))
+= render 'form'
 
-%p
-  %b First name:
-  = @rab.first_name
-%p
-  %b Last name:
-  = @rab.last_name
-%p
-  %b Tel:
-  = @rab.tel
-%p
-  %b Login:
-  = @rab.login
-
-= link_to 'Edit', edit_rab_path(@rab)
-\|
-= link_to 'Back', rabs_path

@@ -1,0 +1,13 @@
+// для Модала при создании
+
+// Уведомление 
+var <%= singular_table_name %>_#{@<%= singular_table_name %>_id}_show = function(){ new PNotify({ title: "Запись #{@<%= singular_table_name %>.name} создана.", type: 'success', icon: false, hide: true, delay: 1500, buttons: { sticker: false } })};
+<%= singular_table_name %>_#{@<%= singular_table_name %>_id}_show();
+
+// Добавление в dataTables
+// $('#dataTables_<%= singular_table_name %>').append("#{j render partial: '<%= plural_table_name %>/dataTable/index_td', locals: {<%= singular_table_name %>: @<%= singular_table_name %> }}");
+
+
+
+// Вызов функции Модала
+$('#new_<%= singular_table_name %>_modal').modal_success();
