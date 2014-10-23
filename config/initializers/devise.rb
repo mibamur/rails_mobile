@@ -4,7 +4,7 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # config.secret_key = '2c2deda086ba06cacd4c0235d7995fb5d4b60e8639ccaf8911ed75e0aa8bcbbb44180a5bb12aea9efee3fbbd3510c56224435f906351eba1a6e5cbcaf8f5022a'
+  config.secret_key = 'a6eb9da44e440103c24e4ae65cc54905448e6b182ae3bc1f4d9287997606eeed8fb1d20a5f5ef0b2ad60342ef274a305856e5497d2d776cdf51fd21bac78a372'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -140,7 +140,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length.
-  config.password_length = 8..128
+  config.password_length = 2..128
 
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly

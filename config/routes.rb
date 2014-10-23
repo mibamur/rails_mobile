@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'dialog/index'
+
   resources :perevods
 
   resources :dohods
