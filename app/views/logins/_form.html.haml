@@ -1,0 +1,18 @@
+- show=false
+= form_for @login do |f|
+  - if @login.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@login.errors.count, "error")} prohibited this login from being saved:"
+      %ul
+        - @login.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.text_field :email, :placeholder => t(:email, :default => t("activerecord.attributes.login.email")), :readonly=>"#{show}"
+  .field
+    = f.text_field :password, :placeholder => t(:password, :default => t("activerecord.attributes.login.password")), :readonly=>"#{show}"
+  .field
+    = f.text_field :password_confirmation, :placeholder => t(:password_confirmation), :readonly=>"#{show}"
+  .actions
+    - if not show
+      = f.submit t('.save', :default => t("helpers.links.save")), "data-iconpos" => "right", "data-icon" => "check", :class=>"ui-btn ui-icon-check ui-shadow ui-corner-all ui-btn-icon-right ui-btn-inline", :readonly=>"#{show}"
+

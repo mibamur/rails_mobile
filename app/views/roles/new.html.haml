@@ -1,0 +1,6 @@
+%h1
+  = t('.new', :default => t("helpers.links.new"))
+  = link_to roles_path, "data-icon" => "back" do
+    .ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-back.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", "data-ajax"=>"false", :style=>"float:right;"} Назад
+
+= render 'form'

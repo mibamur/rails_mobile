@@ -1,0 +1,226 @@
+---
+ru:
+  actions: "Действия"
+  add: 'Добавить'
+  export: Экспорт
+  import: Импорт
+  address: "Адрес"
+  adr: "Адрес"
+  allday: "Смена"
+  article: "Статья"
+  babki_beznal: "Безнал"
+  babki_dolg: Сумма долга
+  babki_nal: "Наличка"
+  back: "Назад"
+  birth_date: "День рождения"
+  calendars: "Календари"
+  calendar: "Календарь"
+  cashbox: "Касса"
+  clients: "Клиенты"
+  client: "Клиент"
+  color: "Цвет"
+  comments: "Комментарии"
+  comment: "Комментарий"
+  contacts: "Контакты"
+  contact: "Контакт"
+  credit: "Кредит"
+  dashboard: "Главная"
+  data_end: "Дата окончания"
+  data_start: "Дата начала"
+  debet: "Дебет"
+  debt: "Долг"
+  description: description
+  desc: "Описание"
+  discount: "Скидка"
+  document: "Документ"
+  editing: "Редактирование"
+  edit: "Изменение"
+  email: E-mail
+  encashment: "Инкассация"
+  event_collection: "Коллекция событий"
+  events: "События"
+  event_type: "Тип"
+  event: "Событие"
+  firms: "Фирмы"
+  firm: "Фирма"
+  first_name: "Имя"
+  functions: Должности
+  function: Должность
+  groups: "Группы"
+  group: "Группа"
+  hire_end: "Уволен"
+  hire_start: "Принят"
+  image: "Фото"
+  inspection_date: "Дата"
+  interims: Категории сотрудников
+  interim: "Категория"
+  invoces: "Накладные"
+  kassas: Кассы
+  kassa: Касса
+  last_name: "Фамилия"
+  login: "Логин"
+  logout: "Выйти"
+  mail: "Почта"
+  main: Главная
+  measure: "Мера"
+  middle_name: "Отчество"
+  money_bank: "Безнал"
+  money_cash: "Наличка"
+  money: "Потратил"
+  name: "Название"
+  new_group: "Новая группа"
+  new_quick: "Быстрое создание"
+  new: Создать
+  paid: "Оплачено"
+  parent_group: "Подчиняется"
+  pass: pass
+  phone2: Телефон
+  phone3: Телефон
+  phone: Телефон
+  places: Заведения
+  place: Заведение
+  positions: Место
+  position: Место
+  posts: "Посты"
+  post: "Пост"
+  price: Цена
+  price_vendor: Цена поставщика
+  price1: Цена
+  price2: Цена
+  product_groups: "Группа продуктов"
+  product_group: "Группа продуктов"
+  products: "Продукция"
+  product_type: "Тип"
+  product: "Продукт"
+  profile: "Профиль"
+  published: "Опубликован"
+  purchase_price: "Покупка"
+  quantity: "Остатки"
+  rabs: Сотрудники
+  rab: Сотрудник
+  rating: "Рейтинг"
+  remember_me: "Запомнить меня"
+  sale_price: "Продажа"
+  save: "Сохранить"
+  search: "Поиск"
+  settings: Настройки
+  shift_credits: "Доходы по сменам"
+  shift_credit: "Доход за смену"
+  shift_date: "Дата"
+  shift_debets: "Расходы по сменам"
+  shift_debet: "Расход за смену"
+  shift_mains: "Смены"
+  shift_positions: "Смены позиций"
+  shift_position: "Смена позиции"
+  smena: "Смена"
+  smenas: "Смены"
+  site: "Сайт"
+  status: "Статус"
+  store: "Склад"
+  summ: "Сумма"
+  supplier: "Поставщик"
+  surcharges: "Штрафы"
+  surcharge: "Штраф"
+  text: "Текст"
+  time: Время
+  time_end: "Время окончания"
+  time_start: "Время начала"
+  timestamp: "Штамп времени"
+  time_zone: "Зона времени"
+  title: "Заголовок"
+  total_time: "Наиграл часов"
+  unhappy: "К сожалению"
+  update: "Обновить"
+  view_all_messages: "Все сообщения"
+  view_all_notifications: "Все уведомления"
+  view_all_tasks: "Все задания"
+  welcome: "Привет"
+  workers: "Сотрудники"
+  worker: "Сотрудник"
+  rashod: Расходная
+  date_start: Дата начала
+  date_end: Дата окончания
+  babki_dohod: Доходы
+  babki_oborot: Выручка
+  client: Клиент
+  clients: Клиенты
+  description: description
+  dohod_type: Тип дохода
+  dohod_types: Тип дохода
+  pass: Пароль
+  product_type: Тип продукта
+  product_types: Тип продукта
+  rashod_type: Тип расхода
+  rashod_types: Тип расхода
+  skidka: Скидка
+  smena_dohod: Доход прочие
+  smena_dohods: Смена доход
+  smena_dolg: Долги
+  smena_dolgs: Смена долг
+  smena_kassa: Смена кассы
+  smena_kassas: "Смена кассы"
+  smena_rab: "Сотрудники"
+  smena_rabs: "Смены сотрудников"
+  smena_rashod: Расходы
+  smena_rashods: Расходы смены
+  smenas: Смены
+  zp: Зарплата
+  zps: Зарплаты
+  postavshik: Поставщик
+  link2gis: Ссылка 2ГИС
+  work_time: Часов
+  is_otchet: Отчитался
+  babki_main: Инкасация
+  babki_rashod: Расходы
+  date_name: Дата
+  body: Текст
+  promo_body: Промо текст
+  meta_url: URL
+  meta_keywords: Мета слова
+  meta_description: Мета текст
+  cat: Категория
+  cats: Категории
+  admin_post: Пост
+  admin_posts: Посты
+  admin_cat: Категория
+  admin_cats: Категории
+  admin_product: Продукт
+  admin_products: Продукция
+  admin_blog: Новость
+  admin_blogs: Новости
+  admin_set: Установки
+  admin_sets: Установки
+  sets: Установки
+  set: Установки
+  id_name: Имя параметра
+  id_val: Значение параметра
+  slug: Url
+  icon: Иконка
+  ord: Порядок
+  admin_razdels: Разделы
+  admin_razdel: Раздел
+  cat_rashods: Категория Расходы
+  cat_rashod: Категория Расход
+  cat_dohods: Категория Доходы
+  cat_dohod: Категория Доход
+  rashods: Расходы
+  rashod: Расход
+  dohods: Доходы
+  dohod: Доход
+  perevods: Переводы
+  perevod: Перевод
+  cash: Наличные
+  todate: Дата
+  panel: Показывать на панели
+  balance: Учитывать в балансе
+  tel: Сотовый
+  schets: Счета
+  schet: Счет
+  schet_from: Источник
+  schet_to: Приемник
+  rab_image: Счет
+  date:
+    formats:
+      default: "%d.%m.%Y"
+      short: "%d.%m.%Y"
+

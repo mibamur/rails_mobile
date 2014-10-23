@@ -1,0 +1,7 @@
+%h1
+  = t('.edit', :default => t("helpers.links.edit"))
+  = link_to logins_path, "data-icon" => "back" do
+    .ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-back.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", "data-ajax"=>"false", :style=>"float:right;"} Назад
+
+.ui-content{:role => "main"}
+  = render 'form', show: false

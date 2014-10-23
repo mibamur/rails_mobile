@@ -1,0 +1,33 @@
+.docs-main{ "data-inset"=>"true"}
+  %h1
+    Список пользователей
+    = link_to new_login_path do
+      .ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-plus.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", "data-ajax"=>"false", :style=>"float:right;"} Добавить
+  %table#table2.tablesaw{"data-minimap" => "", "data-mode" => "swipe", "data-mode-switch" => "", "data-sortable" => "", "data-sortable-switch" => ""}
+    %thead
+      %tr
+        %th{"data-priority" => "persist", "data-sortable-col" => ""} Email
+        %th{"data-priority" => "1", "data-sortable-col" => ""} Роли
+        %th{"data-priority" => "", "data-sortable-col" => ""}
+
+      -#- @logins.each do |login|
+        %tr
+          %th{"data-priority" => "persist", "data-sortable-col" => ""}= login.email
+    %tbody
+      - @logins.each_with_index do |login, ndx2|
+        %tr
+          %td
+            = link_to login_path(login) do 
+              = login.email
+          %td
+            |
+            - login.roles.each do |ro|
+              = link_to roles_path do 
+                = ro.name
+              |
+
+          %td
+            = link_to 'Edit', edit_login_path(login), :class => "ui-btn ui-btn-icon-left ui-icon-edit"
+            = link_to 'Destroy', login, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "ui-btn ui-btn-icon-left ui-icon-delete"
+          
+

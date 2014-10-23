@@ -1,0 +1,22 @@
+.docs-main{ "data-inset"=>"true"}
+  %h1
+    Список пользователей
+    = link_to new_role_path do
+      .ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-plus.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", "data-ajax"=>"false", :style=>"float:right;"} Добавить
+  %table#table2.tablesaw{"data-minimap" => "", "data-mode" => "swipe", "data-mode-switch" => "", "data-sortable" => "", "data-sortable-switch" => ""}
+    %thead
+      %tr
+        %th{"data-priority" => "persist", "data-sortable-col" => ""}= t(:name)
+        %th{"data-priority" => "", "data-sortable-col" => ""}
+
+    %tbody
+      - @roles.each_with_index do |role, ndx2|
+        %tr
+          %td
+            = link_to role_path(role) do 
+              = role.name
+          %td
+            = link_to 'Edit', edit_role_path(role), :class => "ui-btn ui-btn-icon-left ui-icon-edit"
+            = link_to 'Destroy', role, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "ui-btn ui-btn-icon-left ui-icon-delete"
+          
+

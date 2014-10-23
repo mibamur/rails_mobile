@@ -1,0 +1,17 @@
+%h2= t('.sign_in', :default => "Sign in")
+
+= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+  %div
+    = f.label :email
+    %br/
+    = f.email_field :email, {"data-theme" => "a"}
+  %div
+    = f.label :password
+    %br/
+    = f.password_field :password, {"data-theme" => "a"}
+  - if devise_mapping.rememberable?
+    %div
+      = f.check_box :remember_me, {"data-theme" => "b"}
+      = f.label :remember_me
+  %div= f.submit t('.sign_in', :default => "Sign in"), {"data-theme" => "c"}
+= render "devise/shared/links"

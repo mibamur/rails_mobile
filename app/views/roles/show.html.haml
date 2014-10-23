@@ -1,0 +1,35 @@
+%h1
+  = t (:view)
+  = link_to roles_path, "data-icon" => "back" do
+    .ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-back.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", "data-ajax"=>"false", :style=>"float:right;"} Назад
+
+= render 'form'
+
+/ %p
+/   %b Email:
+/   = @role.name
+/ %p
+/   %b Password:
+/   = @role.password
+/ %p
+/   %b Password confirmation:
+/   = @role.password_confirmation
+
+-#.jqm-footer{"data-position" => "fixed", "data-role" => "footer", "data-tap-toggle" => "false"}
+  %div{"data-role" => "footer"}
+    %div{"data-iconpos" => "bottom", "data-role" => "navbar"}
+      %ul
+        %li
+          = link_to roles_path, "data-icon" => "back" do
+            Назад
+        %li
+          %a{"data-icon" => "grid", :href => "/"} Главная
+        - if current_role.has_role? :admin or current_role.has_role? :root
+          %li
+            %a{"data-icon" => "user", :href => "/roles"} Пользователи
+          %li
+            = link_to "Редактировать", edit_role_path(@role), "data-icon" => "edit"
+        %li
+          %a{"data-icon" => "gear", "data-ajax" => "false", :href => "/roles/sign_out"} Выход
+
+    

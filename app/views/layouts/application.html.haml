@@ -1,0 +1,71 @@
+!!! 5
+%html
+  %head
+    %title Jmob4
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  %body.ui-mobile-viewport.ui-overlay-a
+    /<noscript id="grunticon-fallback"><link href="../css/themes/default/jquery.mobile.fallback.css" rel="stylesheet"></noscript>
+
+
+    .jqm-demos.jqm-home{"data-role" => "page"}
+      .jqm-header{"data-role" => "header"}
+        %p#notice.notice= notice
+        %p#alert.alert= alert
+        %h2
+          / Admin panel
+          %img{:alt => "jQuery Mobile", :src => "/img/jquery-logo.png"}/
+        %a.jqm-navmenu-link.ui-btn.ui-btn-icon-notext.ui-corner-all.ui-icon-bars.ui-nodisc-icon.ui-alt-icon.ui-btn-left{:href => "#"} Меню
+        %a.ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-plus.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", :href => "/dialog/index", "data-ajax"=>"false"} Добавить
+      .ui-content.jqm-content{"role"=>"main", :class=>"ui-content"}
+        = yield
+  
+
+      - if current_login.has_role? :admin or current_login.has_role? :root
+        .jqm-navmenu-panel{"data-display" => "overlay", "data-position" => "left", "data-role" => "panel", "data-theme" => "a"}
+          %ul.jqm-list.ui-alt-icon.ui-nodisc-icon
+            %li{"data-filtertext" => "demos homepage", "data-icon" => "home"}
+              %a{:href => "/"} Панель
+            %li{"data-icon" => "star"}
+              %a{"data-ajax" => "false", :href => "/schets/"} Счета
+            %li{"data-icon" => "user"}
+              %a{"data-ajax" => "false", :href => "/rabs/"} Работники
+            %li{"data-icon" => "arrow-u-r"}
+              %a{"data-ajax" => "false", :href => "/dohods/"} Доходы
+            %li{"data-icon" => "arrow-d-r"}
+              %a{"data-ajax" => "false", :href => "/rashods/"} Расходы
+            %li{"data-icon" => "forward"}
+              %a{"data-ajax" => "false", :href => "/perevods/"} Переводы
+            %li.ui-collapsible.ui-collapsible-themed-content.ui-collapsible-collapsed{"data-collapsed-icon" => "carat-d", "data-enhanced" => "true", "data-expanded-icon" => "carat-u", "data-iconpos" => "right", "data-inset" => "false", "data-role" => "collapsible"}
+              %h3.ui-collapsible-heading.ui-collapsible-heading-collapsed
+                %a.ui-collapsible-heading-toggle.ui-btn.ui-btn-icon-right.ui-btn-inherit.ui-icon-carat-d{:href => "#"}
+                  Категории
+                  %span.ui-collapsible-heading-status нажмите чтобы развернуть
+              .ui-collapsible-content.ui-body-inherit.ui-collapsible-content-collapsed
+                %ul
+                  %li{"data-filtertext" => "buttons in grids css framework"}
+                    %a{"data-ajax" => "false", :href => "/cat_rashods/"} Расходы
+                  %li{"data-filtertext" => "custom responsive grids rwd css framework"}
+                    %a{"data-ajax" => "false", :href => "/cat_dohods/"} Доходы
+            %li{"data-icon" => ""}
+              %a{"data-ajax" => "false", :href => "/logins/sign_out"} Выход
+      - else
+        .jqm-navmenu-panel{"data-display" => "overlay", "data-position" => "left", "data-role" => "panel", "data-theme" => "a"}
+          %ul.jqm-list.ui-alt-icon.ui-nodisc-icon
+            %li{"data-icon" => ""}
+              %a{"data-ajax" => "false", :href => "/logins/sign_out"} Выход
+
+        / /panel
+      .jqm-footer{"data-position" => "fixed", "data-role" => "footer", "data-tap-toggle" => "false"}
+        %div{"data-role" => "footer"}
+          %div{"data-iconpos" => "bottom", "data-role" => "navbar"}
+            %ul
+              %li
+                %a{"data-icon" => "grid", :href => "/"} Главная
+              - if current_login.has_role? :admin or current_login.has_role? :root
+                %li
+                  %a{"data-icon" => "user", :href => "/logins"} Пользователи
+              %li
+                %a{"data-icon" => "gear", "data-ajax" => "false", :href => "/logins/sign_out"} Выход
+
