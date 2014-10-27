@@ -17,7 +17,7 @@
         = f.text_field :schet_id, :value => Schet.where(login_id: current_login.id).last.id
     .ui-field-contain
       %label{:for => "select-native-1"} Категория:
-      = collection_select(:dohod, :cat_dohod_id, CatDohod.all, :id, :name, {:selected => "Доход"}, { :class => "validate[required]" } )
+      = collection_select(:dohod, :cat_dohod_id, CatDohod.all, :id, :name, {:selected => "Silver-pay"}, { :class => "validate[required]" } )
     .ui-field-contain
       %label{:for => "select-native-1"} Оператор:
       = collection_select(:dohod, :rab_id, Rab.all, :id, :name, { prompt: true }, { :class => "validate[required]" } )
