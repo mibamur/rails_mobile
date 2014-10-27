@@ -1,5 +1,7 @@
 class Perevod < ActiveRecord::Base
   include ActiveModel::Dirty
+  validates :schet_from, presence: true
+  validates :schet_to, presence: true
 
   # include TheSortableTree::Scopes
   # acts_as_nested_set

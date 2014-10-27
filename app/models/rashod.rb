@@ -1,5 +1,6 @@
 class Rashod < ActiveRecord::Base
   include ActiveModel::Dirty
+  validates :schet_id, presence: true
 
   # include TheSortableTree::Scopes
   # acts_as_nested_set

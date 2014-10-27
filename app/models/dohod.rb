@@ -1,5 +1,7 @@
 class Dohod < ActiveRecord::Base
   include ActiveModel::Dirty
+  validates :rab_id, presence: true
+  validates :schet_id, presence: true
   # include TheSortableTree::Scopes
   # acts_as_nested_set
 

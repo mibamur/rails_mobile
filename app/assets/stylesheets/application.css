@@ -22,4 +22,5 @@
  *= require vg
  *= require_self
  * require_tree .
+ * require validationEngine.jquery
  */
