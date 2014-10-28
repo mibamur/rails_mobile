@@ -38,7 +38,7 @@
                 = text_field :schet_id, :value => Schet.where(login_id: current_login.id).last.id
 
             .ui-field-contain
-              = collection_select(:dohod, :cat_dohod_id, CatDohod.all, :id, :name, {:selected => "Silver-pay"}, { :class => "required" } )
+              = collection_select(:dohod, :cat_dohod_id, CatDohod.all, :id, :name, {:selected => ""}, { :class => "required" } )
             .ui-field-contain
               = collection_select(:dohod, :rab_id, Rab.all, :id, :name, { prompt: true }, { :class => "required ired" } )
             .ui-field-contain
