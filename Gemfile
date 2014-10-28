@@ -58,14 +58,15 @@ gem "will-paginate-i18n"
 gem "friendly_id"
 gem "babosa"
 gem "metamagic"
-group :development do
+
+#group :development do
   gem "better_errors"
   gem "quiet_assets"
   gem "pry"
   gem "pry-rails"
   gem "binding_of_caller"
   gem "meta_request"
-end
+#end
 
 gem "jquery_mobile_rails"
 gem "devise"

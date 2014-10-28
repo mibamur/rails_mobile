@@ -13,9 +13,10 @@
  * require_tree .
  * require_self
  *= require jquery.mobile
+ * require rails
 
  *= require jqm-demos
- *= require jqm-icon-pack-fa-builder
+ * require jqm-icon-pack-fa-builder
  * require jqm-icon-pack-fa
  *= require tablesaw
  *= require dialog
@@ -24,3 +25,39 @@
  * require_tree .
  * require validationEngine.jquery
  */
+
+.ui-panel-dismiss-open {
+    z-index: 1;
+}
+.todate {
+    /*display:none;*/
+}
+
+
+input::-webkit-input-placeholder {
+    color:white;
+}
+input:-moz-placeholder {
+    color:green;
+}
+
+
+.igreen {
+    background-color:green;
+    /*color:green;*/
+}
+
+.iblue {
+    /*background-color:blue;*/
+  color:blue;
+}
+
+.ired {
+    /*background-color:red;*/
+  color:red;
+}
+
+.ibrown {
+    background-color:brown;
+  /*color:brown;*/
+}

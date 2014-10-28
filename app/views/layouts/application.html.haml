@@ -6,25 +6,64 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
-  %body.ui-mobile-viewport.ui-overlay-a
-    /<noscript id="grunticon-fallback"><link href="../css/themes/default/jquery.mobile.fallback.css" rel="stylesheet"></noscript>
+  -#%body.ui-mobile-viewport.ui-overlay-a
+  %body.ui-mobile-viewport
+    .jqm-demos.jqm-home{"data-role" => "page" }
+      #ipanel.ui-panel-inner{"data-display" => "overlay", "data-position" => "right", "data-role" => "panel", "data-theme" => "a", :style=>"width:auto;"}
+        .ui-content{:align => "center"}
+          %fieldset{"data-role" => "controlgroup", "data-type" => "horizontal"}
+            %input#radio-choice-h-2a.igreen{:checked => "checked", :name => "radio-choice-h-2", :type => "radio", :value => "on"}/
+            %label{:for => "radio-choice-h-2a"} Доход
+            %input#radio-choice-h-2b.ired{:name => "radio-choice-h-2", :type => "radio", :value => "off"}/
+            %label{:for => "radio-choice-h-2b"} Расход
+            %input#radio-choice-h-2c{:name => "radio-choice-h-2", :type => "radio", :value => "other"}/
+            %label{:for => "radio-choice-h-2c"} Перевод
+        -#= form_tag({controller: "dohod", action: "new"}, method: "get", class: "rm")
+        #div-rashod{:style => "display:none;"}
+          = form_tag '/rashods' do
+            = submit_tag
+        #div-perevod{:style => "display:none;"}
+          = form_tag '/perevods' do
+            = submit_tag
+        #div-dohod
+          = form_tag '/dohods' do
+            - if current_login.has_role? :admin or current_login.has_role? :root
+              .ui-field-contain
+                = collection_select :dohod, :schet_id, Schet.where(panel: true).all, :id, :name, { prompt: "Счёт" }, { :class=> "required ired" }
+                -#, { prompt: "Счёт" }, { :class => "required" }, {:required => true}) #prompt: true) #, :class => "dohod_select"{:selected => "Доход"} )
+                -#= select_tag :dohod, options_from_
+                -#= select_tag :schet_id, options_for_select( Schet.where(panel: true).all) #, { prompt: "Счёт" }, { :class => "required" }, {:required => true}) #prompt: true) #, :class => "dohod_select"{:selected => "Доход"} )
+            - else
+              .ui-field-contain{:style => "display:none;"}
+                = text_field :schet_id, :value => Schet.where(login_id: current_login.id).last.id
 
+            .ui-field-contain
+              = collection_select(:dohod, :cat_dohod_id, CatDohod.all, :id, :name, {:selected => "Silver-pay"}, { :class => "required" } )
+            .ui-field-contain
+              = collection_select(:dohod, :rab_id, Rab.all, :id, :name, { prompt: true }, { :class => "required ired" } )
+            .ui-field-contain
+              = text_field :dohod, :cash, { :placeholder => "Сумма", :style => "", :class=> "required ired"}
+            .ui-field-contain
+              = text_field :dohod, :comment, :placeholder => "Заметка"
+            %div{ :class=>"todate"}
+              .field
+                = date_field :dohod, :todate
 
-    .jqm-demos.jqm-home{"data-role" => "page"}
+            .ui-field-contain
+              = submit_tag t('.save', :default => t("helpers.links.save")), :class => "btn btn-primary igreen"
+              %a.ui-btn.ui-shadow.ui-corner-all.ui-btn-a{"data-rel" => "back", :href => "/"} Отмена
+
       .jqm-header{"data-role" => "header"}
-        -#%p#notice.notice= notice
-        -#%p#alert.alert= alert
         %h2
-          / Admin panel
           %img{:alt => "jQuery Mobile", :src => "/img/jquery-logo.png"}/
+
         %a.jqm-navmenu-link.ui-btn.ui-btn-icon-notext.ui-corner-all.ui-icon-bars.ui-nodisc-icon.ui-alt-icon.ui-btn-left{:href => "#"} Меню
-        %a.ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-plus.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", :href => "/dialog/index", "data-ajax"=>"false"} Добавить
+        %a.ui-btn.ui-btn-icon-notext.ui-corner-all.ui-icon-plus.ui-nodisc-icon.ui-alt-icon.ui-btn-right{:href => "#ipanel"} Меню
       .ui-content.jqm-content{"role"=>"main", :class=>"ui-content"}
         = yield
 
-
       - if current_login.has_role? :admin or current_login.has_role? :root
-        .jqm-navmenu-panel{"data-display" => "overlay", "data-position" => "left", "data-role" => "panel", "data-theme" => "a"}
+        .jqm-navmenu-panel{"data-display" => "overlay", "data-position" => "left", "data-role" => "panel", "data-theme" => "h"}
           %ul.jqm-list.ui-alt-icon.ui-nodisc-icon
             %li{"data-filtertext" => "demos homepage", "data-icon" => "home"}
               %a{:href => "/"} Панель
@@ -52,13 +91,13 @@
             %li{"data-icon" => ""}
               %a{"data-ajax" => "false", :href => "/logins/sign_out"} Выход
       - else
-        .jqm-navmenu-panel{"data-display" => "overlay", "data-position" => "left", "data-role" => "panel", "data-theme" => "a"}
+        .jqm-navmenu-panel{"data-display" => "overlay", "data-position" => "left", "data-role" => "panel", "data-theme" => "h"}
           %ul.jqm-list.ui-alt-icon.ui-nodisc-icon
             %li{"data-icon" => ""}
               %a{"data-ajax" => "false", :href => "/logins/sign_out"} Выход
 
         / /panel
-      .jqm-footer{"data-position" => "fixed", "data-role" => "footer", "data-tap-toggle" => "false"}
+      .jqm-footer{"data-position" => "fixed", "data-role" => "footer", "data-tap-toggle" => "false", :style => "z-index:10;" }
         %div{"data-role" => "footer"}
           %div{"data-iconpos" => "bottom", "data-role" => "navbar"}
             %ul

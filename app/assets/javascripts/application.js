@@ -21,6 +21,8 @@
 //= require tablesaw
 // require jquery.validationEngine-ru_RU
 // require jquery.validationEngine
+//= require jquery.validate
+//= require messages_ru
 
 var ready;
 ready = function() {
@@ -73,8 +75,12 @@ ready = function() {
         //}
     //});
 
-     $("form").validationEngine();
-
+     //$("form").validationEngine();
+    $( "form" ).validate();//{
+            //submitHandler: function( form ) {
+            //alert( "Call Login Action" );
+        //}
+    //});
 };
 
 $(document).ready(ready);
