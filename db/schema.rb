@@ -11,18 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141023075337) do
+ActiveRecord::Schema.define(version: 20141029062743) do
 
   create_table "cat_dohods", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "odin"
   end
 
   create_table "cat_rashods", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "odin"
   end
 
   create_table "dohods", force: true do |t|

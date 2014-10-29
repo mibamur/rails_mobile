@@ -8,12 +8,12 @@
   %div{ :class=>"schet"}
     .field
       = f.label t(:schet)
-      = collection_select(:dohod, :schet_id, Schet.all, :id, :name, prompt: true)
+      = collection_select(:dohod, :schet_id, Schet.all, :id, :name, prompt: true, { :required=>"" })
 
   %div{ :class=>"cat_dohod"}
     .field
       = f.label t(:cat_dohod)
-      = collection_select(:dohod, :cat_dohod_id, CatDohod.all, :id, :name, prompt: true)
+      = collection_select(:dohod, :cat_dohod_id, CatDohod.all, :id, :name, prompt: true, { :required=>"" })
 
   %div{ :class=>"comment"}
     .field
@@ -23,7 +23,7 @@
   %div{ :class=>"rab"}
     .field
       = f.label t(:rab)
-      = collection_select(:dohod, :rab_id, Rab.all, :id, :name, prompt: true)
+      = collection_select(:dohod, :rab_id, Rab.all, :id, :name, prompt: true, { :required=>"" })
 
   %div{ :class=>"todate"}
     .field
@@ -33,7 +33,7 @@
   %div{ :class=>"cash"}
     .field
       = f.label t(:cash)
-      = f.text_field :cash
+      = f.text_field :cash, :required=>""
 
       - 'TABB'
   %div

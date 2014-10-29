@@ -8,7 +8,10 @@
   %div{ :class=>"name"}
     .field
       = f.label t(:name)
-      = f.text_field :name
+      = f.text_field :name, :required=>""
+    .field
+      = f.label "По умолчанию"
+      = f.check_box :odin
 
       - 'TABB'
   %div

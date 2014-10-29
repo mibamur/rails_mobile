@@ -84,7 +84,8 @@
           #div-dohod
             = form_tag '/dohods',{ "data-ajax"=>false} do
               .ui-field-contain
-                = collection_select(:dohod, :cat_dohod_id, CatDohod.all, :id, :name, {:selected => ""}, { "data-mini"=>true, "data-theme" => "a", :required=>"" } )
+                - na=CatDohod.where(:odin=>true).first.name
+                = collection_select(:dohod, :cat_dohod_id, CatDohod.all, :id, :name, {:selected => "#{na}"}, { "data-mini"=>true, "data-theme" => "a", :required=>"" } )
 
 
               - if current_login.has_role? :admin or current_login.has_role? :root

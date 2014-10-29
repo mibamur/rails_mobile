@@ -22,7 +22,9 @@ class CatRashodsController < ApplicationController
   def create
     @cat_rashod = CatRashod.new(cat_rashod_params)
     @cat_rashod.save
-    respond_with(@cat_rashod)
+    respond_with @cat_rashod do |format|
+      format.html { redirect_to root_path }
+    end
   end
 
   def update
@@ -41,7 +43,7 @@ class CatRashodsController < ApplicationController
     end
 
     def cat_rashod_params
-      params.require(:cat_rashod).permit(:name)
+      params.require(:cat_rashod).permit(:name, :odin)
     end
 
     def redirect_tor
