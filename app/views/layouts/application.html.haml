@@ -89,9 +89,9 @@
             = form_tag '/perevods' do
               = submit_tag
           #div-dohod
-            = form_tag '/dohods', do
+            = form_tag '/dohods' do
               .ui-field-contain
-                = collection_select(:dohod, :cat_dohod_id, CatDohod.all, :id, :name, {:selected=>CatDohod.where(:odin=>true).first.id.to_s}, { "data-mini"=>true, "data-theme" => "a", :required=>"" } )
+                = collection_select(:dohod, :cat_dohod_id, CatDohod.all, :id, :name, {:selected=>CatDohod.where(:odin=>true).first.id.to_s }, { "data-mini"=>true, "data-theme" => "a", :required=>"" } )
                 / {:selected => CatDohod.where(:odin=>true).first.id.to_s}
 
               - if current_login.has_role? :admin or current_login.has_role? :root
