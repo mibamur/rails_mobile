@@ -5,6 +5,8 @@
     %meta{:content => "target-densitydpi=device-dpi, height=device-height,width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", :name => "viewport"}/
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
+    %link{ rel:"stylesheet", href:"/css/jquery.mobile.flatui.css"}
+    
     = csrf_meta_tags
     :css
       input.plc1::-webkit-input-placeholder {
