@@ -32,6 +32,7 @@ class Rashod < ActiveRecord::Base
 
   # before_save :do_something
   before_save :tocalc
+  before_save :init_data
   # after_update :tochange
   after_destroy :tominus
 
@@ -86,6 +87,10 @@ class Rashod < ActiveRecord::Base
   end
 
   # def tochange; end
+
+  def init_data
+    self.todate ||= Date.today if new_record?
+  end
 
 
 end

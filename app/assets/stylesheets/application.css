@@ -12,12 +12,15 @@
  *
  * require_tree .
  * require_self
- *= require jquery.mobile
- * require rails
+ * require jquery.mobile
 
+ * require rails
+ *= require jquery.mobile.flatui.css
  *= require jqm-demos
+
  * require jqm-icon-pack-fa-builder
  * require jqm-icon-pack-fa
+
  *= require tablesaw
  *= require dialog
  *= require vg
@@ -30,34 +33,63 @@
     z-index: 1;
 }
 .todate {
-    /*display:none;*/
+    display:none;
 }
 
 
-input::-webkit-input-placeholder {
-    color:white;
+.ui-page-theme-a .ui-btn, .ui-bar-a .ui-btn, .ui-body-a .ui-btn, .ui-group-theme-a .ui-btn, .ui-btn.ui-btn-a, .ui-page-theme-a .ui-btn, .ui-bar-a .ui-btn, .ui-body-a .ui-btn, .ui-group-theme-a .ui-btn, .ui-btn.ui-btn-a {
+/*background: #2c3e50;
+border-color: #2c3e50;
+*/
 }
-input:-moz-placeholder {
-    color:green;
+
+#leftpanel3 a {
+color: grey !important;
+}
+
+
+.s {
+  color: white !important;
+}
+
+
+.ui-btn-active {
+  border: 1px solid black !important;
+}
+
+input.plc1::-webkit-input-placeholder {
+  color:red !important;
 }
 
 
-.igreen {
-    background-color:green;
-    /*color:green;*/
+.bgred {
+  border: 2px solid red !important;
 }
 
-.iblue {
-    /*background-color:blue;*/
-  color:blue;
-}
 
-.ired {
-    /*background-color:red;*/
-  color:red;
+label.error {
+  color: red;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.4;
+  margin-top: 0.5em;
+  width: 100%;
+  float: none;
 }
-
-.ibrown {
-    background-color:brown;
-  /*color:brown;*/
+@media screen and (orientation: portrait) {
+  label.error {
+    margin-left: 0;
+    display: block;
+  }
+}
+@media screen and (orientation: landscape) {
+  label.error {
+    display: inline-block;
+    margin-left: 22%;
+  }
+}
+em {
+  color: red;
+  font-weight: bold;
+  padding-right: .25em;
 }

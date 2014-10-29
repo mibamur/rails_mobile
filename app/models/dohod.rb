@@ -18,6 +18,7 @@ class Dohod < ActiveRecord::Base
 
   # has_and_belongs_to_many :events
 
+
   # audit table changes
   has_paper_trail
   # cattr_reader :per_page
@@ -43,6 +44,7 @@ class Dohod < ActiveRecord::Base
 
   # before_save :do_something
   before_save :tocalc
+  before_save :init_data
   # after_update :tochange
   after_destroy :tominus
 
@@ -118,5 +120,9 @@ class Dohod < ActiveRecord::Base
 #     return false
 #   end
 # end
+
+  def init_data
+    self.todate ||= Date.today if new_record?
+  end
 
 end

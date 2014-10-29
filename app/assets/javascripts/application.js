@@ -30,9 +30,11 @@ ready = function() {
     //$('select.rashod_select option[value="1"]').attr("selected",true);
     //$('.dohod_select option:contains("")').prop('selected',true);
     //$('.dohod_select')
+  $.mobile.ajaxLinksEnabled = false;
   $('form').attr("data-ajax", "false");
-  $('.date').attr("style", "display:none;");
-  $('.todate').attr("style", "display:none;");
+
+  // $('.date').attr("style", "display:none;");
+  // $('.todate').attr("style", "display:none;");
 
 
     $('#radio-choice-h-2a').click(function(){
@@ -76,11 +78,34 @@ ready = function() {
     //});
 
      //$("form").validationEngine();
-    $( "form" ).validate();//{
+    // $( "form" ).validate();
+    //{
             //submitHandler: function( form ) {
             //alert( "Call Login Action" );
         //}
     //});
+$( "body" ).on( "pageinit", function() {
+
+    $( "form" ).validate();
+
+    // $( "form" ).validate({
+    //     rules: {
+    //         email: {
+    //             required: true
+    //         },
+    //         password: {
+    //             required: true
+    //         }
+    //     },
+    //     errorPlacement: function( error, element ) {
+    //         error.insertAfter( element.parent() );
+    //     }
+    // });
+
+
+});
+
+
 };
 
 $(document).ready(ready);

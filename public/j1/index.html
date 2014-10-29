@@ -1,0 +1,159 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>jQuery Mobile: Theme Download</title>
+	<link rel="stylesheet" href="themes/rails.min.css" />
+	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile.structure-1.4.3.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
+</head>
+<body>
+
+
+		<div data-role="page" id="settingsPage" class="adminDashboardPage" data-theme="a">
+			
+			<div data-role="header" data-theme="a">
+			
+				<h1>Settings</h1>
+			
+			</div>
+ 
+			<div data-role="content" id="settingsContent">
+				
+				<fieldset data-role="controlgroup">
+					
+					<legend>Choose a theme:</legend>
+			     	<input type="radio" name="radio-choice-1" id="radio-choice-1" value="a" />
+			     	<label for="radio-choice-1">A</label>
+			
+			     	<input type="radio" name="radio-choice-1" id="radio-choice-2" value="b"  />
+			     	<label for="radio-choice-2">B</label>
+			     	
+			     	<input type="radio" name="radio-choice-1" id="radio-choice-3" value="c"  />
+			     	<label for="radio-choice-3">C</label>
+			     	
+			     	<input type="radio" name="radio-choice-1" id="radio-choice-4" value="d" />
+			     	<label for="radio-choice-4">D</label>
+			     	
+			     	<input type="radio" name="radio-choice-1" id="radio-choice-5" value="e" />
+			     	<label for="radio-choice-5">E</label>
+
+			     	<input type="radio" name="radio-choice-1" id="radio-choice-6" value="h" />
+			     	<label for="radio-choice-6">H</label>
+			     	
+				</fieldset>
+								
+			</div>
+ 
+		</div>
+ 
+		<script type="text/javascript">
+		
+		(function() {
+ 
+			// helper method to replace the old theme with the new theme within a
+			// string of css class names
+			var transformCssClassString = function(cssClassString, classPattern, newTheme) {
+ 
+				return cssClassString.split(' ').map(function(item) {
+ 
+					return item.replace(classPattern, '-' + newTheme);
+ 
+				}).join(' ');
+ 
+			},
+ 
+			// helper method to replace the old theme with the new theme within a given
+			// element
+			// and within the elements children which have them classes or attributes
+			refreshTheme = function($page, domTheme, newTheme) {
+ 
+				var classPattern = new RegExp('-[a-z]$', 'g');
+ 
+				$page.attr('data-theme', newTheme);
+ 
+				$page.attr('class', transformCssClassString($page.attr('class'), classPattern, newTheme));
+ 
+				$page.find('[data-theme="' + domTheme + '"]').attr('data-theme', newTheme);
+ 
+				$page.find('[class*="-' + domTheme + '"]').each(function() {
+ 
+					var $elem = $(this);
+ 
+					$elem.attr('class', transformCssClassString($elem.attr('class'), classPattern, newTheme));
+ 
+				});
+ 
+			};
+ 
+			// changes the theme when the user selects a different theme
+			$('input[name=radio-choice-1]').on('change', function() {
+ 
+				var domTheme = $.mobile.activePage.attr('data-theme'), $settingsPage = $('#settingsPage'),
+ 
+				newTheme = $("input[name=radio-choice-1]:checked").val();
+ 
+				localStorage.setItem('theme', newTheme);
+ 
+				refreshTheme($settingsPage, domTheme, newTheme);
+ 
+			});
+ 
+			// changes the theme from a previously selected theme when each page loads
+			$('div[data-role=page], div[data-role=dialog]').on('pagebeforeshow', function(e) {
+ 
+				var $page = $(this), domTheme = $page.attr('data-theme'),
+ 
+				newTheme = localStorage.getItem('theme') || 'a';
+ 
+				localStorage.setItem('theme', newTheme);
+ 
+				refreshTheme($page, domTheme, newTheme);
+ 
+			});
+ 
+			// retrieves the stored theme
+			$('#settingsPage').on('pageshow', function() {
+ 
+				var $page = $(this), domTheme = $page.attr('data-theme');
+ 
+				$page.find('input[value=' + domTheme + ']').attr('selected', 'selected').click();
+ 
+				$page.find('input[value=' + domTheme + ']').click();
+ 
+			});
+			
+		}());
+		
+		</script>
+		
+<!-- 
+	<div data-role="page" data-theme="a">
+		<div data-role="header" data-position="inline">
+			<h1>It Worked!</h1>
+		</div>
+		<div data-role="content" data-theme="a">
+			<p>Your theme was successfully downloaded. You can use this page as a reference for how to link it up!</p>
+			<pre>
+<strong>&lt;link rel=&quot;stylesheet&quot; href=&quot;themes/rails.min.css&quot; /&gt;</strong>
+<strong>&lt;link rel=&quot;stylesheet&quot; href=&quot;themes/jquery.mobile.icons.min.css&quot; /&gt;</strong>
+&lt;link rel=&quot;stylesheet&quot; href=&quot;http://code.jquery.com/mobile/1.4.3/jquery.mobile.structure-1.4.3.min.css&quot; /&gt;
+&lt;script src=&quot;http://code.jquery.com/jquery-1.11.1.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js&quot;&gt;&lt;/script&gt;
+			</pre>
+			<p>This is content color swatch "A" and a preview of a <a href="#" class="ui-link">link</a>.</p>
+			<label for="slider1">Input slider:</label>
+			<input type="range" name="slider1" id="slider1" value="50" min="0" max="100" data-theme="a" />
+			<fieldset data-role="controlgroup"  data-type="horizontal" data-role="fieldcontain">
+			<legend>Cache settings:</legend>
+			<input type="radio" name="radio-choice-a1" id="radio-choice-a1" value="on" checked="checked" />
+			<label for="radio-choice-a1">On</label>
+			<input type="radio" name="radio-choice-a1" id="radio-choice-b1" value="off"  />
+			<label for="radio-choice-b1">Off</label>
+			</fieldset>
+		</div>
+	</div> -->
+</body>
+</html>

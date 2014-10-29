@@ -31,6 +31,7 @@ class Perevod < ActiveRecord::Base
 
   # before_save :perevoddo
   before_save :tocalc
+  before_save :init_data
   # after_update :tochange
   after_destroy :tominus
 
@@ -94,6 +95,9 @@ class Perevod < ActiveRecord::Base
 
   end
 
+  def init_data
+    self.todate ||= Date.today if new_record?
+  end
 
 
 end

@@ -8,96 +8,17 @@
     = csrf_meta_tags
   -#%body.ui-mobile-viewport.ui-overlay-a
   %body.ui-mobile-viewport
-    .jqm-demos.jqm-home{"data-role" => "page" }
-      #ipanel.ui-panel-inner{"data-display" => "overlay", "data-position" => "right", "data-role" => "panel", "data-theme" => "a", :style=>"width:auto;"}
-        .ui-content{:align => "center"}
-          %fieldset{"data-role" => "controlgroup", "data-type" => "horizontal"}
-            %input#radio-choice-h-2a.igreen{:checked => "checked", :name => "radio-choice-h-2", :type => "radio", :value => "on"}/
-            %label{:for => "radio-choice-h-2a"} Доход
-            %input#radio-choice-h-2b.ired{:name => "radio-choice-h-2", :type => "radio", :value => "off"}/
-            %label{:for => "radio-choice-h-2b"} Расход
-            %input#radio-choice-h-2c{:name => "radio-choice-h-2", :type => "radio", :value => "other"}/
-            %label{:for => "radio-choice-h-2c"} Перевод
-        -#= form_tag({controller: "dohod", action: "new"}, method: "get", class: "rm")
-        #div-rashod{:style => "display:none;"}
-          = form_tag '/rashods' do
-            = submit_tag
-        #div-perevod{:style => "display:none;"}
-          = form_tag '/perevods' do
-            = submit_tag
-        #div-dohod
-          = form_tag '/dohods' do
-            - if current_login.has_role? :admin or current_login.has_role? :root
-              .ui-field-contain
-                = collection_select :dohod, :schet_id, Schet.where(panel: true).all, :id, :name, { prompt: "Счёт" }, { :class=> "required ired" }
-                -#, { prompt: "Счёт" }, { :class => "required" }, {:required => true}) #prompt: true) #, :class => "dohod_select"{:selected => "Доход"} )
-                -#= select_tag :dohod, options_from_
-                -#= select_tag :schet_id, options_for_select( Schet.where(panel: true).all) #, { prompt: "Счёт" }, { :class => "required" }, {:required => true}) #prompt: true) #, :class => "dohod_select"{:selected => "Доход"} )
-            - else
-              .ui-field-contain{:style => "display:none;"}
-                = text_field :schet_id, :value => Schet.where(login_id: current_login.id).last.id
 
-            .ui-field-contain
-              = collection_select(:dohod, :cat_dohod_id, CatDohod.all, :id, :name, {:selected => ""}, { :class => "required" } )
-            .ui-field-contain
-              = collection_select(:dohod, :rab_id, Rab.all, :id, :name, { prompt: true }, { :class => "required ired" } )
-            .ui-field-contain
-              = text_field :dohod, :cash, { :placeholder => "Сумма", :style => "", :class=> "required ired"}
-            .ui-field-contain
-              = text_field :dohod, :comment, :placeholder => "Заметка"
-            %div{ :class=>"todate"}
-              .field
-                = date_field :dohod, :todate
 
-            .ui-field-contain
-              = submit_tag t('.save', :default => t("helpers.links.save")), :class => "btn btn-primary igreen"
-              %a.ui-btn.ui-shadow.ui-corner-all.ui-btn-a{"data-rel" => "back", :href => "/"} Отмена
+    .ui-responsive-panel{"data-role" => "page", :style => "max-height:440px; min-height:440px;", "data-theme" => "a"}
+      %div{"data-role" => "header"}
+        %h1 Panel Demo
 
-      .jqm-header{"data-role" => "header"}
-        %h2
-          %img{:alt => "jQuery Mobile", :src => "/img/jquery-logo.png"}/
-
-        %a.jqm-navmenu-link.ui-btn.ui-btn-icon-notext.ui-corner-all.ui-icon-bars.ui-nodisc-icon.ui-alt-icon.ui-btn-left{:href => "#"} Меню
-        %a.ui-btn.ui-btn-icon-notext.ui-corner-all.ui-icon-plus.ui-nodisc-icon.ui-alt-icon.ui-btn-right{:href => "#ipanel"} Меню
-      .ui-content.jqm-content{"role"=>"main", :class=>"ui-content"}
+        %a.jqm-navmenu-link.ui-btn.ui-btn-icon-notext.ui-corner-all.ui-icon-bars.ui-nodisc-icon.ui-btn-left{"data-inline" => "true", "data-mini" => "true", "data-role" => "button", :href => "#leftpanel3"} Меню
+        %a.ui-btn.ui-btn-icon-notext.ui-corner-all.ui-icon-plus.ui-nodisc-icon.ui-btn-right{"data-inline" => "true", "data-mini" => "true", "data-role" => "button", :href => "#rightpanel3"} Меню
+      .ui-content{:role => "main"}
         = yield
-
-      - if current_login.has_role? :admin or current_login.has_role? :root
-        .jqm-navmenu-panel{"data-display" => "overlay", "data-position" => "left", "data-role" => "panel", "data-theme" => "h"}
-          %ul.jqm-list.ui-alt-icon.ui-nodisc-icon
-            %li{"data-filtertext" => "demos homepage", "data-icon" => "home"}
-              %a{:href => "/"} Панель
-            %li{"data-icon" => "star"}
-              %a{"data-ajax" => "false", :href => "/schets/"} Счета
-            %li{"data-icon" => "user"}
-              %a{"data-ajax" => "false", :href => "/rabs/"} Работники
-            %li{"data-icon" => "arrow-u-r"}
-              %a{"data-ajax" => "false", :href => "/dohods/"} Доходы
-            %li{"data-icon" => "arrow-d-r"}
-              %a{"data-ajax" => "false", :href => "/rashods/"} Расходы
-            %li{"data-icon" => "forward"}
-              %a{"data-ajax" => "false", :href => "/perevods/"} Переводы
-            %li.ui-collapsible.ui-collapsible-themed-content.ui-collapsible-collapsed{"data-collapsed-icon" => "carat-d", "data-enhanced" => "true", "data-expanded-icon" => "carat-u", "data-iconpos" => "right", "data-inset" => "false", "data-role" => "collapsible"}
-              %h3.ui-collapsible-heading.ui-collapsible-heading-collapsed
-                %a.ui-collapsible-heading-toggle.ui-btn.ui-btn-icon-right.ui-btn-inherit.ui-icon-carat-d{:href => "#"}
-                  Категории
-                  %span.ui-collapsible-heading-status нажмите чтобы развернуть
-              .ui-collapsible-content.ui-body-inherit.ui-collapsible-content-collapsed
-                %ul
-                  %li{"data-filtertext" => "buttons in grids css framework"}
-                    %a{"data-ajax" => "false", :href => "/cat_rashods/"} Расходы
-                  %li{"data-filtertext" => "custom responsive grids rwd css framework"}
-                    %a{"data-ajax" => "false", :href => "/cat_dohods/"} Доходы
-            %li{"data-icon" => ""}
-              %a{"data-ajax" => "false", :href => "/logins/sign_out"} Выход
-      - else
-        .jqm-navmenu-panel{"data-display" => "overlay", "data-position" => "left", "data-role" => "panel", "data-theme" => "h"}
-          %ul.jqm-list.ui-alt-icon.ui-nodisc-icon
-            %li{"data-icon" => ""}
-              %a{"data-ajax" => "false", :href => "/logins/sign_out"} Выход
-
-        / /panel
-      .jqm-footer{"data-position" => "fixed", "data-role" => "footer", "data-tap-toggle" => "false", :style => "z-index:10;" }
+      .jqm-footer{"data-position" => "fixed", "data-role" => "footer", "data-tap-toggle" => "false", :style => "z-index:10;", "data-theme" => "b" }
         %div{"data-role" => "footer"}
           %div{"data-iconpos" => "bottom", "data-role" => "navbar"}
             %ul
@@ -108,4 +29,87 @@
                   %a{"data-icon" => "user", :href => "/logins"} Пользователи
               %li
                 %a{"data-icon" => "gear", "data-ajax" => "false", :href => "/logins/sign_out"} Выход
+
+
+
+      #leftpanel3.jqm-navmenu-panel{"data-display" => "overlay", "data-position" => "left", "data-role" => "panel"}
+
+        %ul.jqm-list.ui-alt-icon.ui-nodisc-icon{"data-role"=>"listview"}
+          %li{"data-filtertext" => "demos homepage", "data-icon" => "home"}
+            %a{:href => "/"} Панель
+          %li{"data-icon" => "star"}
+            %a{"data-ajax" => "false", :href => "/schets/"} Счета
+          %li{"data-icon" => "user"}
+            %a{"data-ajax" => "false", :href => "/rabs/"} Работники
+          %li{"data-icon" => "arrow-u-r"}
+            %a{"data-ajax" => "false", :href => "/dohods/"} Доходы
+          %li{"data-icon" => "arrow-d-r"}
+            %a{"data-ajax" => "false", :href => "/rashods/"} Расходы
+          %li{"data-icon" => "forward"}
+            %a{"data-ajax" => "false", :href => "/perevods/"} Переводы
+          %li.ui-collapsible.ui-collapsible-themed-content.ui-collapsible-collapsed{"data-collapsed-icon" => "carat-d", "data-enhanced" => "true", "data-expanded-icon" => "carat-u", "data-iconpos" => "right", "data-inset" => "false", "data-role" => "collapsible"}
+            %h3.ui-collapsible-heading.ui-collapsible-heading-collapsed
+              %a.ui-collapsible-heading-toggle.ui-btn.ui-btn-icon-right.ui-btn-inherit.ui-icon-carat-d{:href => "#"}
+                Категории
+                %span.ui-collapsible-heading-status нажмите чтобы развернуть
+            .ui-collapsible-content.ui-body-inherit.ui-collapsible-content-collapsed
+              %ul{"data-role"=>"listview"}
+                %li{"data-filtertext" => ""}
+                  %a{"data-ajax" => "false", :href => "/cat_rashods/"} Расходы
+                %li{"data-filtertext" => ""}
+                  %a{"data-ajax" => "false", :href => "/cat_dohods/"} Доходы
+          %li{"data-icon" => ""}
+            %a{"data-ajax" => "false", :href => "/logins/sign_out"} Выход
+        / %a{"data-icon" => "delete", "data-inline" => "true", "data-rel" => "close", "data-role" => "button", "data-theme" => "a", :href => "#demo-links"} Close panel
+        / /content wrapper for padding
+      / /leftpanel3
+      / rightpanel3
+      #rightpanel3{"data-dismissible" => "true", "data-display" => "overlay", "data-position" => "right", "data-role" => "panel", "data-mini"=>"true", "data-theme" => "a"}
+        .panel-content
+          .s{:align => "center"}
+            %fieldset{"data-role" => "controlgroup", "data-type" => "horizontal", "data-mini"=>"true" }
+              %input#radio-choice-h-2a{:checked => "checked", :name => "radio-choice-h-2", :type => "radio", :value => "on", "data-theme" => "b"}/
+              %label.ssmal.igreen{:for => "radio-choice-h-2a", "data-mini"=>true} Доход
+              %input#radio-choice-h-2b.ired{:name => "radio-choice-h-2", :type => "radio", :value => "off", "data-mini"=>true, "data-theme" => "d"}/
+              %label.ssmal.ired{:for => "radio-choice-h-2b", "data-mini"=>true} Расход
+              %input#radio-choice-h-2c{:name => "radio-choice-h-2", :type => "radio", :value => "other", "data-theme" => "f"}/
+              %label.ssmal.ibrown{:for => "radio-choice-h-2c"} П-вод
+
+          #div-rashod{:style => "display:none;"}
+            = form_tag '/rashods',{ "data-ajax"=>false} do
+              = submit_tag
+          #div-perevod{:style => "display:none;"}
+            = form_tag '/perevods' do
+              = submit_tag
+          #div-dohod
+            = form_tag '/dohods',{ "data-ajax"=>false} do
+              .ui-field-contain
+                = collection_select(:dohod, :cat_dohod_id, CatDohod.all, :id, :name, {:selected => ""}, { "data-mini"=>true, "data-theme" => "a", :required=>"" } )
+
+
+              - if current_login.has_role? :admin or current_login.has_role? :root
+                .ui-field-contain
+                  = collection_select :dohod, :schet_id, Schet.where(panel: true).all, :id, :name, { prompt: "Счёт..." }, { "data-mini"=>true, "data-theme" => "d", :required=>"" }
+                  -#, { prompt: "Счёт" }, { :class => "required" }, {:required => true}) #prompt: true) #, :class => "dohod_select"{:selected => "Доход"} )
+                  -#= select_tag :dohod, options_from_
+                  -#= select_tag :schet_id, options_for_select( Schet.where(panel: true).all) #, { prompt: "Счёт" }, { :class => "required" }, {:required => true}) #prompt: true) #, :class => "dohod_select"{:selected => "Доход"} )
+              - else
+                .ui-field-contain{:style => "display:none;"}
+                  = text_field :schet_id, :value => Schet.where(login_id: current_login.id).last.id
+
+              .ui-field-contain
+                = text_field :dohod, :cash, { :placeholder => "Сумма", :style => "", :class=> "plc1", "data-mini"=>true, :required=>""}
+
+              .ui-field-contain
+                = collection_select(:dohod, :rab_id, Rab.all, :id, :name, { prompt: "Сотрудник..." }, {  "data-mini"=>true, "data-theme" => "e", :required=>"" } )
+
+              %div{ :class=>"todate"}
+                .field
+                  = date_field :dohod, :todate
+
+              .ui-field-contain{ "data-mini"=>true}
+                = submit_tag t('.save', :default => t("helpers.links.save")), :class => "btn btn-primary", "data-mini"=>true, "data-theme" => "b"
+                / %a.ui-btn.ui-corner-all{ :href => "/", "data-mini"=>true, "data-theme" => "h" } Отмена
+              .ui-field-contain
+                = text_area :dohod, :comment, :placeholder => "Заметки...", "data-mini"=>true, :class => "plc2"
 

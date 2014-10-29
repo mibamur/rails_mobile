@@ -75,5 +75,5 @@ gem "devise-i18n-views"
 gem "cancancan"
 gem "rolify"
 
-gem 'jQuery-Validation-Engine-rails'
+#gem 'jQuery-Validation-Engine-rails'
 

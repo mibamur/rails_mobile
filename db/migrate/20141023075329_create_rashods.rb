@@ -14,6 +14,7 @@ class CreateRashods < ActiveRecord::Migration
       t.text :comment
       t.belongs_to :rab, index: true
       t.date :todate
+      
       t.decimal :cash, precision: 8, scale: 2
 
       t.timestamps
