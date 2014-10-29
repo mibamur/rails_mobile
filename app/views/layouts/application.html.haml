@@ -6,7 +6,7 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     %link{ :rel=>"stylesheet", :href=>"/css/jquery.mobile.flatui.css"}
-    
+
     = csrf_meta_tags
     :css
       input.plc1::-webkit-input-placeholder {
@@ -83,13 +83,13 @@
               %label.ssmal.ibrown{:for => "radio-choice-h-2c"} П-вод
 
           #div-rashod{:style => "display:none;"}
-            = form_tag '/rashods',{ "data-ajax"=>false} do
+            = form_tag '/rashods' do
               = submit_tag
           #div-perevod{:style => "display:none;"}
             = form_tag '/perevods' do
               = submit_tag
           #div-dohod
-            = form_tag '/dohods',{ "data-ajax"=>false} do
+            = form_tag '/dohods', do
               .ui-field-contain
                 = collection_select(:dohod, :cat_dohod_id, CatDohod.all, :id, :name, {:selected=>CatDohod.where(:odin=>true).first.id.to_s}, { "data-mini"=>true, "data-theme" => "a", :required=>"" } )
                 / {:selected => CatDohod.where(:odin=>true).first.id.to_s}
