@@ -29,7 +29,9 @@ class CatRashodsController < ApplicationController
 
   def update
     @cat_rashod.update(cat_rashod_params)
-    respond_with(@cat_rashod)
+    respond_with @cat_rashod do |format|
+      format.html { redirect_to root_path }
+    end
   end
 
   def destroy

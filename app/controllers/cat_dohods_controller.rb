@@ -27,12 +27,13 @@ class CatDohodsController < ApplicationController
     respond_with @cat_dohod do |format|
       format.html { redirect_to root_path }
     end
-
   end
 
   def update
     @cat_dohod.update(cat_dohod_params)
-    respond_with(@cat_dohod)
+    respond_with @cat_dohod do |format|
+      format.html { redirect_to root_path }
+    end
   end
 
   def destroy

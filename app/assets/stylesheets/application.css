@@ -37,12 +37,6 @@
 }
 
 
-.ui-page-theme-a .ui-btn, .ui-bar-a .ui-btn, .ui-body-a .ui-btn, .ui-group-theme-a .ui-btn, .ui-btn.ui-btn-a, .ui-page-theme-a .ui-btn, .ui-bar-a .ui-btn, .ui-body-a .ui-btn, .ui-group-theme-a .ui-btn, .ui-btn.ui-btn-a {
-/*background: #2c3e50;
-border-color: #2c3e50;
-*/
-}
-
 #leftpanel3 a {
 color: grey !important;
 }
@@ -55,10 +49,6 @@ color: grey !important;
 
 .ui-btn-active {
   border: 1px solid black !important;
-}
-
-input.plc1::-webkit-input-placeholder {
-  color:red !important;
 }
 
 
