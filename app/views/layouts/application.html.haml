@@ -19,7 +19,7 @@
 
     .ui-responsive-panel{"data-role" => "page", :style => "max-height:440px; min-height:440px;", "data-theme" => "a"}
       %div{"data-role" => "header"}
-        %h1 Panel Demo
+        %h1= current_login.email 
 
         %a.jqm-navmenu-link.ui-btn.ui-btn-icon-notext.ui-corner-all.ui-icon-bars.ui-nodisc-icon.ui-btn-left{"data-inline" => "true", "data-mini" => "true", "data-role" => "button", :href => "#leftpanel3"} Меню
         %a.ui-btn.ui-btn-icon-notext.ui-corner-all.ui-icon-plus.ui-nodisc-icon.ui-btn-right{"data-inline" => "true", "data-mini" => "true", "data-role" => "button", :href => "#rightpanel3"} Меню
@@ -37,11 +37,10 @@
               %li
                 %a{"data-icon" => "gear", "data-ajax" => "false", :href => "/logins/sign_out"} Выход
 
+      #leftpanel3.jqm-navmenu-panel{"data-dismissible" => "true","data-display" => "overlay", "data-position" => "left", "data-role" => "panel", "data-theme" => "b"}
 
 
-      #leftpanel3.jqm-navmenu-panel{"data-display" => "overlay", "data-position" => "left", "data-role" => "panel"}
-
-        %ul.jqm-list.ui-alt-icon.ui-nodisc-icon{"data-role"=>"listview"}
+        %ul.jqm-list.ui-alt-icon.ui-nodisc-icon{"data-role"=>"listview", "data-theme" => "c"}
           %li{"data-filtertext" => "demos homepage", "data-icon" => "home"}
             %a{:href => "/"} Панель
           %li{"data-icon" => "star"}
@@ -88,6 +87,7 @@
           #div-perevod{:style => "display:none;"}
             = form_tag '/perevods' do
               = submit_tag
+
           #div-dohod
             = form_tag '/dohods' do
               .ui-field-contain
