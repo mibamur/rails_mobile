@@ -111,7 +111,7 @@
 
 
           #div-rashod{:style => "display:none;"}
-            = form_tag '/rashods' do
+            = form_tag '/rashods', :class=>"formDRP" do
               .ui-field-contain
                 = collection_select(:rashod, :cat_rashod_id, CatRashod.all, :id, :name, {:selected => CatRashod.where(:odin=>true).first.id.to_s }, { "data-mini"=>true, "data-theme" => "a", :required=>"" } )
 
@@ -138,7 +138,7 @@
 
 
           #div-perevod{:style => "display:none;"}
-            = form_tag '/perevods' do
+            = form_tag '/perevods', :class=>"formDRP" do
 
               .ui-field-contain
                 = collection_select(:perevod, :schet_from, Schet.where(panel: true).all, :id, :name, { prompt: "Откуда:" }, { :required => "", "data-mini"=>true, "data-theme"=>'g' })#, prompt: true)
@@ -157,7 +157,7 @@
                 = text_area :perevod, :comment, :placeholder => "Заметки...", "data-mini"=>true, :class => "plc2"
 
           #div-dohod
-            = form_tag '/dohods' do
+            = form_tag '/dohods', :class=>"formDRP" do
               .ui-field-contain
                 = collection_select(:dohod, :cat_dohod_id, CatDohod.all, :id, :name, {:selected=>CatDohod.where(:odin=>true).first.id.to_s }, { "data-mini"=>true, "data-theme" => "a", :required=>"" } )
                 / {:selected => CatDohod.where(:odin=>true).first.id.to_s}
