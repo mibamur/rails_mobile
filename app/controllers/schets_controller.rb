@@ -22,17 +22,27 @@ class SchetsController < ApplicationController
   def create
     @schet = Schet.new(schet_params)
     @schet.save
-    respond_with(@schet)
+
+    respond_with @schet do |format|
+      format.html { redirect_to root_path }
+    end
+
   end
 
   def update
     @schet.update(schet_params)
-    respond_with(@schet)
+
+    respond_with @schet do |format|
+      format.html { redirect_to root_path }
+    end
   end
 
   def destroy
     @schet.destroy
-    respond_with(@schet)
+
+    respond_with @schet do |format|
+      format.html { redirect_to root_path }
+    end
   end
 
   private

@@ -36,7 +36,9 @@ class CatRashodsController < ApplicationController
 
   def destroy
     @cat_rashod.destroy
-    respond_with(@cat_rashod)
+    respond_with @cat_rashod do |format|
+      format.html { redirect_to root_path }
+    end
   end
 
   private

@@ -30,12 +30,18 @@ class RashodsController < ApplicationController
 
   def update
     @rashod.update(rashod_params)
-    respond_with(@rashod)
+
+    respond_with @rashod do |format|
+      format.html { redirect_to root_path }
+    end
+
   end
 
   def destroy
     @rashod.destroy
-    respond_with(@rashod)
+    respond_with @rashod do |format|
+      format.html { redirect_to root_path }
+    end
   end
 
   private

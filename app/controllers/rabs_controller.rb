@@ -22,17 +22,25 @@ class RabsController < ApplicationController
   def create
     @rab = Rab.new(rab_params)
     @rab.save
-    respond_with(@rab)
+
+    respond_with @rab do |format|
+      format.html { redirect_to root_path }
+    end
+
   end
 
   def update
     @rab.update(rab_params)
-    respond_with(@rab)
+    respond_with @rab do |format|
+      format.html { redirect_to root_path }
+    end
   end
 
   def destroy
     @rab.destroy
-    respond_with(@rab)
+    respond_with @rab do |format|
+      format.html { redirect_to root_path }
+    end
   end
 
   private
