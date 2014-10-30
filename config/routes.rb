@@ -57,6 +57,14 @@ Rails.application.routes.draw do
 
   resources :cat_rashods
 
+  resources :charts do
+    collection do
+      get 'basic_line'
+      get 'line_ajax'
+      get 'line_labels'
+    end
+  end
+
   devise_for :logins
   resources :logins
   resources :roles

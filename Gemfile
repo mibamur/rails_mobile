@@ -77,3 +77,7 @@ gem "rolify"
 
 #gem 'jQuery-Validation-Engine-rails'
 
+gem 'lazy_high_charts'
+gem "default_value_for"
+gem "nvd3-rails", :git => "git@github.com:adeven/nvd3-rails.git", :submodules => true
+

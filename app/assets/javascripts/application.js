@@ -24,6 +24,12 @@
 //= require jquery.validate
 //= require messages_ru
 
+//= require highcharts/highcharts                                                           
+//= require highcharts/highcharts-more                                                         
+//= require highcharts/highstock
+//= require highcharts/modules/exporting
+//= require highcharts-data
+
 var ready;
 ready = function() {
     //$('select.dohod_select option[value="1"]').attr("selected",true);
@@ -86,7 +92,18 @@ ready = function() {
     //});
 $( "body" ).on( "pageinit", function() {
 
-    $( "form" ).validate();
+    // $( "form" ).validate();
+
+    $("form").validate({
+       onsubmit: false
+    });
+
+    // Validate the form and submit programmatically:
+
+    if( $("form").valid() ){
+      // post validation code
+      form.submit()
+    }
 
     // $( "form" ).validate({
     //     rules: {

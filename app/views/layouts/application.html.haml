@@ -24,6 +24,28 @@
         %a.jqm-navmenu-link.ui-btn.ui-btn-icon-notext.ui-corner-all.ui-icon-bars.ui-nodisc-icon.ui-btn-left{"data-inline" => "true", "data-mini" => "true", "data-role" => "button", :href => "#leftpanel3"} Меню
         %a.ui-btn.ui-btn-icon-notext.ui-corner-all.ui-icon-plus.ui-nodisc-icon.ui-btn-right{"data-inline" => "true", "data-mini" => "true", "data-role" => "button", :href => "#rightpanel3"} Меню
       .ui-content{:role => "main"}
+
+        .container
+          .row
+            .span3.bs-docs-sidebar
+              %ul.nav.nav-list.bs-docs-sidenav.affix
+                %li.js-basic_line
+                  = link_to  basic_line_charts_path, remote: true do
+                    %i.icon-chevron-right>
+                    Basic Liine
+                %li.js-line_ajax
+                  = link_to  line_ajax_charts_path, remote: true do
+                    %i.icon-chevron-right
+                    Ajax loaded data, clickable points
+                %li.js-line-labels
+                  = link_to  line_labels_charts_path, remote: true do
+                    %i.icon-chevron-right
+                    With data labels
+            / demo charts master view
+            .span9
+              %section#basic_line
+              %section#line_ajax
+              %section#line-labels
         = yield
       .jqm-footer{"data-position" => "fixed", "data-role" => "footer", "data-tap-toggle" => "false", :style => "z-index:10;", "data-theme" => "b" }
         %div{"data-role" => "footer"}

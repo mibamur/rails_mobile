@@ -27,6 +27,7 @@
  *= require_self
  * require_tree .
  * require validationEngine.jquery
+ *= require nvd3-rails
  */
 
 .ui-panel-dismiss-open {

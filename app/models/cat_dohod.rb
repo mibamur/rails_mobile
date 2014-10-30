@@ -3,9 +3,10 @@ class CatDohod < ActiveRecord::Base
 
   validates :odin, :inclusion => {:in => [true, false]}
 
-# 421621 V
-# функциональный семантический анализ наречий степеней в современном англинском языке
-# analyze Adverb in English
+  # 421621 V
+  # функциональный семантический анализ степеней наречий в современном англинском языке
+  # analyze Adverb in English
+
   # include TheSortableTree::Scopes
   # acts_as_nested_set
 
