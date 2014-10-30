@@ -108,7 +108,8 @@ $( "body" ).on( "pageinit", function() {
 
     if( $(".formDRP").valid() ){
       // post validation code
-      form.submit()
+      // form.submit()
+      
     }
 
     // $( "form" ).validate({

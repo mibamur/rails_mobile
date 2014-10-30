@@ -10,14 +10,20 @@
       %tr
 
 
-        %th{"data-priority" => "1", "data-sortable-col" => ""}= t(:todate)
+        %th{"data-priority" => "1", "data-sortable-col" => ""}= t(:open)
 
-        %th{"data-priority" => "2", "data-sortable-col" => ""}= t(:schet)
+        %th{"data-priority" => "2", "data-sortable-col" => ""}= t(:todate)
+
+        %th{"data-priority" => "3", "data-sortable-col" => ""}= t(:schet)
         %th{"data-priority" => "", "data-sortable-col" => ""}
     %tbody
       - @smenas.each do |smena|
         %tr
 
+
+          %td
+            = smena.open ? "Да" : "Нет"
+          
           %td
             = smena.todate
 

@@ -5,6 +5,11 @@
       %ul
         - @smena.errors.full_messages.each do |msg|
           %li= msg
+  %div{ :class=>"open"}
+    .field
+      = f.label t(:open)
+    = f.check_box :open
+
   %div{ :class=>"todate"}
     .field
       = f.label t(:todate)

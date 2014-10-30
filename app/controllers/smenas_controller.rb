@@ -12,11 +12,11 @@ class SmenasController < ApplicationController
 
   def new
     @smena = Smena.new
-    # respond_with(@smena)
+    respond_with(@smena)
 
-    respond_with @smena do |format|
-      format.html { redirect_to root_path }
-    end
+    # respond_with @smena do |format|
+    #   format.html { redirect_to root_path }
+    # end
 
   end
 
@@ -26,9 +26,10 @@ class SmenasController < ApplicationController
   def create
     @smena = Smena.new(smena_params)
     @smena.save
-    respond_with @smena do |format|
-      format.html { redirect_to root_path }
-    end
+    respond_with(@smena)
+    # respond_with @smena do |format|
+    #   format.html { redirect_to root_path }
+    # end
   end
 
   def update
@@ -51,7 +52,7 @@ class SmenasController < ApplicationController
     end
 
     def smena_params
-      params.require(:smena).permit(:todate, :schet_id,
+      params.require(:smena).permit(:open, :todate, :schet_id,
         smena_rabs_attributes: [:_destroy, :id, :rab_id, :allday, :time_start, :time_end], 
         smena_shtrafs_attributes: [:_destroy, :id, :rab_id, :cash, :comment], 
         )
