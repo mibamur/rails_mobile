@@ -11,6 +11,7 @@
         %th{"data-priority" => "1", "data-sortable-col" => ""}= t(:first_name)
         %th{"data-priority" => "2", "data-sortable-col" => ""}= t(:last_name)
         %th{"data-priority" => "3", "data-sortable-col" => ""}= t(:tel)
+        %th{"data-priority" => "3", "data-sortable-col" => ""} Должность
         %th{"data-priority" => "", "data-sortable-col" => ""}
     %tbody
       - @rabs.each do |rab|
@@ -23,9 +24,8 @@
               = rab.last_name
           %td
             = rab.tel
-          -#%td
-            - if rab.login_id
-              = rab.login.name
+          %td
+             = rab.doljn
           %td
             = link_to 'Изменить', edit_rab_path(rab), :class => "ui-btn ui-btn-icon-left ui-icon-edit", "data-ajax" => false
             = link_to 'Удалить', rab, :method => :delete, :data => { :confirm => 'Уверены?' }, :class => "ui-btn ui-btn-icon-left ui-icon-delete", "data-ajax" => false

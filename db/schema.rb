@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029123230) do
+ActiveRecord::Schema.define(version: 20141030070735) do
 
   create_table "cat_dohods", force: true do |t|
     t.string   "name"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 20141029123230) do
     t.integer  "login_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "doljn"
   end
 
   add_index "rabs", ["login_id"], name: "index_rabs_on_login_id"
