@@ -30,8 +30,9 @@
 // require highcharts/modules/exporting
 // require highcharts-data
 
-  $.mobile.ajaxLinksEnabled = false;
-  $('form').attr("data-ajax", "false");
+
+  // $.mobile.ajaxLinksEnabled = false;
+  // $('form').attr("data-ajax", "false");
 
 
 var ready;
@@ -40,7 +41,8 @@ ready = function() {
     //$('select.rashod_select option[value="1"]').attr("selected",true);
     //$('.dohod_select option:contains("")').prop('selected',true);
     //$('.dohod_select')
-  $.mobile.ajaxLinksEnabled = false;
+
+  // $.mobile.ajaxLinksEnabled = false;
   $('form').attr("data-ajax", "false");
 
   // $('.date').attr("style", "display:none;");
@@ -98,13 +100,13 @@ $( "body" ).on( "pageinit", function() {
 
     // $( "form" ).validate();
 
-    $("form").validate({
+    $(".formDRP").validate({
        onsubmit: false
     });
 
     // Validate the form and submit programmatically:
 
-    if( $("form").valid() ){
+    if( $(".formDRP").valid() ){
       // post validation code
       form.submit()
     }
