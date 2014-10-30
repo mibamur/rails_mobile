@@ -20,7 +20,7 @@
       = f.label t(:tel)
       = f.text_field :tel
 
-  %div{ :class=>"login"}
+  -#%div{ :class=>"login"}
     .field
       = f.label t(:login)
       = collection_select(:rab, :login_id, Login.all, :id, :name, prompt: true)
