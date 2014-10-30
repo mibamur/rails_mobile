@@ -170,7 +170,8 @@
                   -#= select_tag :schet_id, options_for_select( Schet.where(panel: true).all) #, { prompt: "Счёт" }, { :class => "required" }, {:required => true}) #prompt: true) #, :class => "dohod_select"{:selected => "Доход"} )
               - else
                 .ui-field-contain{:style => "display:none;"}
-                  = text_field :schet_id, :value => Schet.where(login_id: current_login.id).last.id
+                  -#= collection_select :dohod, :schet_id, Schet.where(panel: true).all, :id, :name, { prompt: "Счёт..." }, { "data-mini"=>true, "data-theme" => "d", :required=>"" }
+                  = text_field :dohod, :schet_id, :value => Schet.where(login_id: current_login.id).last.id
 
               .ui-field-contain
                 = text_field :dohod, :cash, { :placeholder => "Сумма", :style => "", :class=> "plc1", "data-mini"=>true, :required=>""}
