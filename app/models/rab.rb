@@ -25,6 +25,11 @@ class Rab < ActiveRecord::Base
   has_many :dohods
   has_many :rab_images
   accepts_nested_attributes_for :rab_images, :allow_destroy => true
+
+  has_many :smena_rabs
+  has_many :smena_shtrafs
+  # has_many :smenas, :through => :smena_rabs
+
   #cocoon_marker_data
   #cocoon_marker_end
   belongs_to :login
@@ -63,6 +68,10 @@ class Rab < ActiveRecord::Base
 
   define_method :name do
     "#{self.last_name} #{self.first_name}"
+  end
+
+  define_method :dname do
+    "#{self.doljn} #{self.last_name} #{self.first_name}"
   end
 
 end

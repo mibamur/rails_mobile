@@ -1,5 +1,6 @@
 class Smena < ActiveRecord::Base
 
+
   # extend Enumerize
   # enumerize :some_field, in: [:one, "two", "last"]
   # locale.yml
@@ -19,6 +20,15 @@ class Smena < ActiveRecord::Base
   #cocoon_marker_data
   #cocoon_marker_end
   belongs_to :schet
+
+  has_many :smena_rabs
+  accepts_nested_attributes_for :smena_rabs, :allow_destroy => true
+
+  has_many :smena_shtrafs
+  accepts_nested_attributes_for :smena_shtrafs, :allow_destroy => true
+
+
+  # has_many :rabs, :through => :smena_rabs
 
   # before_save :do_something
 
@@ -53,7 +63,9 @@ class Smena < ActiveRecord::Base
   end
 
   define_method :name do
-    "#{self.open}"
+    "#{self.todate} #{self.schet.name}"
   end
 
 end
+
+

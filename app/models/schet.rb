@@ -29,6 +29,7 @@ class Schet < ActiveRecord::Base
   has_many :perevods
   has_many :dohods
   has_many :rashods
+  has_many :smenas
 
   # before_save :do_something
 

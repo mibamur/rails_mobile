@@ -149,8 +149,8 @@ ActiveRecord::Schema.define(version: 20141030074212) do
     t.integer  "smena_id"
     t.integer  "rab_id"
     t.boolean  "allday"
-    t.time     "time_start"
-    t.time     "time_end"
+    t.string   "time_start"
+    t.string   "time_end"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

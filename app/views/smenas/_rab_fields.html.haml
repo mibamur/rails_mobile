@@ -1,0 +1,21 @@
+.nested-fields
+  .field
+    / = collection_select(:smena_rab, :rab_id, Rab.all, :id, :name, { }, { :required=>"" })
+    = f.text_field :smena_rab, :rab_id
+
+  .field
+    = f.label t(:allday)
+    = f.check_box :allday, "data-role"=>"flipswitch"
+
+  .field
+    = f.label t(:time_start)
+    = f.time_select :time_start
+
+  .field
+    = f.label t(:time_end)
+    = f.time_select :time_end
+
+
+  = link_to_remove_association "Удалить", f
+
+

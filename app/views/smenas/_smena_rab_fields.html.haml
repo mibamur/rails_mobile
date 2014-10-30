@@ -1,0 +1,33 @@
+.nested-fields
+
+  .field
+    .ui-field-contain
+      = f.label "Сотрудник"
+      = f.select :rab_id, Rab.all.map{|m| [m.dname, m.id]}
+
+  .field
+    .ui-field-contain
+      = f.label "Весь день:"
+      = f.check_box :allday, :class=>"check1"
+
+
+  .field.tttime
+    .ui-field-contain
+      = f.label t(:time_start)
+      %div{ :class=>"ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset" }
+        = f.text_field :time_start, "data-role"=>"datebox", "data-options"=>'{"mode":"timeflipbox" }', :class=>"ttime"
+
+  .field.tttime
+    .ui-field-contain
+      = f.label t(:time_end)
+      %div{ :class=>"ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset" }
+        = f.text_field :time_end, "data-role"=>"datebox", "data-options"=>'{"mode":"timeflipbox"}', :class=>"ttime"
+  %hr
+  / = link_to_remove_association "Удалить", f
+  = link_to_remove_association f do
+    .ui-btn.ui-btn-d.ui-mini.ui-icon-delete.ui-btn-icon-left.ui-corner-all
+      Удалить
+
+
+
+

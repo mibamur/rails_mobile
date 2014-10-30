@@ -24,12 +24,15 @@
 //= require jquery.validate
 //= require messages_ru
 
+//= require timeBox
+//= require mobile_datebox_i18n_ru
+
 // require highcharts/highcharts                                                           
 // require highcharts/highcharts-more                                                         
 // require highcharts/highstock
 // require highcharts/modules/exporting
 // require highcharts-data
-
+//= require cocoon
 
   // $.mobile.ajaxLinksEnabled = false;
   // $('form').attr("data-ajax", "false");
@@ -51,13 +54,26 @@ ready = function() {
 
     $(".ui-flipswitch-off").text("Нет");
     $(".ui-flipswitch-on").text("Да");
+    $( ".check1" ).flipswitch({ offText: "Нет", onText: "Да" });
 
-    // $.widget( "mobile.flipswitch", $.extend({
-    //     options: {
-    //         onText: "Да",
-    //         offText: "Нет",
-    //     }
-    // });
+    $( ".ui-flipswitch" ).each( function () {
+        if ($(this).hasClass('ui-flipswitch-active')) {
+            $(this).parent().parent().parent().parent().find(".tttime").hide();
+        } else {
+            $(this).parent().parent().parent().parent().find(".tttime").show();
+        };
+    });
+
+    $( ".ui-flipswitch" ).on( "change", function () {
+        if ($(this).hasClass('ui-flipswitch-active')) {
+            $(this).parent().parent().parent().parent().find(".tttime").slideUp();
+        } else {
+            $(this).parent().parent().parent().parent().find(".tttime").slideDown();
+        };
+    });
+
+
+
 
   // $.mobile.ajaxLinksEnabled = false;
   $('form').attr("data-ajax", "false");
@@ -67,24 +83,27 @@ ready = function() {
 
 
     $('#radio-choice-h-2a').click(function(){
-        $('#div-rashod').hide();
-        $('#div-perevod').hide();
-        $('#div-dohod').show();
+        $('#div-rashod').fadeOut("fast");//.hide("slidedown");
+        $('#div-perevod').fadeOut("fast");
+        // $('#div-dohod').show();
+        $('#div-dohod').show("slideup");
+        //slideup
     });
 
     $('#radio-choice-h-2b').click(function(){
-        $('#div-perevod').hide();
-        $('#div-dohod').hide();
-        $('#div-rashod').show();
+        $('#div-perevod').fadeOut("fast");
+        $('#div-dohod').fadeOut("fast");
+//        $('#div-rashod').fadeIn('slow');
+        $('#div-rashod').show("slideup");
     });
 
     $('#radio-choice-h-2c').click(function(){
-        $('#div-rashod').hide();
-        $('#div-dohod').hide();
-        $('#div-perevod').show();
+        $('#div-rashod').fadeOut("fast");
+        $('#div-dohod').fadeOut("fast");
+        $('#div-perevod').show("slideup");
     });
 
-//    $('#new_dohod').validate({
+    //    $('#new_dohod').validate({
         //rules: {
             //dohod_rab_id: {
                 //required: true
@@ -113,6 +132,27 @@ ready = function() {
             //alert( "Call Login Action" );
         //}
     //});
+
+    $( ".check1" ).on( "flipswitchcreate", function( event, ui ) {
+      console.log(event);
+      console.log(ui);
+    } );
+
+
+    // var ch1=$
+    // ch1.on( "flipswitchcreate", function( event, ui ) {
+    //   console.log(event);
+    //   console.log(ui);
+    // } );
+
+    // $('select#flag').change(function() {
+    //     if(val!==$(this).val()){
+    //         alert($(this).val());
+    //     }
+    //     val = $(this).val();
+    // });
+
+
 $( "body" ).on( "pageinit", function() {
 
     // $( "form" ).validate();
@@ -144,6 +184,9 @@ $( "body" ).on( "pageinit", function() {
     // });
 
 
+    // $( "input:checkbox" ).flipswitch({ offText: "Нет", onText: "Да" });
+
+
 });
 
 
@@ -151,4 +194,9 @@ $( "body" ).on( "pageinit", function() {
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
+
+$(document).on( "mobileinit", function() {
+  // $.mobile.selectmenu.prototype.options.nativeMenu = false;
+  $.mobile.ajaxLinksEnabled = false;
+});
 
