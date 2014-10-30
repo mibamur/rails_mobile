@@ -26,10 +26,10 @@ class SmenasController < ApplicationController
   def create
     @smena = Smena.new(smena_params)
     @smena.save
-    respond_with(@smena)
-    # respond_with @smena do |format|
-    #   format.html { redirect_to root_path }
-    # end
+    # respond_with(@smena)
+    respond_with @smena do |format|
+      format.html { redirect_to root_path }
+    end
   end
 
   def update

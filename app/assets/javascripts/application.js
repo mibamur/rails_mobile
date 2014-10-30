@@ -35,12 +35,29 @@
   // $('form').attr("data-ajax", "false");
 
 
+    // $.widget( "mobile.flipswitch", $.extend({
+    //     options: {
+    //         onText: "Да",
+    //         offText: "Нет",
+    //     }
+    // });
+
 var ready;
 ready = function() {
     //$('select.dohod_select option[value="1"]').attr("selected",true);
     //$('select.rashod_select option[value="1"]').attr("selected",true);
     //$('.dohod_select option:contains("")').prop('selected',true);
     //$('.dohod_select')
+
+    $(".ui-flipswitch-off").text("Нет");
+    $(".ui-flipswitch-on").text("Да");
+
+    // $.widget( "mobile.flipswitch", $.extend({
+    //     options: {
+    //         onText: "Да",
+    //         offText: "Нет",
+    //     }
+    // });
 
   // $.mobile.ajaxLinksEnabled = false;
   $('form').attr("data-ajax", "false");
