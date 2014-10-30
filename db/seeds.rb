@@ -1,10 +1,21 @@
-Role.create!([
-  {name: "user", resource_id: nil, resource_type: nil},
-  {name: "admin", resource_id: nil, resource_type: nil},
-  {name: "root", resource_id: nil, resource_type: nil},
-  {name: "dev", resource_id: nil, resource_type: nil},
-  {name: "reg", resource_id: nil, resource_type: nil}
+['user', 'admin', 'root', 'dev'].each do |role|
+  Role.find_or_create_by({name: role})
+end
+Login.create!([
+  {email: "bezimanka@mail.ru", password: "1244" },
+  {email: "pionerskaya@mail.ru", password: "4481"},
+  {email: "teplaya@mail.ru", password: "4567"},
+  {email: "bira@mail.ru", password: "4343"},
+  {email: "andr@mail.ru", password: "4545"}
 ])
+
+lroot=Login.new
+lroot.email="admin@mail.ru"
+lroot.password="admin@mail.ru"
+lroot.password_confirmation="admin@mail.ru"
+lroot.add_role :root
+lroot.save!
+
 Role::HABTM_Logins.create!([
   {login_id: 1, role_id: 5},
   {login_id: 2, role_id: 5},

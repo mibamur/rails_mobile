@@ -1,7 +1,7 @@
 class CatDohod < ActiveRecord::Base
   has_many :dohods
 
-  validates :odin, :inclusion => {:in => [true, false]}
+#  validates :odin, :inclusion => {:in => [true, false]}
 
   # 421621 V
   # функциональный семантический анализ степеней наречий в современном англинском языке
