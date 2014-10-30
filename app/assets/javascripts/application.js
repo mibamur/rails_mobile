@@ -30,6 +30,10 @@
 // require highcharts/modules/exporting
 // require highcharts-data
 
+  $.mobile.ajaxLinksEnabled = false;
+  $('form').attr("data-ajax", "false");
+
+
 var ready;
 ready = function() {
     //$('select.dohod_select option[value="1"]').attr("selected",true);
