@@ -30,12 +30,16 @@ class PerevodsController < ApplicationController
 
   def update
     @perevod.update(perevod_params)
-    respond_with(@perevod)
+    respond_with @perevod do |format|
+      format.html { redirect_to root_path }
+    end
   end
 
   def destroy
     @perevod.destroy
-    respond_with(@perevod)
+    respond_with @perevod do |format|
+      format.html { redirect_to root_path }
+    end
   end
 
   private

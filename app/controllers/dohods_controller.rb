@@ -28,12 +28,16 @@ class DohodsController < ApplicationController
 
   def update
     @dohod.update(dohod_params)
-    respond_with(@dohod)
+    respond_with @dohod do |format|
+      format.html { redirect_to root_path }
+    end
   end
 
   def destroy
     @dohod.destroy
-    respond_with(@dohod)
+    respond_with @dohod do |format|
+      format.html { redirect_to root_path }
+    end
   end
 
   private
