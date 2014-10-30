@@ -1,0 +1,53 @@
+%h1
+  = t(:smena_rabs)
+  = link_to new_smena_rab_path, "data-ajax" => "false" do
+    .ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-plus.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", "data-ajax"=>"false", :style=>"float:right;"}
+      = t(:new)
+
+.docs-main
+  %table#tabl_smena_rab.tablesaw{"data-minimap" => "", "data-mode" => "swipe", "data-mode-switch" => "", "data-sortable" => "", "data-sortable-switch" => ""}
+    %thead
+      %tr
+
+
+        %th{"data-priority" => "1", "data-sortable-col" => ""}= t(:smena)
+
+        %th{"data-priority" => "2", "data-sortable-col" => ""}= t(:rab)
+
+        %th{"data-priority" => "3", "data-sortable-col" => ""}= t(:allday)
+
+        %th{"data-priority" => "4", "data-sortable-col" => ""}= t(:time_start)
+
+        %th{"data-priority" => "5", "data-sortable-col" => ""}= t(:time_end)
+        %th{"data-priority" => "", "data-sortable-col" => ""}
+    %tbody
+      - @smena_rabs.each do |smena_rab|
+        %tr
+
+
+          %td
+            - if smena_rab.smena_id
+              = smena_rab.smena.name
+          
+
+          %td
+            - if smena_rab.rab_id
+              = smena_rab.rab.name
+          
+
+          %td
+            = smena_rab.allday ? "Да" : "Нет"
+          
+          %td
+            = smena_rab.time_start
+
+          %td
+            = smena_rab.time_end
+
+          %td
+            = link_to 'Изменить', edit_smena_rab_path(smena_rab), :class => "ui-btn ui-btn-icon-left ui-icon-edit", "data-ajax" => false
+            = link_to 'Удалить', smena_rab, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "ui-btn ui-btn-icon-left ui-icon-delete", "data-ajax" => false
+
+
+
+

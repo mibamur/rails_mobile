@@ -1,0 +1,37 @@
+= form_for @smena_rab, "data-ajax" => false do |f|
+  - if @smena_rab.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@smena_rab.errors.count, "error")} prohibited this rab from being saved:"
+      %ul
+        - @smena_rab.errors.full_messages.each do |msg|
+          %li= msg
+  %div{ :class=>"smena"}
+    .field
+      = f.label t(:smena)
+      = collection_select(:smena_rab, :smena_id, Smena.all, :id, :name, prompt: true)
+
+  %div{ :class=>"rab"}
+    .field
+      = f.label t(:rab)
+      = collection_select(:smena_rab, :rab_id, Rab.all, :id, :name, prompt: true)
+
+  %div{ :class=>"allday"}
+    .field
+      = f.label t(:allday)
+    = f.check_box :allday
+
+  %div{ :class=>"time_start"}
+    .field
+      = f.label t(:time_start)
+      = f.time_select :time_start
+
+  %div{ :class=>"time_end"}
+    .field
+      = f.label t(:time_end)
+      = f.time_select :time_end
+
+      - 'TABB'
+  %div
+    .field
+      = f.submit t('.save', :default => t("helpers.links.save")), :class => "btn btn-primary", "data-ajax" => false
+

@@ -1,4 +1,19 @@
 Rails.application.routes.draw do
+  resources :smena_shtrafs do
+  # CSV,XLS special for import action
+    collection { post :import }
+  end
+
+  resources :smena_rabs do
+  # CSV,XLS special for import action
+    collection { post :import }
+  end
+
+  resources :smenas do
+  # CSV,XLS special for import action
+    collection { post :import }
+  end
+
   resources :perevods do
   # CSV,XLS special for import action
     collection { post :import }

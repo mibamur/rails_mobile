@@ -1,0 +1,47 @@
+%h1
+  = t(:smena_shtrafs)
+  = link_to new_smena_shtraf_path, "data-ajax" => "false" do
+    .ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-plus.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", "data-ajax"=>"false", :style=>"float:right;"}
+      = t(:new)
+
+.docs-main
+  %table#tabl_smena_shtraf.tablesaw{"data-minimap" => "", "data-mode" => "swipe", "data-mode-switch" => "", "data-sortable" => "", "data-sortable-switch" => ""}
+    %thead
+      %tr
+
+
+        %th{"data-priority" => "1", "data-sortable-col" => ""}= t(:smena)
+
+        %th{"data-priority" => "2", "data-sortable-col" => ""}= t(:rab)
+
+        %th{"data-priority" => "3", "data-sortable-col" => ""}= t(:cash)
+
+        %th{"data-priority" => "4", "data-sortable-col" => ""}= t(:comment)
+        %th{"data-priority" => "", "data-sortable-col" => ""}
+    %tbody
+      - @smena_shtrafs.each do |smena_shtraf|
+        %tr
+
+
+          %td
+            - if smena_shtraf.smena_id
+              = smena_shtraf.smena.name
+          
+
+          %td
+            - if smena_shtraf.rab_id
+              = smena_shtraf.rab.name
+          
+          %td
+            = smena_shtraf.cash
+
+          %td
+            = smena_shtraf.comment
+
+          %td
+            = link_to 'Изменить', edit_smena_shtraf_path(smena_shtraf), :class => "ui-btn ui-btn-icon-left ui-icon-edit", "data-ajax" => false
+            = link_to 'Удалить', smena_shtraf, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "ui-btn ui-btn-icon-left ui-icon-delete", "data-ajax" => false
+
+
+
+

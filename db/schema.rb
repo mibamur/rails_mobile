@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141030070735) do
+ActiveRecord::Schema.define(version: 20141030071400) do
 
   create_table "cat_dohods", force: true do |t|
     t.string   "name"
@@ -144,6 +144,40 @@ ActiveRecord::Schema.define(version: 20141030070735) do
   end
 
   add_index "schets", ["login_id"], name: "index_schets_on_login_id"
+
+  create_table "smena_rabs", force: true do |t|
+    t.integer  "smena_id"
+    t.integer  "rab_id"
+    t.boolean  "allday"
+    t.time     "time_start"
+    t.time     "time_end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "smena_rabs", ["rab_id"], name: "index_smena_rabs_on_rab_id"
+  add_index "smena_rabs", ["smena_id"], name: "index_smena_rabs_on_smena_id"
+
+  create_table "smena_shtrafs", force: true do |t|
+    t.integer  "smena_id"
+    t.integer  "rab_id"
+    t.decimal  "cash",       precision: 8, scale: 2
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "smena_shtrafs", ["rab_id"], name: "index_smena_shtrafs_on_rab_id"
+  add_index "smena_shtrafs", ["smena_id"], name: "index_smena_shtrafs_on_smena_id"
+
+  create_table "smenas", force: true do |t|
+    t.date     "todate"
+    t.integer  "schet_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "smenas", ["schet_id"], name: "index_smenas_on_schet_id"
 
   create_table "versions", force: true do |t|
     t.string   "item_type",  null: false

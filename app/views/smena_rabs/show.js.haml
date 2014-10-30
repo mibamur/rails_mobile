@@ -1,0 +1,13 @@
+// для Модала при создании
+
+// Уведомление 
+var smena_rab_#{@smena_rab_id}_show = function(){ new PNotify({ title: "Запись #{@smena_rab.name} создана.", type: 'success', icon: false, hide: true, delay: 1500, buttons: { sticker: false } })};
+smena_rab_#{@smena_rab_id}_show();
+
+// Добавление в dataTables
+// $('#dataTables_smena_rab').append("#{j render partial: 'smena_rabs/dataTable/index_td', locals: {smena_rab: @smena_rab }}");
+
+
+
+// Вызов функции Модала
+$('#new_smena_rab_modal').modal_success();

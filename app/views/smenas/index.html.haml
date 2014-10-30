@@ -1,0 +1,35 @@
+%h1
+  = t(:smenas)
+  = link_to new_smena_path, "data-ajax" => "false" do
+    .ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-plus.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", "data-ajax"=>"false", :style=>"float:right;"}
+      = t(:new)
+
+.docs-main
+  %table#tabl_smena.tablesaw{"data-minimap" => "", "data-mode" => "swipe", "data-mode-switch" => "", "data-sortable" => "", "data-sortable-switch" => ""}
+    %thead
+      %tr
+
+
+        %th{"data-priority" => "1", "data-sortable-col" => ""}= t(:todate)
+
+        %th{"data-priority" => "2", "data-sortable-col" => ""}= t(:schet)
+        %th{"data-priority" => "", "data-sortable-col" => ""}
+    %tbody
+      - @smenas.each do |smena|
+        %tr
+
+          %td
+            = smena.todate
+
+
+          %td
+            - if smena.schet_id
+              = smena.schet.name
+          
+          %td
+            = link_to 'Изменить', edit_smena_path(smena), :class => "ui-btn ui-btn-icon-left ui-icon-edit", "data-ajax" => false
+            = link_to 'Удалить', smena, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "ui-btn ui-btn-icon-left ui-icon-delete", "data-ajax" => false
+
+
+
+
