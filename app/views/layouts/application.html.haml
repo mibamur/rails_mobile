@@ -25,7 +25,7 @@
         %a.ui-btn.ui-btn-icon-notext.ui-corner-all.ui-icon-plus.ui-nodisc-icon.ui-btn-right{"data-inline" => "true", "data-mini" => "true", "data-role" => "button", :href => "#rightpanel3"} Меню
       .ui-content{:role => "main"}
 
-        .container
+        -#.container
           .row
             .span3.bs-docs-sidebar
               %ul.nav.nav-list.bs-docs-sidenav.affix
@@ -46,6 +46,7 @@
               %section#basic_line
               %section#line_ajax
               %section#line-labels
+
         = yield
       .jqm-footer{"data-position" => "fixed", "data-role" => "footer", "data-tap-toggle" => "false", :style => "z-index:10;", "data-theme" => "b" }
         %div{"data-role" => "footer"}

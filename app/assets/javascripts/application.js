@@ -24,11 +24,11 @@
 //= require jquery.validate
 //= require messages_ru
 
-//= require highcharts/highcharts                                                           
-//= require highcharts/highcharts-more                                                         
-//= require highcharts/highstock
-//= require highcharts/modules/exporting
-//= require highcharts-data
+// require highcharts/highcharts                                                           
+// require highcharts/highcharts-more                                                         
+// require highcharts/highstock
+// require highcharts/modules/exporting
+// require highcharts-data
 
 var ready;
 ready = function() {
