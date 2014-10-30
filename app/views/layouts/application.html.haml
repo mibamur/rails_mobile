@@ -60,39 +60,40 @@
               %li
                 %a{"data-icon" => "gear", "data-ajax" => "false", :href => "/logins/sign_out"} Выход
 
-      #leftpanel3.jqm-navmenu-panel{"data-dismissible" => "true","data-display" => "overlay", "data-position" => "left", "data-role" => "panel", "data-theme" => "b"}
 
+      - if current_login.has_role? :admin or current_login.has_role? :root
+        #leftpanel3.jqm-navmenu-panel{"data-dismissible" => "true","data-display" => "overlay", "data-position" => "left", "data-role" => "panel", "data-theme" => "b"}
+          %ul.jqm-list.ui-alt-icon.ui-nodisc-icon{"data-role"=>"listview", "data-theme" => "c"}
+            %li{"data-filtertext" => "demos homepage", "data-icon" => "home"}
+              %a{:href => "/", "data-ajax" => "false"} Панель
+            %li{"data-icon" => "star"}
+              %a{"data-ajax" => "false", :href => "/schets/"} Счета
+            %li{"data-icon" => "user"}
+              %a{"data-ajax" => "false", :href => "/rabs/"} Работники
+            %li{"data-icon" => "arrow-u-r"}
+              %a{"data-ajax" => "false", :href => "/dohods/"} Доходы
+            %li{"data-icon" => "arrow-d-r"}
+              %a{"data-ajax" => "false", :href => "/rashods/"} Расходы
+            %li{"data-icon" => "forward"}
+              %a{"data-ajax" => "false", :href => "/perevods/"} Переводы
+            %li.ui-collapsible.ui-collapsible-themed-content.ui-collapsible-collapsed{"data-collapsed-icon" => "carat-d", "data-enhanced" => "true", "data-expanded-icon" => "carat-u", "data-iconpos" => "right", "data-inset" => "false", "data-role" => "collapsible"}
+              %h3.ui-collapsible-heading.ui-collapsible-heading-collapsed
+                %a.ui-collapsible-heading-toggle.ui-btn.ui-btn-icon-right.ui-btn-inherit.ui-icon-carat-d{:href => "#"}
+                  Категории
+                  %span.ui-collapsible-heading-status нажмите чтобы развернуть
+              .ui-collapsible-content.ui-body-inherit.ui-collapsible-content-collapsed
+                %ul{"data-role"=>"listview"}
+                  %li{"data-filtertext" => ""}
+                    %a{"data-ajax" => "false", :href => "/cat_rashods/"} Расходы
+                  %li{"data-filtertext" => ""}
+                    %a{"data-ajax" => "false", :href => "/cat_dohods/"} Доходы
+            %li{"data-icon" => ""}
+              %a{"data-ajax" => "false", :href => "/logins/sign_out"} Выход
+          / %a{"data-icon" => "delete", "data-inline" => "true", "data-rel" => "close", "data-role" => "button", "data-theme" => "a", :href => "#demo-links"} Close panel
+          / /content wrapper for padding
+        / /leftpanel3
+        / rightpanel3
 
-        %ul.jqm-list.ui-alt-icon.ui-nodisc-icon{"data-role"=>"listview", "data-theme" => "c"}
-          %li{"data-filtertext" => "demos homepage", "data-icon" => "home"}
-            %a{:href => "/", "data-ajax" => "false"} Панель
-          %li{"data-icon" => "star"}
-            %a{"data-ajax" => "false", :href => "/schets/"} Счета
-          %li{"data-icon" => "user"}
-            %a{"data-ajax" => "false", :href => "/rabs/"} Работники
-          %li{"data-icon" => "arrow-u-r"}
-            %a{"data-ajax" => "false", :href => "/dohods/"} Доходы
-          %li{"data-icon" => "arrow-d-r"}
-            %a{"data-ajax" => "false", :href => "/rashods/"} Расходы
-          %li{"data-icon" => "forward"}
-            %a{"data-ajax" => "false", :href => "/perevods/"} Переводы
-          %li.ui-collapsible.ui-collapsible-themed-content.ui-collapsible-collapsed{"data-collapsed-icon" => "carat-d", "data-enhanced" => "true", "data-expanded-icon" => "carat-u", "data-iconpos" => "right", "data-inset" => "false", "data-role" => "collapsible"}
-            %h3.ui-collapsible-heading.ui-collapsible-heading-collapsed
-              %a.ui-collapsible-heading-toggle.ui-btn.ui-btn-icon-right.ui-btn-inherit.ui-icon-carat-d{:href => "#"}
-                Категории
-                %span.ui-collapsible-heading-status нажмите чтобы развернуть
-            .ui-collapsible-content.ui-body-inherit.ui-collapsible-content-collapsed
-              %ul{"data-role"=>"listview"}
-                %li{"data-filtertext" => ""}
-                  %a{"data-ajax" => "false", :href => "/cat_rashods/"} Расходы
-                %li{"data-filtertext" => ""}
-                  %a{"data-ajax" => "false", :href => "/cat_dohods/"} Доходы
-          %li{"data-icon" => ""}
-            %a{"data-ajax" => "false", :href => "/logins/sign_out"} Выход
-        / %a{"data-icon" => "delete", "data-inline" => "true", "data-rel" => "close", "data-role" => "button", "data-theme" => "a", :href => "#demo-links"} Close panel
-        / /content wrapper for padding
-      / /leftpanel3
-      / rightpanel3
       #rightpanel3{"data-dismissible" => "true", "data-display" => "overlay", "data-position" => "right", "data-role" => "panel", "data-mini"=>"true", "data-theme" => "a"}
         .panel-content
           .s{:align => "center"}
