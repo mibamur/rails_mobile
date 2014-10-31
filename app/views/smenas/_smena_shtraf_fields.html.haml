@@ -1,0 +1,27 @@
+.nested-fields
+
+  .field
+    .ui-field-contain
+      = f.label "Сотрудник"
+      = f.select :rab_id, Rab.all.map{|m| [m.dname, m.id]}
+
+  .field
+    .ui-field-contain
+      = f.label "Сумма"
+      = f.text_field :cash, :class=>"ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset"
+
+  .field
+    .ui-field-contain
+      = f.label "Комментарий"
+      = f.text_area :comment, :class=>"ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset", "data-theme"=>"b"
+
+
+  %hr
+  / = link_to_remove_association "Удалить", f
+  = link_to_remove_association f do
+    .ui-btn.ui-btn-d.ui-mini.ui-icon-delete.ui-btn-icon-left.ui-corner-all
+      Удалить
+
+
+
+

@@ -35,8 +35,19 @@
               .ui-btn.ui-btn-f.ui-mini.ui-icon-plus.ui-btn-icon-left.ui-corner-all
                 Добавить в смену
 
-    %li
-      %a{:href => "#"} Штрафы
+
+  %ul{"data-inset" => "true", "data-role" => "listview"}
+    %li{"data-role" => "list-divider", "data-theme" => "d"} Штрафы
+    %li     
+      #smena_shtrafs.field
+        = f.fields_for :smena_shtrafs do |smena_shtraf|
+          = render 'smena_shtraf_fields', :f => smena_shtraf
+        .links
+          .field
+            = link_to_add_association f, :smena_shtrafs do
+              .ui-btn.ui-btn-h.ui-mini.ui-icon-plus.ui-btn-icon-left.ui-corner-all
+                Добавить штраф
+
 
   %hr
   %div
@@ -51,28 +62,26 @@
     $(".ttime").datebox();
     $( ".check1" ).flipswitch({ offText: "Нет", onText: "Да" });
 
-    $( ".ui-flipswitch" ).each( function () {
+    $( ".ui-flipswitch" ).on( "change", function () {
         if ($(this).hasClass('ui-flipswitch-active')) {
-            $(this).parent().parent().parent().parent().find(".tttime").hide();
+            $(this).parent().parent().parent().parent().find(".tttime").first().fadeOut();
+            $(this).parent().parent().parent().parent().find(".tttime").next().first().fadeOut();
+
         } else {
-            $(this).parent().parent().parent().parent().find(".tttime").show();
+
+            $(this).parent().parent().parent().parent().find(".tttime").first().fadeIn();
+            $(this).parent().parent().parent().parent().find(".tttime").next().first().fadeIn();
         };
     });
 
-    $( ".ui-flipswitch" ).on( "change", function () {
-        if ($(this).hasClass('ui-flipswitch-active')) {
-            $(this).parent().parent().parent().parent().find(".tttime").slideUp();
-        } else {
-            $(this).parent().parent().parent().parent().find(".tttime").slideDown();
-        };
-    });
     
+
   };
 
   var tab_table_js_after_cocoon_ins_smena_rab = function() {
 
     $('#smena_rabs').on('cocoon:after-insert', function(e, insertedItem) {
-      after_cocoon_ins_fn_smena_rab();      
+      after_cocoon_ins_fn_smena_rab();
     });
 
     $('#smena_rabs')
@@ -80,6 +89,24 @@
         task_to_be_added.fadeIn('slow');
       })
       .on('cocoon:after-insert', function(e, added_task) {
+
+      })
+      .on('cocoon:before-remove', function(e, task) {
+        $(this).data('remove-timeout', 1000);
+        task.fadeOut('slow');
+      });
+
+
+    $('#smena_shtrafs').on('cocoon:after-insert', function(e, insertedItem) {
+      $( "select" ).selectmenu();
+    });
+     
+    $('#smena_shtrafs')
+      .on('cocoon:before-insert', function(e,task_to_be_added) {
+        task_to_be_added.fadeIn('slow');
+      })
+      .on('cocoon:after-insert', function(e, added_task) {
+
       })
       .on('cocoon:before-remove', function(e, task) {
         $(this).data('remove-timeout', 1000);

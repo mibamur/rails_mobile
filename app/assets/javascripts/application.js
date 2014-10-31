@@ -56,6 +56,7 @@ ready = function() {
     $(".ui-flipswitch-on").text("Да");
     $( ".check1" ).flipswitch({ offText: "Нет", onText: "Да" });
 
+
     $( ".ui-flipswitch" ).each( function () {
         if ($(this).hasClass('ui-flipswitch-active')) {
             $(this).parent().parent().parent().parent().find(".tttime").hide();
@@ -64,13 +65,19 @@ ready = function() {
         };
     });
 
+
     $( ".ui-flipswitch" ).on( "change", function () {
         if ($(this).hasClass('ui-flipswitch-active')) {
-            $(this).parent().parent().parent().parent().find(".tttime").slideUp();
+            $(this).parent().parent().parent().parent().find(".tttime").first().fadeOut();
+            $(this).parent().parent().parent().parent().find(".tttime").next().first().fadeOut();
+
         } else {
-            $(this).parent().parent().parent().parent().find(".tttime").slideDown();
+
+            $(this).parent().parent().parent().parent().find(".tttime").first().fadeIn();
+            $(this).parent().parent().parent().parent().find(".tttime").next().first().fadeIn();
         };
     });
+
 
 
 
@@ -133,25 +140,6 @@ ready = function() {
         //}
     //});
 
-    $( ".check1" ).on( "flipswitchcreate", function( event, ui ) {
-      console.log(event);
-      console.log(ui);
-    } );
-
-
-    // var ch1=$
-    // ch1.on( "flipswitchcreate", function( event, ui ) {
-    //   console.log(event);
-    //   console.log(ui);
-    // } );
-
-    // $('select#flag').change(function() {
-    //     if(val!==$(this).val()){
-    //         alert($(this).val());
-    //     }
-    //     val = $(this).val();
-    // });
-
 
 $( "body" ).on( "pageinit", function() {
 
@@ -185,6 +173,11 @@ $( "body" ).on( "pageinit", function() {
 
 
     // $( "input:checkbox" ).flipswitch({ offText: "Нет", onText: "Да" });
+
+    $(".ui-flipswitch-off").text("Нет");
+    $(".ui-flipswitch-on").text("Да");
+    $( ".check1" ).flipswitch({ offText: "Нет", onText: "Да" });
+
 
 
 });
