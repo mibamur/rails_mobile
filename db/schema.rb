@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141030071400) do
+ActiveRecord::Schema.define(version: 20141030074212) do
 
   create_table "cat_dohods", force: true do |t|
     t.string   "name"
@@ -149,8 +149,8 @@ ActiveRecord::Schema.define(version: 20141030071400) do
     t.integer  "smena_id"
     t.integer  "rab_id"
     t.boolean  "allday"
-    t.time     "time_start"
-    t.time     "time_end"
+    t.string   "time_start"
+    t.string   "time_end"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -171,6 +171,7 @@ ActiveRecord::Schema.define(version: 20141030071400) do
   add_index "smena_shtrafs", ["smena_id"], name: "index_smena_shtrafs_on_smena_id"
 
   create_table "smenas", force: true do |t|
+    t.boolean  "open"
     t.date     "todate"
     t.integer  "schet_id"
     t.datetime "created_at"

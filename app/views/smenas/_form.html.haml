@@ -5,23 +5,115 @@
       %ul
         - @smena.errors.full_messages.each do |msg|
           %li= msg
-  %div{ :class=>"open"}
-    .field
-      = f.label t(:open)
-    = f.check_box :open
-
-  %div{ :class=>"todate"}
-    .field
-      = f.label t(:todate)
+  %div
+    .field{ :class=>"todate" }
       = f.date_select :todate
-
-  %div{ :class=>"schet"}
     .field
-      = f.label t(:schet)
-      = collection_select(:smena, :schet_id, Schet.all, :id, :name, prompt: true)
+      .ui-field-contain
+        = f.label "Счёт"
+        - if current_login.has_role? :admin or current_login.has_role? :root
+          = collection_select :smena, :schet_id, Schet.where(panel: true).all, :id, :name, { prompt: "Счёт..." }, { "data-mini"=>true, "data-theme" => "d", :required=>"" }
+        - else
+          = text_field :smena, :schet_id, :value => Schet.where(login_id: current_login.id).last.id, :style => "display:none;"
+          = Schet.where(login_id: current_login.id).last.name
 
-      - 'TABB'
+      .field
+        .ui-field-contain
+          = f.check_box :open, "data-role"=>"flipswitch", "data-theme"=>"g"
+          = f.label "Октрыта:"
+  %hr
+
+  %ul{"data-inset" => "true", "data-role" => "listview"}
+    %li{"data-role" => "list-divider", "data-theme" => "a"} Сотрудники на смене
+    %li     
+      #smena_rabs.field
+        = f.fields_for :smena_rabs do |smena_rab|
+          = render 'smena_rab_fields', :f => smena_rab
+        .links
+          .field
+            = link_to_add_association f, :smena_rabs do
+              .ui-btn.ui-btn-f.ui-mini.ui-icon-plus.ui-btn-icon-left.ui-corner-all
+                Добавить в смену
+
+
+  %ul{"data-inset" => "true", "data-role" => "listview"}
+    %li{"data-role" => "list-divider", "data-theme" => "d"} Штрафы
+    %li     
+      #smena_shtrafs.field
+        = f.fields_for :smena_shtrafs do |smena_shtraf|
+          = render 'smena_shtraf_fields', :f => smena_shtraf
+        .links
+          .field
+            = link_to_add_association f, :smena_shtrafs do
+              .ui-btn.ui-btn-h.ui-mini.ui-icon-plus.ui-btn-icon-left.ui-corner-all
+                Добавить штраф
+
+
+  %hr
   %div
     .field
-      = f.submit t('.save', :default => t("helpers.links.save")), :class => "btn btn-primary", "data-ajax" => false
+      = f.submit t('.save', :default => t("helpers.links.save")), :class => "ui-btn ui-btn-f ui-mini btn btn-primary ui-icon-check ui-btn-icon-left", "data-mini"=>true, "data-ajax" => false, "data-theme" => "g", "data-icon"=>"check"
 
+
+:javascript
+
+  var after_cocoon_ins_fn_smena_rab = function() {
+    $( "select" ).selectmenu();
+    $(".ttime").datebox();
+    $( ".check1" ).flipswitch({ offText: "Нет", onText: "Да" });
+
+    $( ".ui-flipswitch" ).on( "change", function () {
+        if ($(this).hasClass('ui-flipswitch-active')) {
+            $(this).parent().parent().parent().parent().find(".tttime").first().fadeOut();
+            $(this).parent().parent().parent().parent().find(".tttime").next().first().fadeOut();
+
+        } else {
+
+            $(this).parent().parent().parent().parent().find(".tttime").first().fadeIn();
+            $(this).parent().parent().parent().parent().find(".tttime").next().first().fadeIn();
+        };
+    });
+
+    
+
+  };
+
+  var tab_table_js_after_cocoon_ins_smena_rab = function() {
+
+    $('#smena_rabs').on('cocoon:after-insert', function(e, insertedItem) {
+      after_cocoon_ins_fn_smena_rab();
+    });
+
+    $('#smena_rabs')
+      .on('cocoon:before-insert', function(e,task_to_be_added) {
+        task_to_be_added.fadeIn('slow');
+      })
+      .on('cocoon:after-insert', function(e, added_task) {
+
+      })
+      .on('cocoon:before-remove', function(e, task) {
+        $(this).data('remove-timeout', 1000);
+        task.fadeOut('slow');
+      });
+
+
+    $('#smena_shtrafs').on('cocoon:after-insert', function(e, insertedItem) {
+      $( "select" ).selectmenu();
+    });
+     
+    $('#smena_shtrafs')
+      .on('cocoon:before-insert', function(e,task_to_be_added) {
+        task_to_be_added.fadeIn('slow');
+      })
+      .on('cocoon:after-insert', function(e, added_task) {
+
+      })
+      .on('cocoon:before-remove', function(e, task) {
+        $(this).data('remove-timeout', 1000);
+        task.fadeOut('slow');
+      });
+
+  };
+
+  $(document).ready(tab_table_js_after_cocoon_ins_smena_rab);
+  $(document).on('page:load', tab_table_js_after_cocoon_ins_smena_rab);

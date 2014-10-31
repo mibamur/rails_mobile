@@ -1,0 +1,106 @@
+!!!
+%html
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %link{:href => "/css/jquery.mobile.flatui.css", :rel => "stylesheet", :type => "text/css"}/
+    %script{:src => "/js/jquery.js"}
+    %script{:src => "/js/jquery.mobile-1.4.0-rc.1.js"}
+  %body
+    %div{"data-role" => "page"}
+      #panel{"data-display" => "overlay", "data-position" => "right", "data-role" => "panel", "data-theme" => "a"}
+      #panel2{"data-display" => "overlay", "data-position" => "left", "data-role" => "panel", "data-theme" => "a"}
+      %div{"data-role" => "header"}
+        %a{"data-icon" => "home", "data-iconpos" => "notext", "data-role" => "button", :href => "#panel2", :title => "Home"} Home
+        %h1 A
+        %a{"data-icon" => "flat-menu", "data-iconpos" => "notext", "data-role" => "button", :href => "#panel"}
+      %div{"data-role" => "content", :role => "main"}
+        %p
+          Sample text and
+          = succeed "." do
+            %a{:href => "#"} links
+
+        %fieldset.ui-grid-a
+          .ui-block-a
+            %button{"data-icon" => "flat-settings", "data-theme" => "a"} Button A
+          .ui-block-b
+            %button{"data-icon" => "flat-new", "data-theme" => "b"} Button B
+        %fieldset.ui-grid-a
+          .ui-block-a
+            %button{"data-icon" => "flat-man", "data-theme" => "c"} Button C
+          .ui-block-b
+            %button{"data-icon" => "flat-mail", "data-theme" => "d"} Button D
+        %fieldset.ui-grid-a
+          .ui-block-a
+            %button{"data-icon" => "flat-lock", "data-theme" => "e"} Button E
+          .ui-block-b
+            %button{"data-icon" => "flat-menu", "data-theme" => "f"} Button F
+        %fieldset.ui-grid-a
+          .ui-block-a
+            %button{"data-icon" => "flat-heart", "data-theme" => "g"} Button G
+
+        %ul{"data-inset" => "true", "data-role" => "listview"}
+          %li{"data-role" => "list-divider", "data-theme" => "a"} List Header
+          %li Read-only list item
+          %li
+            %a{:href => "#"} Linked list item
+        %div{"data-content-theme" => "b", "data-role" => "collapsible-set", "data-theme" => "b"}
+          %div{"data-collapsed" => "false", "data-collapsed-icon" => "flat-time", "data-expanded-icon" => "flat-cross", "data-role" => "collapsible"}
+            %h3 Section 1
+            %p I'm the collapsible content for section 1
+          %div{"data-collapsed-icon" => "flat-calendar", "data-expanded-icon" => "flat-cross", "data-role" => "collapsible"}
+            %h3 Section 2
+            %p I'm the collapsible content for section 2
+          %div{"data-collapsed-icon" => "flat-settings", "data-expanded-icon" => "flat-cross", "data-role" => "collapsible"}
+            %h3 Section 3
+            %p I'm the collapsible content for section 3
+        %div{"data-role" => "fieldcontain"}
+          %fieldset{"data-role" => "controlgroup"}
+            %input#radio-choice-1-a{:checked => "checked", "data-theme" => "c", :name => "radio-choice-a", :type => "radio", :value => "choice-1"}/
+            %label{:for => "radio-choice-1-a"} Radio 1
+            %input#radio-choice-1-b{"data-theme" => "c", :name => "radio-choice-a", :type => "radio", :value => "choice-2"}/
+            %label{:for => "radio-choice-1-b"} Radio 2
+            %input#checkbox-a{:checked => "checked", "data-theme" => "c", :name => "checkbox-a", :type => "checkbox"}/
+            %label{:for => "checkbox-a"} Checkbox
+        %div{"data-role" => "fieldcontain"}
+          %a{"data-icon" => "home", "data-iconpos" => "notext", "data-inline" => "true", "data-role" => "button", "data-theme" => "b", :href => "#"} Home
+          %a{"data-icon" => "flat-video", "data-iconpos" => "notext", "data-inline" => "true", "data-role" => "button", "data-theme" => "b", :href => "#"} Video
+          %a{"data-icon" => "flat-time", "data-iconpos" => "notext", "data-inline" => "true", "data-role" => "button", "data-theme" => "b", :href => "#"} Time
+          %a{"data-icon" => "flat-settings", "data-iconpos" => "notext", "data-inline" => "true", "data-role" => "button", "data-theme" => "b", :href => "#"} Settings
+          %a{"data-icon" => "flat-plus", "data-iconpos" => "notext", "data-inline" => "true", "data-role" => "button", "data-theme" => "b", :href => "#"} Plus
+          %a{"data-icon" => "flat-new", "data-iconpos" => "notext", "data-inline" => "true", "data-role" => "button", "data-theme" => "b", :href => "#"} New
+          %a{"data-icon" => "flat-menu", "data-iconpos" => "notext", "data-inline" => "true", "data-role" => "button", "data-theme" => "b", :href => "#"} Menu
+          %a{"data-icon" => "flat-man", "data-iconpos" => "notext", "data-inline" => "true", "data-role" => "button", "data-theme" => "b", :href => "#"} Man
+          %a{"data-icon" => "flat-mail", "data-iconpos" => "notext", "data-inline" => "true", "data-role" => "button", "data-theme" => "b", :href => "#"} Mail
+          %a{"data-icon" => "flat-lock", "data-iconpos" => "notext", "data-inline" => "true", "data-role" => "button", "data-theme" => "b", :href => "#"} Lock
+          %a{"data-icon" => "flat-location", "data-iconpos" => "notext", "data-inline" => "true", "data-role" => "button", "data-theme" => "b", :href => "#"} Location
+          %a{"data-icon" => "flat-heart", "data-iconpos" => "notext", "data-inline" => "true", "data-role" => "button", "data-theme" => "b", :href => "#"} Heart
+          %a{"data-icon" => "flat-eye", "data-iconpos" => "notext", "data-inline" => "true", "data-role" => "button", "data-theme" => "b", :href => "#"} Eye
+          %a{"data-icon" => "flat-cross", "data-iconpos" => "notext", "data-inline" => "true", "data-role" => "button", "data-theme" => "b", :href => "#"} Cross
+          %a{"data-icon" => "flat-cmd", "data-iconpos" => "notext", "data-inline" => "true", "data-role" => "button", "data-theme" => "b", :href => "#"} Cmd
+          %a{"data-icon" => "flat-checkround", "data-iconpos" => "notext", "data-inline" => "true", "data-role" => "button", "data-theme" => "b", :href => "#"} Checkround
+          %a{"data-icon" => "flat-calendar", "data-iconpos" => "notext", "data-inline" => "true", "data-role" => "button", "data-theme" => "b", :href => "#"} Calendar
+          %a{"data-icon" => "flat-bubble", "data-iconpos" => "notext", "data-inline" => "true", "data-role" => "button", "data-theme" => "b", :href => "#"} Bubble
+          %a{"data-icon" => "flat-volume", "data-iconpos" => "notext", "data-inline" => "true", "data-role" => "button", "data-theme" => "b", :href => "#"} Volume
+          %a{"data-icon" => "flat-camera", "data-iconpos" => "notext", "data-inline" => "true", "data-role" => "button", "data-theme" => "b", :href => "#"} Camera
+        %select#flip-1{"data-role" => "slider", :name => "flip-1"}
+          %option{:value => "off"} Off
+          %option{:selected => "", :value => "on"} On
+        %div{"data-role" => "fieldcontain"}
+          %div{"data-role" => "controlgroup", "data-type" => "horizontal"}
+            %a{"data-icon" => "flat-mail", "data-iconpos" => "notext", "data-role" => "button", "data-theme" => "a", :href => "#"} Yes
+            %a{"data-icon" => "flat-camera", "data-iconpos" => "notext", "data-role" => "button", "data-theme" => "a", :href => "#"} Yes
+            %a{"data-icon" => "flat-heart", "data-iconpos" => "notext", "data-role" => "button", "data-theme" => "a", :href => "#"} Yes
+            %a{"data-icon" => "flat-eye", "data-iconpos" => "notext", "data-role" => "button", "data-theme" => "a", :href => "#"} Yes
+        %div{"data-role" => "fieldcontain"}
+          %select#select-choice-a{"data-native-menu" => "false", "data-theme" => "a", :name => "select-choice"}
+            %option{:value => "standard"} Option 1
+            %option{:value => "rush"} Option 2
+            %option{:value => "express"} Option 3
+            %option{:value => "overnight"} Option 4
+        %input{:placeholder => "Text Input", :type => "text"}/
+
+        %div{"data-role" => "fieldcontain"}
+          %input{"data-highlight" => "true", :max => "100", :min => "0", :name => "slider", :type => "range", :value => "50"}/
+
+    #highlight

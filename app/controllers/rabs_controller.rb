@@ -49,7 +49,7 @@ class RabsController < ApplicationController
     end
 
     def rab_params
-      params.require(:rab).permit(:first_name, :last_name, :tel, :login_id)
+      params.require(:rab).permit(:first_name, :last_name, :tel, :doljn)
     end
 
     def redirect_tor

@@ -9,9 +9,10 @@
     .field
       = f.label t(:name)
       = f.text_field :name, :required=>""
+
     .field
       = f.label "По умолчанию"
-      = f.check_box :odin
+      = f.check_box :odin, "data-role"=>"flipswitch"
 
       - 'TABB'
   %div
